@@ -6,26 +6,109 @@
 
 /* MAKE EVERYTHING BORDER-BOX BY DEFAULT */
 
+/* --- WHOLE DOC --- */
+
+/* border-box box sizing for the whole document - CREDIT: https://css-tricks.com/box-sizing/ 'Universal Box Sizing with Inheritance' */
+html {
+    box-sizing: border-box;
+  }
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/* body */
+body{
+    font-family: 'dosis', sans-serif ;
+}
+
+p{
+    margin:0;
+    padding:1%;
+}
 
 /* --- FONTS --- */
 
-/* body */
-
 /* heading fonts */
 
-/*  */
 
-/* --- DIV STYLING --- */
+/* --- DIV AREAS STYLING --- */
 
 /* container for fretboard diagram (html table) */
 .fretboard-area{
+    width:100%;
+    height:30vh;
+
+    padding:1%;
 
 }
+
+/* centralising and evenly spacing the thre-divs */
+.divs-holder{
+    display:flex;
+    justify-content: space-evenly;
+}
+
+/* the user-options, multi-choice and counter divs */
+.three-divs{
+    border: 2px solid black;
+    border-radius:4px;
+
+    padding: 2%;
+    margin:2%;
+
+    /* width: 30%; */
+    height: 40vh;
+
+    display:flex;
+    flex-direction: column;
+    
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* container for user options section (float left) */
+.user-options-area{
+    width:25%;
+}
+
+.user-options-area h2{
+    margin:0;
+    padding:1%;
+}
+
+/* user options area form - centralise the content (use flexbox?) */
+.user-options-area form{
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+/* user-options form dropdown boxes */
+#total-questions, #total-multi-choices{
+    width:30%;
+}
+
+/* container for multi choice answers (center) */
+.multi-choice-area{
+    width:50%;
+}
+
+/* container for question and right/wrong counters (float right) */
+.counter-area{
+    width:25%;
+
+    padding-top:5%;
+    padding-bottom:5%;
+}
+
+
+/* --- FRETBOARD STYLING --- */
 
 /* fretboard diagram table */
 .fretboard-area table{
     width:100%;
-    /* border: 1px solid black; */
+
     /* removing space between table cells */
     border-collapse:collapse;
 }
@@ -59,31 +142,12 @@ table .zeroth-fret{
     width: 15px;
 }
 
-/* container for user options section (float left) */
-.user-options-area{
-    
-}
-
-/* user options area form - centralise the content (use flexbox?) */
-.user-options-area form{
-    
-}
-
-
-/* container for multi choice answers (center) */
-.multi-choice-area{
-    
-}
-
-/* container for question and right/wrong counters (float right) */
-.counter-area{
-    
-}
-
 /* paragraphs for the numbers tracking the Q no. and right/wrong answers */
 .counters{
     
 }
+
+/* ---  --- */
 
 /* all buttons */
 .btn{
