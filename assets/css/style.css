@@ -1,0 +1,97 @@
+/* --- IMPORTS --- */
+
+/* google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&family=Titillium+Web:wght@200;300;400;600&display=swap');
+
+
+/* MAKE EVERYTHING BORDER-BOX BY DEFAULT */
+
+
+/* --- FONTS --- */
+
+/* body */
+
+/* heading fonts */
+
+/*  */
+
+/* --- DIV STYLING --- */
+
+/* container for fretboard diagram (html table) */
+.fretboard-area{
+
+}
+
+/* fretboard diagram table */
+.fretboard-area table{
+    width:100%;
+    /* border: 1px solid black; */
+    /* removing space between table cells */
+    border-collapse:collapse;
+}
+
+.fretboard-area td{
+    border-right: 2px solid grey; 
+    border-bottom: 1px solid grey;
+
+    /* could try creating 'invisible' content and striking it thru */
+
+    position:relative;
+    top:0.5rem;
+
+    text-align: center;
+    width:8%;
+}
+
+/* fixing the zeroth fret size */
+/* only needs to adjust if font changes */
+table .zeroth-fret{
+    width: 1%;
+}
+
+/* removing the right border from the high e string */
+.no-border-right td{
+    border-right:none;
+}
+
+/* fixing the zeroth fret size - only needs to adjust if font changes */
+.zeroth-fret{
+    width: 15px;
+}
+
+/* container for user options section (float left) */
+.user-options-area{
+    
+}
+
+/* user options area form - centralise the content (use flexbox?) */
+.user-options-area form{
+    
+}
+
+
+/* container for multi choice answers (center) */
+.multi-choice-area{
+    
+}
+
+/* container for question and right/wrong counters (float right) */
+.counter-area{
+    
+}
+
+/* paragraphs for the numbers tracking the Q no. and right/wrong answers */
+.counters{
+    
+}
+
+/* all buttons */
+.btn{
+
+}
+
+/* the datalist - number of multi-choice dropdown */
+#number-of-multi-choice{
+
+}
+
