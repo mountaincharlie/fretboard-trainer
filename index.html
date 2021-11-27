@@ -19,6 +19,52 @@
 
     <!-- body section -->
     <body>
+        <!-- header -->
+        <h1>Fretboard Trainer</h1>
+
+        <!-- container for fretboard diagram (html table) -->
+        <div class = "fretboard-area">
+
+        </div>
+
+
+        <!-- container for user options section (float left) -->
+        <div class = "user-options-area">
+
+            <form>
+                
+            </form>
+
+        </div>
+
+
+        <!-- container for multi choice answers (center) -->
+        <div class = "multi-choice-area">
+
+            <p>Which note is highlighted on the fretboard?</p>
+
+            <!-- js writes here the number of multi answers the user wants - default 4 -->
+            <div>
+
+            </div>
+
+            <!-- make a button instead? -->
+            <input class = "btn" type = "submit" value = "Check">
+
+        </div>
+
+
+        <!-- container for question and right/wrong counters (float right) -->
+        <!-- counter class for styling and ids for writing the js to -->
+        <div class = "counter-area">
+
+            <p class = "counters"><span id = "question-number">1</span>/<span id = "number-of-questions">10</span></p>
+
+            <p class = "counters">Right: <span id = "right-ans">0</span></p>
+
+            <p class = "counters">Wrong: <span id = "wrong-ans">0</span></p>
+
+        </div>
 
         <!-- linked js file -->
         <script src = "./assets/js/script.js"></script>
