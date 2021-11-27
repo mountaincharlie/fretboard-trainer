@@ -31,8 +31,47 @@
         <!-- container for user options section (float left) -->
         <div class = "user-options-area">
 
+            <h2>Settings</h2>
+
+            <p>Applying settings changes will restart the game (any game progress will be lost)</p>
+
             <form>
+                <!-- Total number of questions in the game -->
+                <label for = "total-questions">Number of questions:</label>
+                <input list = "total-questions-options" name = "total-questions" id = "total-questions">
+                <datalist id = "total-questions-options">
+                    <option value = "5">
+                    <option value = "10 (default)">
+                    <option value = "15">
+                    <option value = "20">
+                    <option value = "25">
+                    <option value = "30">
+                </datalist>
                 
+                <!-- Total number of multi-choice answers to display -->
+                <label for = "total-multi-choices">Number of multi-choice answers:</label>
+                <input list = "multi-choice-options" name = "total-multi-choices" id = "total-multi-choices">
+                <datalist id = "multi-choice-options">
+                    <option value = "4 (default)">
+                    <option value = "6">
+                    <option value = "8">
+                    <option value = "10">
+                </datalist>
+
+                <!-- checkbox to hide the open string notes in the fretboard table -->
+                <label for = "hide-open-notes">Hide open string notes</label>
+                <input type = "checkbox" name = "hide-open-notes" id = "hide-open-notes">
+
+                <!-- checkbox to hide the fret numbers in the fretboard table -->
+                <label for = "hide-fret-numbers">Hide fret numbers</label>
+                <input type = "checkbox" name = "hide-fret-numbers" id = "hide-fret-numbers">
+
+                <!-- re-setting to default -->
+                <input class = "btn" type = "reset" value = "Clear settings">
+
+                <!-- apply options button -->
+                <input class = "btn" type = "submit" value = "Apply">
+
             </form>
 
         </div>
