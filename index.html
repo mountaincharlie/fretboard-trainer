@@ -139,85 +139,90 @@
                     <td>--</td>
                 </tr>
             </table>
-
         </div>
 
+        <div class = "divs-holder">
+            <!-- container for user options section (float left) -->
+            <div class = "three-divs user-options-area">
+    
+                <h2>Settings</h2>
+    
+                <p>Applying settings changes will restart the game (any game progress will be lost)</p>
+    
+                <!-- without specifying an 'action' attribute the default is 'self' -->
+                <form>
+                    <!-- Total number of questions in the game -->
+                    <div>
+                        <label for = "total-questions">Number of questions:</label>
+                        <input list = "total-questions-options" name = "total-questions" id = "total-questions">
+                        <datalist id = "total-questions-options">
+                            <option value = "5">
+                            <option value = "10 (default)">
+                            <option value = "15">
+                            <option value = "20">
+                            <option value = "25">
+                            <option value = "30">
+                        </datalist>
+                    </div>
+                    
+                    <!-- Total number of multi-choice answers to display -->
+                    <div>
+                        <label for = "total-multi-choices">Number of multi-choice answers:</label>
+                        <input list = "multi-choice-options" name = "total-multi-choices" id = "total-multi-choices">
+                        <datalist id = "multi-choice-options">
+                            <option value = "4 (default)">
+                            <option value = "6">
+                            <option value = "8">
+                            <option value = "10">
+                        </datalist>
+                    </div>
+                    
+                    <!-- checkbox to hide the open string notes in the fretboard table -->
+                    <div>
+                        <label for = "hide-open-notes">Hide open string notes</label>
+                        <input type = "checkbox" name = "hide-open-notes" id = "hide-open-notes">
+                    </div>
 
-        <!-- container for user options section (float left) -->
-        <div class = "user-options-area">
+                    <!-- checkbox to hide the fret numbers in the fretboard table -->
+                    <div>
+                        <label for = "hide-fret-numbers">Hide fret numbers</label>
+                        <input type = "checkbox" name = "hide-fret-numbers" id = "hide-fret-numbers">
+                    </div>
 
-            <h2>Settings</h2>
-
-            <p>Applying settings changes will restart the game (any game progress will be lost)</p>
-
-            <form>
-                <!-- Total number of questions in the game -->
-                <label for = "total-questions">Number of questions:</label>
-                <input list = "total-questions-options" name = "total-questions" id = "total-questions">
-                <datalist id = "total-questions-options">
-                    <option value = "5">
-                    <option value = "10 (default)">
-                    <option value = "15">
-                    <option value = "20">
-                    <option value = "25">
-                    <option value = "30">
-                </datalist>
-                
-                <!-- Total number of multi-choice answers to display -->
-                <label for = "total-multi-choices">Number of multi-choice answers:</label>
-                <input list = "multi-choice-options" name = "total-multi-choices" id = "total-multi-choices">
-                <datalist id = "multi-choice-options">
-                    <option value = "4 (default)">
-                    <option value = "6">
-                    <option value = "8">
-                    <option value = "10">
-                </datalist>
-
-                <!-- checkbox to hide the open string notes in the fretboard table -->
-                <label for = "hide-open-notes">Hide open string notes</label>
-                <input type = "checkbox" name = "hide-open-notes" id = "hide-open-notes">
-
-                <!-- checkbox to hide the fret numbers in the fretboard table -->
-                <label for = "hide-fret-numbers">Hide fret numbers</label>
-                <input type = "checkbox" name = "hide-fret-numbers" id = "hide-fret-numbers">
-
-                <!-- re-setting to default -->
-                <input class = "btn" type = "reset" value = "Clear settings">
-
-                <!-- apply options button -->
-                <input class = "btn" type = "submit" value = "Apply">
-
-            </form>
-
-        </div>
-
-
-        <!-- container for multi choice answers (center) -->
-        <div class = "multi-choice-area">
-
-            <p>Which note is highlighted on the fretboard?</p>
-
-            <!-- js writes here the number of multi answers the user wants - default 4 -->
-            <div>
-
+                    <!-- re-setting to default -->
+                    <input class = "btn" type = "reset" value = "Clear settings">
+    
+                    <!-- apply options button -->
+                    <input class = "btn" type = "submit" value = "Apply">
+    
+                </form>
             </div>
 
-            <!-- make a button instead? -->
-            <input class = "btn" type = "submit" value = "Check">
+            <!-- container for multi choice answers (center) -->
+            <div class = "three-divs multi-choice-area">
 
-        </div>
+                <p>Which note is highlighted on the fretboard?</p>
+    
+                <!-- js writes here the number of multi answers the user wants - default 4 -->
+                <div>
+    
+                </div>
+    
+                <!-- make a button instead? -->
+                <input class = "btn" type = "submit" value = "Check">
+            </div>
 
+            <!-- container for question and right/wrong counters (float right) -->
+            <!-- counter class for styling and ids for writing the js to -->
+            <div class = "three-divs counter-area">
 
-        <!-- container for question and right/wrong counters (float right) -->
-        <!-- counter class for styling and ids for writing the js to -->
-        <div class = "counter-area">
-
-            <p class = "counters"><span id = "question-number">1</span>/<span id = "number-of-questions">10</span></p>
-
-            <p class = "counters">Right: <span id = "right-ans">0</span></p>
-
-            <p class = "counters">Wrong: <span id = "wrong-ans">0</span></p>
-
+                <p class = "counters">Question: <span id = "question-number">1</span>/<span id = "number-of-questions">10</span></p>
+    
+                <p class = "counters">Right: <span id = "right-ans">0</span></p>
+    
+                <p class = "counters">Wrong: <span id = "wrong-ans">0</span></p>
+    
+            </div>
         </div>
 
         <!-- linked js file -->
