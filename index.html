@@ -149,19 +149,19 @@
     
                 <p>Applying settings changes will restart the game (any game progress will be lost)</p>
     
-                <!-- without specifying an 'action' attribute the default is 'self' -->
-                <form>
+                <!-- div container for the divs containing each settings option -->
+                <div id = "settings">
                     <!-- Total number of questions in the game -->
                     <div>
                         <label for = "total-questions">Number of questions:</label>
                         <input list = "total-questions-options" name = "total-questions" id = "total-questions">
                         <datalist id = "total-questions-options">
-                            <option value = "5">
-                            <option value = "10 (default)">
-                            <option value = "15">
-                            <option value = "20">
-                            <option value = "25">
-                            <option value = "30">
+                            <option value = "5"></option>
+                            <option value = "10 (default)"></option>
+                            <option value = "15"></option>
+                            <option value = "20"></option>
+                            <option value = "25"></option>
+                            <option value = "30"></option>
                         </datalist>
                     </div>
                     
@@ -170,11 +170,11 @@
                         <label for = "total-multi-choices">Number of answers:</label>
                         <input list = "multi-choice-options" name = "total-multi-choices" id = "total-multi-choices">
                         <datalist id = "multi-choice-options">
-                            <option value = "4 (default)">
-                            <option value = "6">
-                            <option value = "8">
-                            <option value = "10">
-                            <option value = "12"> <!-- max number of different notes -->
+                            <option value = "4 (default)"></option>
+                            <option value = "6"></option>
+                            <option value = "8"></option>
+                            <option value = "10"></option>
+                            <option value = "12"></option> <!-- max number of different notes -->
                         </datalist>
                     </div>
                     
@@ -190,13 +190,14 @@
                         <input type = "checkbox" name = "hide-fret-numbers" id = "hide-fret-numbers">
                     </div>
 
-                    <!-- re-setting to default -->
-                    <input class = "btn" type = "reset" value = "Clear settings">
-    
+                    <!-- re-setting to default?? -->
+                    <!-- <input class = "btn" type = "reset" value = "Clear settings"> -->
+                    
                     <!-- apply options button -->
-                    <input class = "btn" type = "submit" value = "Apply">
-    
-                </form>
+                    <button id = "apply-btn" class = "btn">Apply</button>
+                    <!-- <input class = "btn" type = "submit" value = "Apply"> -->
+                
+                </div>
             </div>
 
             <!-- container for multi choice answers (center) -->
