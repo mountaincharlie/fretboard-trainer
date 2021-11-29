@@ -77,8 +77,8 @@ p{
     padding:1%;
 }
 
-/* user options area form - centralise the content (use flexbox?) */
-.user-options-area form{
+/* user options area input div - centralise the content (use flexbox?) */
+.user-options-area #settings{
     line-height:1.7em;
     padding-top:3%;
 
@@ -87,7 +87,7 @@ p{
     text-align: center;
 }
 
-/* user-options form dropdown boxes */
+/* user-options settings dropdown boxes */
 #total-questions, #total-multi-choices{
     width:30%;
 }
