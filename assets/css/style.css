@@ -58,7 +58,7 @@ p{
     margin:2%;
 
     /* width: 30%; */
-    height: 40vh;
+    /* height: 40vh; */
 
     display:flex;
     flex-direction: column;
@@ -79,6 +79,9 @@ p{
 
 /* user options area form - centralise the content (use flexbox?) */
 .user-options-area form{
+    line-height:1.7em;
+    padding-top:3%;
+
     display:flex;
     flex-direction: column;
     text-align: center;
