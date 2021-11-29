@@ -1,108 +1,158 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Fretboard Trainer
 
-Welcome Charlie,
+### To do:
+* Intro paragraph about the project 
+    * Fretboard Trainer is an interactive website to ...
+    * This site provides ...
+* ![Viewing my website on the Am I Responsive site](#images-location "Fretboard Trainer website on the Am I Responsive site")
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
-
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
-
-## Gitpod Reminders
-
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
-
-`python3 -m http.server`
-
-A blue button should appear to click: _Make Public_,
-
-Another blue button should appear to click: _Open Browser_.
-
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
-
-A blue button should appear to click: _Make Public_,
-
-Another blue button should appear to click: _Open Browser_.
-
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
-
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
-
-------
-
-## Release History
-
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
-
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
-
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
-
-**July 2 2021:** Remove extensions that are not available in Open VSX.
-
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
-
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
-
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
-
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
+## Contents
 ---
 
-Happy coding!
+* [Technologies Used](full github url from deployed site)
+* ['section name'](full github url from deployed site)
+* 
+* 
+ 
+## Technologies Used 
+---
+
+* HTML
+* CSS
+* JavaScript
+* google charts ??
+
+## Pages and Features Breakdown
+---
+
+### To do:
+* bulletpoint explain each feature (header/logo, fretboard, settings, multi-choice answers, counters ...)
+* include screen shots
+
+## User Experience Design 
+---
+
+### To do:
+
+### Styling 
+* Colour scheme: (what pallette you used, why and include screenshot/links if relevant)
+* Fonts: (which used, why and screenshot/links if releveant)
+* Icons: (links to ones used and how/why)
+* Continuity across the pages: (IF YOU HAVE MULTIPLE PAGES)
+* Homepage background image: (IF YOU HAVE ONE)
+
+### Interactivity
+* Logo/heading (if they have any interactivity)
+* The fretboard (If hover effects or anything interactive on the fretboard itself)
+* Settings section (from a user experience POV)
+* Multi-choice answers section (from a user experience POV)
+* Counter section (from a user experience POV - e.g. how its coloured/laid out)
+* any hover pseudo classes ??
+* any google charts ??
+* social media ??
+* any embedded video/sound ??
+
+## Interactivity
+---
+
+### To do:
+* breakdown all the interactivity and how the JS makes it possible (INCLUDE SCREENSHOTS)
+    * Default settings
+    * User settings (how they override the defaults - Number of questions, number of answers, hide open notes and hide fret numbers)
+    * Fret check button (which shows the notes - IF YOU INCLUDE IT - and why it disables the game etc)
+    * Answers section 
+    * Counter section (how it updates and is affect by default/user settings and IF YOU INCLUDE THE PLOT PROGRESS button)
+
+## Accessability
+---
+
+### To do:
+
+### Semantic elements
+* which elements u used to define the strcuture of the page
+
+### Aria-labels
+* IS IT POSSIBLE FOR THE SCREEN READER TO READ OUT THE LOCATION OF THE HIGHLIGHTED NOTE?    
+* to internal/external links ??
+* to inputs which display text which may not be interactive ??
+
+### Attributes
+* alts added to image elements
+* any role attributes used (on divs, spans, or anything none semantic)
+
+## Testing
+---
+
+### To do:
+
+### HTML & CSS validator warnings and fixes
+* any warnings that come up and how you fixed them
+
+### HTML Validation in Offical W3C Validator
+* SHOULD BE: No errors or warnings
+* LINK TO THE 'by url'
+
+### CSS Validation in Offical Jigsaw Validator
+* SHOULD BE: No errors or warnings
+* LINK TO THE 'by url'
+
+### JS Check in JSHint
+* SHOULD BE: No errors or warnings
+* LINK IF ONE AVALIABLE
+
+### Lighthouse Accessability score
+
+![Screenshot of Google Dev Tool's Lighthouse Score for my website](#image-location "Google Dev Tool's Lighthouse Score for my website") 
+
+### Bugs and Fixes
+* [date] any bugs
+    * their fixes (links/images where relevant)
+
+### Unfixed bugs
+* SHOULD BE: No unfixed bugs
+
+## Deployment
+---
+
+### To do:
+
+### Deployment Process on GitHub
+* How you diployed it with GitHub Pages 
+* ...
+
+### Live website link
+* link to live website
+
+## Credits
+---
+
+### To do:
+
+### External Code:
+* anything used from external sources ??
+
+### Research on ...
+* anything you did research on for the site ??
+
+### Page styling
+* Google fonts links ??
+* Colour pallette links ??
+
+### Icons
+* any icons used ??
+
+### Images
+* any images used ??
+
+### Page content
+* anything you used particularly for page content ??
+
+##  Site Expansion Ideas
+---
+
+Features that could be added to expand and improve the website in the future.
+
+### To do:
+
+### Improvement idea
+* How it would work/why it would be good
