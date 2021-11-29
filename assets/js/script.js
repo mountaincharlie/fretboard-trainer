@@ -18,4 +18,33 @@
 // console.log('the note is:', cell.innerHTML);
 
 
+// the fretboards notes object (global?)
+// const allNotes = {}
+
+
+// CODE FOR USING AN ARRAY OF OPEN STRING NOTES AND ONE FOR ALL THE POSSIBLE NOTES IN ORDER
+
+// array of the string names (COULD even rmv high from last e)
+var stringsArray = ['e', 'a', 'd', 'g', 'b', 'eHigh']; 
+// array of the notes in a full scale starting at 'a'
+var notesArray = ['a', 'a#/bb', 'b', 'c', 'c#/db', 'd', 'd#/eb', 'e', 'f', 'f#/gb', 'g', 'g#/ab',];
+
+// finding the note for 6th string 4th fret
+let stringNumber = 6; // must not exceed 6
+let fretNumber = 9; // must note exceed 12
+
+let chosenString = stringsArray[(stringNumber-1)];  // getting the string from the stringsArray
+let openStringNote = chosenString.substring(0, 1); // just the note of the open string (e.g. 'e' instead of 'eHigh')
+console.log('open string:', chosenString);
+let openStringNoteIndex = notesArray.indexOf(openStringNote); // getting the index of the open note in the notesArray
+let chosenNoteIndex = openStringNoteIndex + fretNumber;
+if (chosenNoteIndex > notesArray.length){
+    chosenNoteIndex = chosenNoteIndex - notesArray.length;
+}
+let chosenNote = notesArray[chosenNoteIndex];
+
+console.log('chosen note:', chosenNote);
+
+
+
 
