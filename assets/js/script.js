@@ -18,20 +18,18 @@
 // console.log('the note is:', cell.innerHTML);
 
 
-// the fretboards notes object (global?)
-// const allNotes = {}
 
+// CODE FOR USING ARRAYS (FOR OPEN STRING NOTES AND ALL POSSIBLE NOTES IN ORDER) TO WRITE TO THE FRETBOARD
 
-// CODE FOR USING AN ARRAY OF OPEN STRING NOTES AND ONE FOR ALL THE POSSIBLE NOTES IN ORDER
+// array of the string names
+var stringsArray = ['eStr', 'aStr', 'dStr', 'gStr', 'bStr', 'eHighStr']; 
 
-// array of the string names (COULD even rmv high from last e)
-var stringsArray = ['e', 'a', 'd', 'g', 'b', 'eHigh']; 
 // array of the notes in a full scale starting at 'a'
-var notesArray = ['a', 'a#/bb', 'b', 'c', 'c#/db', 'd', 'd#/eb', 'e', 'f', 'f#/gb', 'g', 'g#/ab',];
+var notesArray = ['a', 'a#/bb', 'b', 'c', 'c#/db', 'd', 'd#/eb', 'e', 'f', 'f#/gb', 'g', 'g#/ab'];
 
 // finding the note for 6th string 4th fret
-let stringNumber = 6; // must not exceed 6
-let fretNumber = 9; // must note exceed 12
+let stringNumber = 3; // only in range 1-6
+let fretNumber = 0; // only in range 1-12
 
 let chosenString = stringsArray[(stringNumber-1)];  // getting the string from the stringsArray
 let openStringNote = chosenString.substring(0, 1); // just the note of the open string (e.g. 'e' instead of 'eHigh')
@@ -45,6 +43,13 @@ let chosenNote = notesArray[chosenNoteIndex];
 
 console.log('chosen note:', chosenNote);
 
+// function for writing the found note to the fretboard 
+function noteToFretboard(chosenString, fretNumber, chosenNote){
+    let cell = document.getElementById(chosenString).children[fretNumber];
+    cell.innerHTML = chosenNote;
+    cell.style.color = 'red';  //just to highlist the note for now
+    console.log('string:', chosenString, 'fret number: ', fretNumber, 'cell value', cell.innerHTML);
+}
 
-
+noteToFretboard(chosenString, fretNumber, chosenNote); // writing the note to the cell
 
