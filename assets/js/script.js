@@ -71,17 +71,39 @@ document.addEventListener('DOMContentLoaded', function(){
 
 // apply settings function? finds all settings and sets the appropriate things (called by 'applyButton' event listener)
 function applySettings(){
+    let opacity;  // defining a variable for the opacity value needed
 
     //  WORKOUT HOW TO DO THE DROP BOXES OR MAKE THEM RADIO BUTTONS
    
     // hide open string notes setting (use similar for the hide fret numbers)
-    let hideOpenNotes = document.getElementById('hide-open-notes').checked;
+    let hideOpenNotes = document.getElementById('hide-open-notes').checked;  // finding if the 'hide-open-notes' is checked (true) or not (false)
+    let openNoteCells = document.getElementsByClassName('zeroth-fret');      // getting an object of all of the elements containing zeroth fret notes
+    // setting the opacity value depending on if the check box is ticked or not
     if (hideOpenNotes){
-        let openNoteCells = document.getElementsByClassName('zeroth-fret');
-        // need to iterate through the HTMLCollection and change for each item, checnge its innerHTML to ''
-        console.log('open note cells values', openNoteCells);
+        opacity = "0";
+    } else {
+        opacity = "1";
     }
-    console.log('hide notes? ', hideOpenNotes);
+    // calling the function to hide/unhide with 'openNoteCells' and the opacity value
+    hideOrUnhide(openNoteCells, opacity)
 
+    // hide fret numbers setting
+    let hideFretNumbers = document.getElementById('hide-fret-numbers').checked;  // finding if the 'hide-fret-numbers' is checked (true) or not (false)
+    let fretNumberCells = document.getElementsByTagName('th');      // getting an object of all of the elements containing fret numbers
+    // setting the opacity value depending on if the check box is ticked or not
+    if (hideFretNumbers){
+        opacity = "0";
+    } else {
+        opacity = "1";
+    }
+    // calling the function to hide/unhide with 'openNoteCells' and the opacity value
+    hideOrUnhide(fretNumberCells, opacity)
+}
 
+// function for the hide/unhide which takes parameters; openNoteCells HTMLCollection and opacity value
+function hideOrUnhide(cells, opacity){
+    for (let cell of cells){
+        cell.style.opacity = opacity;
+        // console.log('cell = ', cell.innerHTML);  // just for me to check the values being hidden
+    }
 }
