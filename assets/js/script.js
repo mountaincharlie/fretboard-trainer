@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     // getting the apply button and putting an event listener on it 
     let applyButton = document.getElementById('apply-btn');
-    applyButton.addEventListener('click', applySettings)
+    applyButton.addEventListener('click', applySettings);
     
 
     // checking all the settings values (user or default)
@@ -73,9 +73,32 @@ document.addEventListener('DOMContentLoaded', function(){
 function applySettings(){
     let opacity;  // defining a variable for the opacity value needed
 
-    //  WORKOUT HOW TO DO THE DROP BOXES OR MAKE THEM RADIO BUTTONS
+
+    //  NEED ELSE CATCH TO SET DEFAULTS IF NO SELCTION
+    // FIX: why do datalist options not show once one is selected
+    // NEED: a rest settings to default option (event listener which resets each setting?)
+
+    // (1) total number of questions setting
+    let totalQuestionsSelection = document.getElementById('total-questions').value;  // getting the value from the input datalist
+    // cutting out the '(default)' string
+    if (totalQuestionsSelection.length > 2){
+        totalQuestionsSelection = totalQuestionsSelection.substring(0, 2);
+    }
+    totalQuestionsSelection = Number(totalQuestionsSelection);  // converting the choice into a number
+    console.log('total Qs value: ', totalQuestionsSelection);
+
+    // (2) total number of questions setting
+    let totalMultiChoiceSelection = document.getElementById('total-multi-choices').value;  // getting the value from the input datalist
+    // cutting out the '(default)' string
+    if (totalMultiChoiceSelection.length > 2){
+        totalMultiChoiceSelection = totalMultiChoiceSelection.substring(0, 2);
+    }
+    totalMultiChoiceSelection = Number(totalMultiChoiceSelection);  // converting the choice into a number
+    console.log('total answers value: ', totalMultiChoiceSelection);
+
+
    
-    // hide open string notes setting (use similar for the hide fret numbers)
+    // (3) hide open string notes setting (use similar for the hide fret numbers)
     let hideOpenNotes = document.getElementById('hide-open-notes').checked;  // finding if the 'hide-open-notes' is checked (true) or not (false)
     let openNoteCells = document.getElementsByClassName('zeroth-fret');      // getting an object of all of the elements containing zeroth fret notes
     // setting the opacity value depending on if the check box is ticked or not
@@ -87,7 +110,7 @@ function applySettings(){
     // calling the function to hide/unhide with 'openNoteCells' and the opacity value
     hideOrUnhide(openNoteCells, opacity)
 
-    // hide fret numbers setting
+    // (4) hide fret numbers setting
     let hideFretNumbers = document.getElementById('hide-fret-numbers').checked;  // finding if the 'hide-fret-numbers' is checked (true) or not (false)
     let fretNumberCells = document.getElementsByTagName('th');      // getting an object of all of the elements containing fret numbers
     // setting the opacity value depending on if the check box is ticked or not
