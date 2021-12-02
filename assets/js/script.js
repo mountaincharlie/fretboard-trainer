@@ -80,12 +80,24 @@ function applySettings(){
 
     // (1) total number of questions setting
     let totalQuestionsSelection = document.getElementById('total-questions').value;  // getting the value from the input datalist
-    // cutting out the '(default)' string
-    if (totalQuestionsSelection.length > 2){
-        totalQuestionsSelection = totalQuestionsSelection.substring(0, 2);
+    let numberOfQuestions = document.getElementById('number-of-questions');  // getting the container for the number of questions 
+
+    // if the value of totalQuestionsSelection is true (so not if the value is; NaN, null, 0, undefined, empty string) 
+    if (totalQuestionsSelection){
+
+        // cutting out the '(default)' string
+        if (totalQuestionsSelection.length > 2){
+            totalQuestionsSelection = totalQuestionsSelection.substring(0, 2);
+        }
+        // console.log('total Qs value: ', totalQuestionsSelection);  // just for me to saee if it is working correctly
+
+        numberOfQuestions.innerHTML = totalQuestionsSelection;  // writing the new number of questions
+
+    } else {
+        numberOfQuestions.innerHTML = '10';  // ensuring that the number of questions is set to the default if a valid drop down value isnt selected
     }
-    totalQuestionsSelection = Number(totalQuestionsSelection);  // converting the choice into a number
-    console.log('total Qs value: ', totalQuestionsSelection);
+
+    
 
     // (2) total number of questions setting
     let totalMultiChoiceSelection = document.getElementById('total-multi-choices').value;  // getting the value from the input datalist
@@ -93,7 +105,7 @@ function applySettings(){
     if (totalMultiChoiceSelection.length > 2){
         totalMultiChoiceSelection = totalMultiChoiceSelection.substring(0, 2);
     }
-    totalMultiChoiceSelection = Number(totalMultiChoiceSelection);  // converting the choice into a number
+    totalMultiChoiceSelection = Number(totalMultiChoiceSelection);  // converting the choice into a number (for use in later randomisation)
     console.log('total answers value: ', totalMultiChoiceSelection);
 
 
