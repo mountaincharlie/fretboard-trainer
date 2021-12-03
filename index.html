@@ -154,28 +154,26 @@
                     <!-- Total number of questions in the game -->
                     <div>
                         <label for = "total-questions">Number of questions:</label>
-                        <input list = "total-questions-options" name = "total-questions" id = "total-questions">
-                        <datalist id = "total-questions-options">
+                        <select id = "total-questions">
                             <option value = "5">5</option>
-                            <option value = "10 (default)">10 (default)</option>
+                            <option value = "10 (default)" selected>10 (default)</option>
                             <option value = "15">15</option>
                             <option value = "20">20</option>
                             <option value = "25">25</option>
                             <option value = "30">30</option>
-                        </datalist>
+                        </select>
                     </div>
                     
                     <!-- Total number of multi-choice answers to display -->
                     <div>
                         <label for = "total-multi-choices">Number of answers:</label>
-                        <input list = "multi-choice-options" name = "total-multi-choices" id = "total-multi-choices">
-                        <datalist id = "multi-choice-options">
-                            <option value = "4 (default)">4 (default)</option>
+                        <select id = "total-multi-choices">
+                            <option value = "4 (default)" selected>4 (default)</option>
                             <option value = "6">6</option>
                             <option value = "8">8</option>
                             <option value = "10">10</option>
                             <option value = "12">12</option> <!-- max number of different notes -->
-                        </datalist>
+                        </select>
                     </div>
                     
                     <!-- checkbox to hide the open string notes in the fretboard table -->
