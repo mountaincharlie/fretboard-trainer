@@ -59,6 +59,13 @@
 
 document.addEventListener('DOMContentLoaded', function(){
 
+    // getting the reset button and putting an event listener on it
+    let resetButton = document.getElementById('reset-btn');
+    resetButton.addEventListener('click', function(){
+        window.location.reload()
+    });
+
+
     // getting the apply button and putting an event listener on it 
     let applyButton = document.getElementById('apply-btn');
     applyButton.addEventListener('click', applySettings);
