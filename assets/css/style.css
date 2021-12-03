@@ -150,6 +150,16 @@ table .zeroth-fret{
     
 }
 
+
+/* --- ANSWER AREA STYLING --- */
+
+/* class added to notes being being highlighted */
+.highlight-note{
+    background-color: lightblue;
+    border-radius: 50%;
+}
+
+
 /* ---  --- */
 
 /* all buttons */
