@@ -22,7 +22,7 @@
 // CODE FOR USING ARRAYS (FOR OPEN STRING NOTES AND ALL POSSIBLE NOTES IN ORDER) TO WRITE TO THE FRETBOARD
 
 // array of the string names
-// var stringsArray = ['eStr', 'aStr', 'dStr', 'gStr', 'bStr', 'eHighStr']; 
+// var stringsNamesArray = ['eStr', 'aStr', 'dStr', 'gStr', 'bStr', 'eHighStr']; 
 
 // array of the notes in a full scale starting at 'a'
 // var notesArray = ['a', 'a#/bb', 'b', 'c', 'c#/db', 'd', 'd#/eb', 'e', 'f', 'f#/gb', 'g', 'g#/ab'];
@@ -71,10 +71,48 @@ document.addEventListener('DOMContentLoaded', function(){
     applyButton.addEventListener('click', applySettings);
     
 
-    // checking all the settings values (user or default)
+    // check answer button event listener (inside the main game function?)
+
+    // calling the function that runs the game 
+    fretboardTrainer()
     
 
 })
+
+
+//  the function that runs the game (calls questionGenerator())
+function fretboardTrainer(){
+
+    // define open string notes array
+    let stringsNamesArray = ['eStr', 'aStr', 'dStr', 'gStr', 'bStr', 'eHighStr'];
+    // define all notes array
+    // define random cell array
+    let randomCell = [];
+
+    // randomly picking a cell in the html table
+    // picking a guitar string
+    randomCell.push(stringsNamesArray[randomNumber(6, 0)]); // no offset because any of strings can be chosen
+    // picking a fret
+    randomCell.push(randomNumber(12, 1));  // offset because we dont want the 0th fret to be an option (therefore highest is 12 and not 13)
+    console.log(randomCell);
+
+    // finding the cell to unhide and take the note from
+    let randomString = document.getElementById(randomCell[0]).children;
+    let randomNote = randomString[randomCell[1]];  // the note from the random cell
+    // applying the class to style the highlighted table cell
+    randomNote.classList.add('highlight-note');
+    console.log(randomNote);
+
+
+
+}
+
+// function for choosing a random number between 0 and a maximum value (takes highest possible value and an offset of 0 or 1)
+function randomNumber(highest, offset){
+    return Math.floor(Math.random() * highest) + offset; // multiplies a random number between 0 and 1 by the highest possible value and then takes the highest integer from this value + 1
+}
+
+
 
 // apply settings function? finds all settings and sets the appropriate things (called by 'applyButton' event listener)
 function applySettings(){
