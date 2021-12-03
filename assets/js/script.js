@@ -83,9 +83,21 @@ document.addEventListener('DOMContentLoaded', function(){
 //  the function that runs the game (calls questionGenerator())
 function fretboardTrainer(){
 
+    // define open string notes array ONLY HERE IF CANT JUST BE IN THE HIGHLIGHT FUNCTION
+    // let stringsNamesArray = ['eStr', 'aStr', 'dStr', 'gStr', 'bStr', 'eHighStr'];
+    // define all notes array
+    notesArray = ['A', 'A#/Bb', 'B', 'C', 'C#/Db', 'D', 'D#/Eb', 'E', 'F', 'F#/Gb', 'G', 'G#/Ab'];
+
+    // calling the function to highlight a random cell and return its element
+    highlightRandomCell();
+
+
+}
+
+// function for getting the random cell and highlighting it (defines stringsNamesArray randomCell[] and returns randomNote)
+function highlightRandomCell(){
     // define open string notes array
     let stringsNamesArray = ['eStr', 'aStr', 'dStr', 'gStr', 'bStr', 'eHighStr'];
-    // define all notes array
     // define random cell array
     let randomCell = [];
 
@@ -102,8 +114,6 @@ function fretboardTrainer(){
     // applying the class to style the highlighted table cell
     randomNote.classList.add('highlight-note');
     console.log(randomNote);
-
-
 
 }
 
