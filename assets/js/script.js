@@ -83,6 +83,12 @@ document.addEventListener('DOMContentLoaded', function(){
 //  the function that runs the game (calls questionGenerator())
 function fretboardTrainer(){
 
+    // removing any previously highlighted cell styling
+    for (element of document.getElementsByTagName('td')){
+        element.classList.remove('highlight-note');
+    }
+    
+
     // define open string notes array ONLY HERE IF CANT JUST BE IN THE HIGHLIGHT FUNCTION
     // let stringsNamesArray = ['eStr', 'aStr', 'dStr', 'gStr', 'bStr', 'eHighStr'];
     // define all notes array
@@ -95,6 +101,17 @@ function fretboardTrainer(){
     // randomNoteContainer.style.color = 'rgba(0, 0, 0, 1)';  // for revealing the note
     correctNote = randomNoteContainer.innerHTML;
     console.log('the note:', correctNote);
+
+    // adding the correct note to the answers array
+    multiChoiceAnswers.push(correctNote);
+    console.log('multiChoiceAnswers:', multiChoiceAnswers);
+    // removing the correct note from the all notes array
+    allNotes.splice(allNotes.indexOf(correctNote), 1);
+    console.log('allNotes after', allNotes);  // for me to check if the note has been removed
+
+    // getting the total number of questions
+    let totalNumberOfQuestions = document.getElementById('number-of-questions').innerHTML;
+    console.log('totalNumberOfQuestions', totalNumberOfQuestions);
 
 
 }
@@ -168,6 +185,9 @@ function applySettings(){
     
     // calling the function to hide/unhide with 'openNoteCells' and the opacity value
     hideOrUnhide(hideFretNumbers, fretNumberCells)
+
+    fretboardTrainer()
+
 }
 
 
