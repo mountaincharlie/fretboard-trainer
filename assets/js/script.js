@@ -71,10 +71,9 @@ document.addEventListener('DOMContentLoaded', function(){
 
 // apply settings function? finds all settings and sets the appropriate things (called by 'applyButton' event listener)
 function applySettings(){
-    let opacity;  // defining a variable for the opacity value needed for the checkbox values
-
 
     // NEED: a rest settings to default option (event listener which resets each setting?)
+    // WHAT: to return??
 
     // (1) total number of questions setting
     let totalQuestionsSelection = document.getElementById('total-questions').value;  // getting the value from the input datalist
@@ -101,26 +100,16 @@ function applySettings(){
     // (3) hide open string notes setting (use similar for the hide fret numbers)
     let hideOpenNotes = document.getElementById('hide-open-notes').checked;  // finding if the 'hide-open-notes' is checked (true) or not (false)
     let openNoteCells = document.getElementsByClassName('zeroth-fret');      // getting an object of all of the elements containing zeroth fret notes
-    // setting the opacity value depending on if the check box is ticked or not
-    if (hideOpenNotes){
-        opacity = "0";
-    } else {
-        opacity = "1";
-    }
+    
     // calling the function to hide/unhide with 'openNoteCells' and the opacity value
-    hideOrUnhide(openNoteCells, opacity)
+    hideOrUnhide(hideOpenNotes, openNoteCells)
 
     // (4) hide fret numbers setting
     let hideFretNumbers = document.getElementById('hide-fret-numbers').checked;  // finding if the 'hide-fret-numbers' is checked (true) or not (false)
     let fretNumberCells = document.getElementsByTagName('th');      // getting an object of all of the elements containing fret numbers
-    // setting the opacity value depending on if the check box is ticked or not
-    if (hideFretNumbers){
-        opacity = "0";
-    } else {
-        opacity = "1";
-    }
+    
     // calling the function to hide/unhide with 'openNoteCells' and the opacity value
-    hideOrUnhide(fretNumberCells, opacity)
+    hideOrUnhide(hideFretNumbers, fretNumberCells)
 }
 
 
@@ -147,9 +136,17 @@ function selectElementOptions(total, container, defaultValue){
 }
 
 
-
 // function for the hide/unhide which takes parameters; openNoteCells HTMLCollection and opacity value
-function hideOrUnhide(cells, opacity){
+function hideOrUnhide(hide, cells){
+    let opacity; // defining an opacity variable to be assigned to
+
+    // setting the opacity value depending on if the check box is ticked or not
+    if (hide){
+        opacity = "0";
+    } else {
+        opacity = "1";
+    }
+
     for (let cell of cells){
         cell.style.opacity = opacity;
         // console.log('cell = ', cell.innerHTML);  // just for me to check the values being hidden
