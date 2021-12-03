@@ -140,11 +140,6 @@ table .zeroth-fret{
     border-right:none;
 }
 
-/* fixing the zeroth fret size - only needs to adjust if font changes */
-.zeroth-fret{
-    width: 15px;
-}
-
 /* paragraphs for the numbers tracking the Q no. and right/wrong answers */
 .counters{
     
@@ -157,6 +152,16 @@ table .zeroth-fret{
 .highlight-note{
     background-color: lightblue;
     border-radius: 50%;
+}
+
+/* using tr tag first to ensure the open string notes are not hidden */
+tr .zeroth-fret{
+    color: black;
+}
+
+/* making all the td elements transparent by default */
+td{
+    color: rgba(0,0,0,0);
 }
 
 
