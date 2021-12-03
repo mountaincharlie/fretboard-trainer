@@ -71,43 +71,31 @@ document.addEventListener('DOMContentLoaded', function(){
 
 // apply settings function? finds all settings and sets the appropriate things (called by 'applyButton' event listener)
 function applySettings(){
-    let opacity;  // defining a variable for the opacity value needed
+    let opacity;  // defining a variable for the opacity value needed for the checkbox values
 
 
-    //  NEED ELSE CATCH TO SET DEFAULTS IF NO SELCTION
-    // FIX: why do datalist options not show once one is selected
     // NEED: a rest settings to default option (event listener which resets each setting?)
 
     // (1) total number of questions setting
     let totalQuestionsSelection = document.getElementById('total-questions').value;  // getting the value from the input datalist
     let numberOfQuestions = document.getElementById('number-of-questions');  // getting the container for the number of questions 
+    let defaultNumberOfQuestions = 10;  // setting the default value to use later
 
-    // if the value of totalQuestionsSelection is true (so not if the value is; NaN, null, 0, undefined, empty string) 
-    if (totalQuestionsSelection){
+    // calling the selectElementOptions function to reassign the value of totalQuestionsSelection
+    totalQuestionsSelection = selectElementOptions(totalQuestionsSelection, numberOfQuestions, defaultNumberOfQuestions); 
+    // writing the new number of questions to the document using the value from 
+    numberOfQuestions.innerHTML = totalQuestionsSelection;
 
-        // cutting out the '(default)' string
-        if (totalQuestionsSelection.length > 2){
-            totalQuestionsSelection = totalQuestionsSelection.substring(0, 2);
-        }
-        // console.log('total Qs value: ', totalQuestionsSelection);  // just for me to saee if it is working correctly
-
-        numberOfQuestions.innerHTML = totalQuestionsSelection;  // writing the new number of questions
-
-    } else {
-        numberOfQuestions.innerHTML = '10';  // ensuring that the number of questions is set to the default if a valid drop down value isnt selected
-    }
-
-    
 
     // (2) total number of questions setting
     let totalMultiChoiceSelection = document.getElementById('total-multi-choices').value;  // getting the value from the input datalist
-    // cutting out the '(default)' string
-    if (totalMultiChoiceSelection.length > 2){
-        totalMultiChoiceSelection = totalMultiChoiceSelection.substring(0, 2);
-    }
-    totalMultiChoiceSelection = Number(totalMultiChoiceSelection);  // converting the choice into a number (for use in later randomisation)
-    console.log('total answers value: ', totalMultiChoiceSelection);
+    let numberOfMultiChoices = document.getElementById('multi-choice-answers');  // getting the container for the multi-choice answers 
+    let defaultnumberOfMultiChoices = 4;  // setting the default value to use later
 
+    // calling the selectElementOptions function to reassign the value of totalMultiChoiceSelection
+    totalMultiChoiceSelection = selectElementOptions(totalMultiChoiceSelection, numberOfMultiChoices, defaultnumberOfMultiChoices); 
+    // writing the new number of questions to the document using the value from 
+    numberOfMultiChoices.innerHTML = totalMultiChoiceSelection;
 
    
     // (3) hide open string notes setting (use similar for the hide fret numbers)
@@ -134,6 +122,31 @@ function applySettings(){
     // calling the function to hide/unhide with 'openNoteCells' and the opacity value
     hideOrUnhide(fretNumberCells, opacity)
 }
+
+
+
+// function for dealing with the value from the select. takes parameters; total, container, default. returns total
+function selectElementOptions(total, container, defaultValue){
+
+    // if the value of the total questions/multi-choice answers is true (so not if the value is; NaN, null, 0, undefined, empty string) 
+    if (total){
+
+        // cutting out the '(default)' string
+        if (total.length > 2){
+            total = total.substring(0, 2);
+        }
+        // console.log('totals value: ', total);  // just for me to saee if it is working correctly
+
+        total = Number(total)  // converting the total into a number
+
+    } else {
+        container.innerHTML = defaultValue;  // ensuring that the number of questions is set to the default if somehow the if statement is untrue
+    }
+
+    return total;  // returning the new total value to be displayed to the document or used to generate a number of questions
+}
+
+
 
 // function for the hide/unhide which takes parameters; openNoteCells HTMLCollection and opacity value
 function hideOrUnhide(cells, opacity){
