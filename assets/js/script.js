@@ -86,10 +86,15 @@ function fretboardTrainer(){
     // define open string notes array ONLY HERE IF CANT JUST BE IN THE HIGHLIGHT FUNCTION
     // let stringsNamesArray = ['eStr', 'aStr', 'dStr', 'gStr', 'bStr', 'eHighStr'];
     // define all notes array
-    notesArray = ['A', 'A#/Bb', 'B', 'C', 'C#/Db', 'D', 'D#/Eb', 'E', 'F', 'F#/Gb', 'G', 'G#/Ab'];
+    allNotes = ['A', 'A#/Bb', 'B', 'C', 'C#/Db', 'D', 'D#/Eb', 'E', 'F', 'F#/Gb', 'G', 'G#/Ab'];
+    // define an answers array to be added to
+    multiChoiceAnswers = [];
 
-    // calling the function to highlight a random cell and return its element
-    highlightRandomCell();
+    // calling the function to choose and highlight a random cell and return its element
+    let randomNoteContainer = highlightRandomCell();
+    // randomNoteContainer.style.color = 'rgba(0, 0, 0, 1)';  // for revealing the note
+    correctNote = randomNoteContainer.innerHTML;
+    console.log('the note:', correctNote);
 
 
 }
@@ -98,23 +103,21 @@ function fretboardTrainer(){
 function highlightRandomCell(){
     // define open string notes array
     let stringsNamesArray = ['eStr', 'aStr', 'dStr', 'gStr', 'bStr', 'eHighStr'];
-    // define random cell array
+    // define random cell array for storing the data for finding the random cell
     let randomCell = [];
 
-    // randomly picking a cell in the html table
-    // picking a guitar string
+    // picking a random guitar string
     randomCell.push(stringsNamesArray[randomNumber(6, 0)]); // no offset because any of strings can be chosen
-    // picking a fret
+    // picking a andom fret
     randomCell.push(randomNumber(12, 1));  // offset because we dont want the 0th fret to be an option (therefore highest is 12 and not 13)
-    console.log(randomCell);
+    console.log('the cell:', randomCell);
 
-    // finding the cell to unhide and take the note from
+    // finding the cell to highlight and take the note from
     let randomString = document.getElementById(randomCell[0]).children;
-    let randomNote = randomString[randomCell[1]];  // the note from the random cell
-    // applying the class to style the highlighted table cell
-    randomNote.classList.add('highlight-note');
-    console.log(randomNote);
+    let randomNoteContainer = randomString[randomCell[1]];  // the note from the random cell
+    randomNoteContainer.classList.add('highlight-note');  // applying the class to style the highlighted table cell
 
+    return randomNoteContainer
 }
 
 // function for choosing a random number between 0 and a maximum value (takes highest possible value and an offset of 0 or 1)
