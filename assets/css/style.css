@@ -68,17 +68,17 @@ p{
 }
 
 /* container for user options section (float left) */
-.user-options-area{
+#user-options-area{
     width:25%;
 }
 
-.user-options-area h2{
+#user-options-area h2{
     margin:0;
     padding:1%;
 }
 
 /* user options area input div - centralise the content (use flexbox?) */
-.user-options-area #settings{
+#user-options-area #settings{
     line-height:1.7em;
     padding-top:3%;
 
@@ -98,7 +98,7 @@ p{
 }
 
 /* container for question and right/wrong counters (float right) */
-.counter-area{
+#counter-area{
     width:25%;
 
     padding-top:5%;
