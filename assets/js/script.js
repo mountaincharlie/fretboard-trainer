@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     // check answer button event listener (inside the main game function?)
 
-    // calling the function that runs the game 
+    // calling the function that runs the game if no settings are applied
     fretboardTrainer()
     
 
@@ -87,10 +87,26 @@ function fretboardTrainer(){
     for (element of document.getElementsByTagName('td')){
         element.classList.remove('highlight-note');
     }
-    
+
+    // calling the answerGenerator function
+    let multiChoiceAnswers = answerGenerator();
+
+    // calling function for writing the answers to the DOM
+    // displayAnswers(multiChoiceAnswers)
+
+}
+
+// function for displaying the questions
+function displayAnswers(multiChoiceAnswers){
+   
+}
+
+// function for generating the answers array and retruning it back into the fretboardTrainer function
+function answerGenerator(){
 
     // define open string notes array ONLY HERE IF CANT JUST BE IN THE HIGHLIGHT FUNCTION
     // let stringsNamesArray = ['eStr', 'aStr', 'dStr', 'gStr', 'bStr', 'eHighStr'];
+
     // define all notes array
     allNotes = ['A', 'A#/Bb', 'B', 'C', 'C#/Db', 'D', 'D#/Eb', 'E', 'F', 'F#/Gb', 'G', 'G#/Ab'];
     // define an answers array to be added to
@@ -98,23 +114,40 @@ function fretboardTrainer(){
 
     // calling the function to choose and highlight a random cell and return its element
     let randomNoteContainer = highlightRandomCell();
+
     // randomNoteContainer.style.color = 'rgba(0, 0, 0, 1)';  // for revealing the note
     correctNote = randomNoteContainer.innerHTML;
     console.log('the note:', correctNote);
 
-    // adding the correct note to the answers array
-    multiChoiceAnswers.push(correctNote);
-    console.log('multiChoiceAnswers:', multiChoiceAnswers);
-    // removing the correct note from the all notes array
+    // removing the correct note from the all notes array to be added in at a random place later
     allNotes.splice(allNotes.indexOf(correctNote), 1);
-    console.log('allNotes after', allNotes);  // for me to check if the note has been removed
 
-    // getting the total number of questions
-    let totalNumberOfQuestions = document.getElementById('number-of-questions').innerHTML;
-    console.log('totalNumberOfQuestions', totalNumberOfQuestions);
+    // getting the total number of answers from the DOM, as a number
+    let totalMultiChoiceAnswers = Number(document.getElementById('total-multi-choices').value); // will convert to numbers or turn '4 (default)' into 'NaN' which is falsy
 
+    // console.log('totalMultiChoiceAnswers', totalMultiChoiceAnswers);
+    if (totalMultiChoiceAnswers){
+    } else {
+        totalMultiChoiceAnswers = 4;   // the default if the statement is falsy (ANY WAY TO MAKE THIS A VARIABLE??)
+    }
 
+    // taking random notes from the allNotes array and adding them to the list of answers (1 less than totalMultiChoiceAnswers since the correct has been added already)
+    for (let i = 0; i < (totalMultiChoiceAnswers - 1); i ++){
+        let note = allNotes[randomNumber(allNotes.length, 0)]; // no offset (number between 0 and totalNumberOfQuestions)
+
+        // adding the note to the answers array and removing the  note from the all notes array
+        multiChoiceAnswers.push(note);
+        allNotes.splice(allNotes.indexOf(note), 1);
+    }
+
+    // using the length of the allNotes array to generate a random index to insert the correctNote without removing any elements using the splice method
+    multiChoiceAnswers.splice(randomNumber((multiChoiceAnswers.length + 1), 0), 0, correctNote);
+
+    console.log('multiChoiceAnswers final', multiChoiceAnswers); // randomised order of all answer choices
+
+    return multiChoiceAnswers;
 }
+
 
 // function for getting the random cell and highlighting it (defines stringsNamesArray randomCell[] and returns randomNote)
 function highlightRandomCell(){
@@ -151,7 +184,7 @@ function applySettings(){
     // WHAT: to return??
 
     // (1) total number of questions setting
-    let totalQuestionsSelection = document.getElementById('total-questions').value;  // getting the value from the input datalist
+    let totalQuestionsSelection = document.getElementById('total-questions').value;  // getting the value from the select element
     let numberOfQuestions = document.getElementById('number-of-questions');  // getting the container for the number of questions 
     let defaultNumberOfQuestions = 10;  // setting the default value to use later
 
@@ -161,8 +194,8 @@ function applySettings(){
     numberOfQuestions.innerHTML = totalQuestionsSelection;
 
 
-    // (2) total number of questions setting
-    let totalMultiChoiceSelection = document.getElementById('total-multi-choices').value;  // getting the value from the input datalist
+    // (2) total number of answers setting
+    let totalMultiChoiceSelection = document.getElementById('total-multi-choices').value;  // getting the value from the select element
     let numberOfMultiChoices = document.getElementById('multi-choice-answers');  // getting the container for the multi-choice answers 
     let defaultnumberOfMultiChoices = 4;  // setting the default value to use later
 
@@ -186,6 +219,7 @@ function applySettings(){
     // calling the function to hide/unhide with 'openNoteCells' and the opacity value
     hideOrUnhide(hideFretNumbers, fretNumberCells)
 
+    // calls the fretboardTrainer function once the settings have been applied 
     fretboardTrainer()
 
 }
