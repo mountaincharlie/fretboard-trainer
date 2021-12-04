@@ -126,13 +126,31 @@ function checkAnswer(correctNote){
 
     // update while loop counter
 
-    // continue the while loop
+    // call fretboardTrainer again with the new while counter value (first set the parameter in the DOMContentLoaded ev listener)
 
 }
 
 
 // function for updating the counters area
+function countersUpdate(outcome){
 
+    let right = document.getElementById('right-ans');
+    let wrong = document.getElementById('wrong-ans');
+    let questionNumber = document.getElementById('question-number');
+
+    // updating the right/wrong counters
+    if (outcome == `correct`){
+        right.innerHTML ++;
+    } else {
+        wrong.innerHTML ++;
+    }
+
+    // updating the question counter
+    questionNumber.innerHTML ++;
+
+    // compare if you have reached the last question (if counter exceeds Q umber? or just before??)
+
+}
 
 
 // function for displaying the questions
