@@ -55,8 +55,7 @@
 
 // start of the offical JS
 
-// Event listeners
-
+// Event listeners on DOM load
 document.addEventListener('DOMContentLoaded', function(){
 
     // getting the reset button and putting an event listener on it
@@ -83,18 +82,36 @@ document.addEventListener('DOMContentLoaded', function(){
 //  the function that runs the game (calls questionGenerator())
 function fretboardTrainer(){
 
+    // INCLUDE A WHILE LOOP (tracking the question number)
+
     // removing any previously highlighted cell styling
     for (element of document.getElementsByTagName('td')){
         element.classList.remove('highlight-note');
     }
 
-    // calling the answerGenerator function
-    let multiChoiceAnswers = answerGenerator();
+    // calling the answerGenerator function once and getting the array returned
+    let answerGeneratorReturn = answerGenerator();
+    let multiChoiceAnswers = answerGeneratorReturn[0];
+    let correctNote = answerGeneratorReturn[1];
 
     // calling function for writing the answers to the DOM
-    displayAnswers(multiChoiceAnswers)
+    displayAnswers(multiChoiceAnswers);
 
-    // calling the checkAnswer function (needs event listener)
+
+    // TRY PUT THIS WITH THE OTHER EVENT LISTENERS?
+    // getting the check button and putting an event listener on it 
+    let checkButton = document.getElementById('check-btn');
+    checkButton.addEventListener('click', checkAnswer);   // user clicking on the check button calls the checkAnswer function
+
+}
+
+// function for checking the answers (triggered by the checkButton click event listener) takes in the current while loop counter (tracking the question number)
+function checkAnswer(){
+    alert('you selected the check button!');
+
+    // update the while loop counter 
+
+    // needs to call the fretboardTrainer function WITH the new while loop counter alue
 
 }
 
@@ -132,7 +149,7 @@ function displayAnswers(multiChoiceAnswers){
     document.getElementById('multi-choice-answers').innerHTML = allMultiChoices;
 }
 
-// function for generating the answers array and retruning it back into the fretboardTrainer function
+// function for generating the answers array and returning it and the correctNote back into the fretboardTrainer function
 function answerGenerator(){
 
     // define open string notes array ONLY HERE IF CANT JUST BE IN THE HIGHLIGHT FUNCTION
@@ -176,7 +193,7 @@ function answerGenerator(){
 
     console.log('multiChoiceAnswers final', multiChoiceAnswers); // randomised order of all answer choices
 
-    return multiChoiceAnswers;
+    return [multiChoiceAnswers, correctNote];
 }
 
 
