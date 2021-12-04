@@ -71,6 +71,10 @@ document.addEventListener('DOMContentLoaded', function(){
     
 
     // check answer button event listener (inside the main game function?)
+    let checkButton = document.getElementById('check-btn');
+    checkButton.addEventListener('click', function(){
+        checkAnswer(correctNote);
+    });
 
     // calling the function that runs the game if no settings are applied
     fretboardTrainer()
@@ -92,28 +96,44 @@ function fretboardTrainer(){
     // calling the answerGenerator function once and getting the array returned
     let answerGeneratorReturn = answerGenerator();
     let multiChoiceAnswers = answerGeneratorReturn[0];
-    let correctNote = answerGeneratorReturn[1];
+    // let correctNote = answerGeneratorReturn[1];
 
     // calling function for writing the answers to the DOM
     displayAnswers(multiChoiceAnswers);
 
-
-    // TRY PUT THIS WITH THE OTHER EVENT LISTENERS?
-    // getting the check button and putting an event listener on it 
-    let checkButton = document.getElementById('check-btn');
-    checkButton.addEventListener('click', checkAnswer);   // user clicking on the check button calls the checkAnswer function
-
 }
 
 // function for checking the answers (triggered by the checkButton click event listener) takes in the current while loop counter (tracking the question number)
-function checkAnswer(){
-    alert('you selected the check button!');
+function checkAnswer(correctNote){
 
-    // update the while loop counter 
+    // getting the users choice
+    let userChoice = document.querySelector('input[name = "choice"]:checked').value;
+    let message;
+    let outcome;
 
-    // needs to call the fretboardTrainer function WITH the new while loop counter alue
+    if (userChoice == correctNote){
+        message = `Congratulations`;
+        outcome = `correct`;
+    } else {
+        message = `Sorry`;
+        outcome = `incorrect`;
+    };
+
+    alert(`${message} thats ${outcome}. \nYou chose: ${userChoice}. \nThe correct note is: ${correctNote}`);
+
+    // update counters
+    countersUpdate(outcome);
+
+    // update while loop counter
+
+    // continue the while loop
 
 }
+
+
+// function for updating the counters area
+
+
 
 // function for displaying the questions
 function displayAnswers(multiChoiceAnswers){
@@ -122,7 +142,7 @@ function displayAnswers(multiChoiceAnswers){
     let allMultiChoices = `
     <div>
         <label for = "choice${1}">${multiChoiceAnswers[0]}</label>
-        <input type = "radio" name = "choice${1}" id = "choice${1}" checked>
+        <input type = "radio" name = "choice" id = "choice${1}" value = "${multiChoiceAnswers[0]}" checked>
     </div>
     `;
     // defining the note variable
@@ -139,7 +159,7 @@ function displayAnswers(multiChoiceAnswers){
         allMultiChoices += `
         <div>
             <label for = "choice${i}">${note}</label>
-            <input type = "radio" name = "choice${i}" id = "choice${i}">
+            <input type = "radio" name = "choice" id = "choice${i}" value = "${note}">
         </div>
         `;
     }
@@ -218,7 +238,7 @@ function highlightRandomCell(){
     return randomNoteContainer
 }
 
-// function for choosing a random number between 0 and a maximum value (takes highest possible value and an offset of 0 or 1)
+// [IMPORT] function for choosing a random number between 0 and a maximum value (takes highest possible value and an offset of 0 or 1)
 function randomNumber(highest, offset){
     return Math.floor(Math.random() * highest) + offset; // multiplies a random number between 0 and 1 by the highest possible value and then takes the highest integer from this value + 1
 }
