@@ -122,7 +122,8 @@ function checkAnswer(correctNote){
     alert(`${message} thats ${outcome}. \nYou chose: ${userChoice}. \nThe correct note is: ${correctNote}`);
 
     // update counters (takes the outcome and returns 'lastQuestionReached' which has a true/false value)
-    let lastQuestionReached = countersUpdate(outcome);
+    let countersUpdateReturn = countersUpdate(outcome);
+    let lastQuestionReached = countersUpdateReturn[0];
 
     // update while loop counter?? (dont need)
 
@@ -130,14 +131,34 @@ function checkAnswer(correctNote){
     // IF STATEMENT TO CHECK IF THE FINAL Q HAS BEEN REACHED AND THEN USE A displayResults() FUNCTION INSTEAD OF TRIGGERING fretboardTrainer
     if (lastQuestionReached){
 
-        alert(`You have completed all the questions!`);
+        let answersArea = document.getElementById('multi-choice-area');
+        let right = countersUpdateReturn[1];
+        let totalQuestions = countersUpdateReturn[2];
+        let percentageScore;
+        console.log('right', typeof(right));
+        console.log('totalQuestions', totalQuestions);
+
+        // adding the percentage to the message
+        if(right == 0){
+            percentageScore = `<p>Percentage score: 0%</p>`;
+        } else {
+            percentageScore = `<p>Percentage score: ${(right/totalQuestions)*100}%</p>`;
+        }
+
+        // writing the score message to the answers area div
+        answersArea.innerHTML = `
+        <p>Well done, you completed the game!</p>
+        <p>You scored: ${right}/${totalQuestions}</p>
+        ${percentageScore}
+        `;
+
+        // alert(`You have completed all the questions!`);
         // result function to display to the answers area div 
 
     } else {
         fretboardTrainer();   // else, the fretboardTrainer functino is called to generate/display the next question
     }
     
-
 }
 
 
@@ -165,12 +186,15 @@ function countersUpdate(outcome){
     console.log('numberOfQuestions', numberOfQuestions.innerHTML);
     if (questionNumber.innerHTML == numberOfQuestions.innerHTML){   // NEED TO USE === ??
         lastQuestionReached = true;
-    }
+        console.log('final right.innerHTML', typeof(right.innerHTML));
+    } else {
 
-    // updating the question counter
-    questionNumber.innerHTML ++;
+        // updating the question counter
+        questionNumber.innerHTML ++;
 
-    return lastQuestionReached;
+    } 
+
+    return [lastQuestionReached, Number(right.innerHTML), numberOfQuestions.innerHTML];  //returns lastQuestionReached (true/false), how many right answers, total number of questions
 
 }
 
