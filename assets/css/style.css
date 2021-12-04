@@ -157,6 +157,8 @@ table .zeroth-fret{
 /* using tr tag first to ensure the open string notes are not hidden */
 tr .zeroth-fret{
     color: black;
+    font-weight:bold;
+    font-size: large;
 }
 
 /* making all the td elements transparent by default */
