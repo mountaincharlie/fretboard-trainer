@@ -92,13 +92,44 @@ function fretboardTrainer(){
     let multiChoiceAnswers = answerGenerator();
 
     // calling function for writing the answers to the DOM
-    // displayAnswers(multiChoiceAnswers)
+    displayAnswers(multiChoiceAnswers)
+
+    // calling the checkAnswer function (needs event listener)
 
 }
 
 // function for displaying the questions
 function displayAnswers(multiChoiceAnswers){
-   
+
+    // creating the first template literal html with checked radio button, for the rest to be added onto in the loop
+    let allMultiChoices = `
+    <div>
+        <label for = "choice${1}">${multiChoiceAnswers[0]}</label>
+        <input type = "radio" name = "choice${1}" id = "choice${1}" checked>
+    </div>
+    `;
+    // defining the note variable
+    let note;
+
+    // creating each template literal for the length multiChoiceAnswers (minus the 0 index)
+    for (let i = 1; i < multiChoiceAnswers.length; i++){
+        
+        // taking the note from the multiChoiceAnswers array in its random order
+        note = multiChoiceAnswers[i];
+        // console.log('note', note);  // for me to check
+
+        // adding to the other template literals
+        allMultiChoices += `
+        <div>
+            <label for = "choice${i}">${note}</label>
+            <input type = "radio" name = "choice${i}" id = "choice${i}">
+        </div>
+        `;
+    }
+    // console.log('allMultiChoices', allMultiChoices); // for me to check
+    
+    // writing the full template literal of answers to the 'multi-choice-answers' div inside the 'multi-choice-area' div
+    document.getElementById('multi-choice-answers').innerHTML = allMultiChoices;
 }
 
 // function for generating the answers array and retruning it back into the fretboardTrainer function
@@ -196,12 +227,13 @@ function applySettings(){
 
     // (2) total number of answers setting
     let totalMultiChoiceSelection = document.getElementById('total-multi-choices').value;  // getting the value from the select element
-    let numberOfMultiChoices = document.getElementById('multi-choice-answers');  // getting the container for the multi-choice answers 
+    let numberOfMultiChoices = document.getElementById('multi-choice-answers');  // getting the container for the multi-choice answers (NEEDED HERE NOW?)
     let defaultnumberOfMultiChoices = 4;  // setting the default value to use later
 
     // calling the selectElementOptions function to reassign the value of totalMultiChoiceSelection
     totalMultiChoiceSelection = selectElementOptions(totalMultiChoiceSelection, numberOfMultiChoices, defaultnumberOfMultiChoices); 
-    // writing the new number of questions to the document using the value from 
+
+    // writing the new number of questions to the document using the value from totalMultiChoiceSelection
     numberOfMultiChoices.innerHTML = totalMultiChoiceSelection;
 
    
