@@ -93,7 +93,7 @@ p{
 }
 
 /* container for multi choice answers (center) */
-.multi-choice-area{
+#multi-choice-area{
     width:50%;
 }
 
