@@ -121,22 +121,37 @@ function checkAnswer(correctNote){
 
     alert(`${message} thats ${outcome}. \nYou chose: ${userChoice}. \nThe correct note is: ${correctNote}`);
 
-    // update counters
-    countersUpdate(outcome);
+    // update counters (takes the outcome and returns 'lastQuestionReached' which has a true/false value)
+    let lastQuestionReached = countersUpdate(outcome);
 
-    // update while loop counter
+    // update while loop counter?? (dont need)
 
     // call fretboardTrainer again with the new while counter value (first set the parameter in the DOMContentLoaded ev listener)
+    // IF STATEMENT TO CHECK IF THE FINAL Q HAS BEEN REACHED AND THEN USE A displayResults() FUNCTION INSTEAD OF TRIGGERING fretboardTrainer
+    if (lastQuestionReached){
+
+        alert(`You have completed all the questions!`);
+        // result function to display to the answers area div 
+
+    } else {
+        fretboardTrainer();   // else, the fretboardTrainer functino is called to generate/display the next question
+    }
+    
 
 }
 
 
-// function for updating the counters area
+// function for updating the counters area (takes the outcome and returns 'lastQuestionReached' which has a true/false value)
 function countersUpdate(outcome){
 
+    // getting the values of the current right and wrong, from the DOM
     let right = document.getElementById('right-ans');
     let wrong = document.getElementById('wrong-ans');
+    // getting the values of the current questions number and the total number of questions to ask, from the DOM
     let questionNumber = document.getElementById('question-number');
+    let numberOfQuestions = document.getElementById('number-of-questions');
+    // defining a variable which is false until the last question is completed and it is give a value of 'true'
+    let lastQuestionReached = false;  // need to be defined inorder to be falsy?
 
     // updating the right/wrong counters
     if (outcome == `correct`){
@@ -145,10 +160,17 @@ function countersUpdate(outcome){
         wrong.innerHTML ++;
     }
 
+    // compare if the user has answered the last question and if so, making lastQuestionReached = true
+    console.log('questionNumber', questionNumber.innerHTML);
+    console.log('numberOfQuestions', numberOfQuestions.innerHTML);
+    if (questionNumber.innerHTML == numberOfQuestions.innerHTML){   // NEED TO USE === ??
+        lastQuestionReached = true;
+    }
+
     // updating the question counter
     questionNumber.innerHTML ++;
 
-    // compare if you have reached the last question (if counter exceeds Q umber? or just before??)
+    return lastQuestionReached;
 
 }
 
