@@ -125,9 +125,6 @@ function checkAnswer(correctNote){
     let countersUpdateReturn = countersUpdate(outcome);
     let lastQuestionReached = countersUpdateReturn[0];
 
-    // update while loop counter?? (dont need)
-
-    // call fretboardTrainer again with the new while counter value (first set the parameter in the DOMContentLoaded ev listener)
     // IF STATEMENT TO CHECK IF THE FINAL Q HAS BEEN REACHED AND THEN USE A displayResults() FUNCTION INSTEAD OF TRIGGERING fretboardTrainer
     if (lastQuestionReached){
 
@@ -151,9 +148,6 @@ function checkAnswer(correctNote){
         <p>You scored: ${right}/${totalQuestions}</p>
         ${percentageScore}
         `;
-
-        // alert(`You have completed all the questions!`);
-        // result function to display to the answers area div 
 
     } else {
         fretboardTrainer();   // else, the fretboardTrainer functino is called to generate/display the next question
@@ -314,6 +308,11 @@ function applySettings(){
 
     // NEED: a rest settings to default option (event listener which resets each setting?)
     // WHAT: to return??
+
+    // resetting the counter values for question number, right answers and wrong answers
+    document.getElementById('question-number').innerHTML = 1;
+    document.getElementById('right-ans').innerHTML = 0;
+    document.getElementById('wrong-ans').innerHTML = 0;
 
     // (1) total number of questions setting
     let totalQuestionsSelection = document.getElementById('total-questions').value;  // getting the value from the select element
