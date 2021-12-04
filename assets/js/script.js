@@ -139,7 +139,7 @@ function checkAnswer(correctNote){
         if(right == 0){
             percentageScore = `<p>Percentage score: 0%</p>`;
         } else {
-            percentageScore = `<p>Percentage score: ${(right/totalQuestions)*100}%</p>`;
+            percentageScore = `<p>Percentage score: ${Math.round((right/totalQuestions)*100)}%</p>`;
         }
 
         // writing the score message to the answers area div
