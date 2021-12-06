@@ -75,7 +75,8 @@ p{
     width:25%;
 }
 
-#user-options-area h2, #multi-choice-area h2{
+/* headings ofr each of the areas */
+h2{
     margin:0;
     padding:1%;
 }
