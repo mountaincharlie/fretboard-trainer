@@ -51,6 +51,9 @@ p{
 
 /* the user-options, multi-choice and counter divs */
 .three-divs{
+
+    /* text-align: center; */
+
     border: 2px solid black;
     border-radius:4px;
 
@@ -72,7 +75,7 @@ p{
     width:25%;
 }
 
-#user-options-area h2{
+#user-options-area h2, #multi-choice-area h2{
     margin:0;
     padding:1%;
 }
@@ -95,6 +98,16 @@ p{
 /* container for multi choice answers (center) */
 #multi-choice-area{
     width:50%;
+}
+
+#multi-choice-area h4{
+    margin: 10px 0 5px 0;
+    padding: 0;
+}
+
+#multi-choice-area ol{
+    margin: 0;
+    padding-left: 20px;
 }
 
 /* container for question and right/wrong counters (float right) */
