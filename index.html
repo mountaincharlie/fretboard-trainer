@@ -193,7 +193,7 @@
                     <button id = "apply-btn" class = "btn">Apply</button>
 
                     <!-- re-setting to default settings (reloads page) -->
-                    <button id = "reset-btn" class = "btn">Default settings</button>
+                    <button id = "reset-btn" class = "btn">Reset Game</button>
                     
                 </div>
             </div>
@@ -201,15 +201,28 @@
             <!-- container for multi choice answers (center) -->
             <div id = "multi-choice-area" class = "three-divs">
 
-                <p>Which note is highlighted on the fretboard?</p>
-    
-                <!-- js writes here the number of multi answers the user wants - default 4 -->
-                <div id = "multi-choice-answers">
-    
-                </div>
-    
-                <!-- check answer button -->
-                <button id = "check-btn" class = "btn">Check</button>
+                <h2>Welcome to the Fretboard Trainer!</h2>
+
+                <h4>How to play:</h4>
+                <ol>
+                    <li>When you are ready click the 'Start Game' button below</li>
+                    <li>A note will be highlighted on the guitar fretboard above</li>
+                    <li>Select one of the multi-choice answers which will be displayed</li>
+                    <li>Click the 'Check Answer' button, which will be diplayed below the answers, to find out how you did and move on to the next question</li>
+                    <li>You game progress will be displayed on the the right hand side</li>
+                </ol>
+
+                <h4>How to adjust the game:</h4>
+                <p>
+                    Use the settings controls on the left hand side to adjust the difficulty of the game.
+                    <br>
+                    Simply select 'Apply' to apply your settings or 'Reset Game' to refresh back to the default settings and this instructions page.
+                    <br>
+                    (Note: Applying new settings will reset the game and your current progress will be lost)
+                </p>
+                
+                <button id = "start-btn" class = "btn">Start Game</button>
+                
             </div>
 
             <!-- container for question and right/wrong counters (float right) -->
