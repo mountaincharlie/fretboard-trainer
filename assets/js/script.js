@@ -64,29 +64,24 @@ document.addEventListener('DOMContentLoaded', function(){
         window.location.reload()
     });
 
-
     // getting the apply button and putting an event listener on it 
     let applyButton = document.getElementById('apply-btn');
     applyButton.addEventListener('click', applySettings);
-    
 
-    // check answer button event listener (inside the main game function?)
-    let checkButton = document.getElementById('check-btn');
-    checkButton.addEventListener('click', function(){
-        checkAnswer(correctNote);
+    // start button event listener
+    let startButton = document.getElementById('start-btn');
+    startButton.addEventListener('click', function(){
+
+        // calling the function that runs the game if no settings are applied
+        fretboardTrainer()
+
     });
 
-    // calling the function that runs the game if no settings are applied
-    fretboardTrainer()
-    
-
-})
+});
 
 
 //  the function that runs the game (calls questionGenerator())
 function fretboardTrainer(){
-
-    // INCLUDE A WHILE LOOP (tracking the question number)
 
     // removing any previously highlighted cell styling
     for (element of document.getElementsByTagName('td')){
@@ -100,6 +95,12 @@ function fretboardTrainer(){
 
     // calling function for writing the answers to the DOM
     displayAnswers(multiChoiceAnswers);
+
+    // check answer button event listener (inside the main game function?)
+    let checkButton = document.getElementById('check-btn');
+    checkButton.addEventListener('click', function(){
+        checkAnswer(correctNote);
+    });
 
 }
 
@@ -147,6 +148,7 @@ function checkAnswer(correctNote){
         <p>Well done, you completed the game!</p>
         <p>You scored: ${right}/${totalQuestions}</p>
         ${percentageScore}
+        <p>Click 'Apply' to replay with the same settings or 'Reset Game' to start again</p>
         `;
 
     } else {
@@ -196,8 +198,9 @@ function countersUpdate(outcome){
 // function for displaying the questions
 function displayAnswers(multiChoiceAnswers){
 
-    // creating the first template literal html with checked radio button, for the rest to be added onto in the loop
+    // creating the first template literal html with question, checked radio button with first answer option, with the rest to be added onto in the loop
     let allMultiChoices = `
+    <p>Which note is highlighted on the fretboard?</p>
     <div>
         <label for = "choice${1}">${multiChoiceAnswers[0]}</label>
         <input type = "radio" name = "choice" id = "choice${1}" value = "${multiChoiceAnswers[0]}" checked>
@@ -221,10 +224,12 @@ function displayAnswers(multiChoiceAnswers){
         </div>
         `;
     }
-    // console.log('allMultiChoices', allMultiChoices); // for me to check
-    
-    // writing the full template literal of answers to the 'multi-choice-answers' div inside the 'multi-choice-area' div
-    document.getElementById('multi-choice-answers').innerHTML = allMultiChoices;
+    // adding the check button to the end of the template literal
+    allMultiChoices += `<button id = "check-btn" class = "btn">Check Answer</button>`;
+
+    // writing everything to 'multi-choice-area'
+    document.getElementById('multi-choice-area').innerHTML = allMultiChoices;
+
 }
 
 // function for generating the answers array and returning it and the correctNote back into the fretboardTrainer function
@@ -327,7 +332,7 @@ function applySettings(){
 
     // (2) total number of answers setting
     let totalMultiChoiceSelection = document.getElementById('total-multi-choices').value;  // getting the value from the select element
-    let numberOfMultiChoices = document.getElementById('multi-choice-answers');  // getting the container for the multi-choice answers (NEEDED HERE NOW?)
+    let numberOfMultiChoices = document.getElementById('multi-choice-area');  // getting the container for the multi-choice answers (NEEDED HERE NOW?)
     let defaultnumberOfMultiChoices = 4;  // setting the default value to use later
 
     // calling the selectElementOptions function to reassign the value of totalMultiChoiceSelection
@@ -355,7 +360,6 @@ function applySettings(){
     fretboardTrainer()
 
 }
-
 
 
 // function for dealing with the value from the select. takes parameters; total, container, default. returns total
