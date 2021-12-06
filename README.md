@@ -38,8 +38,12 @@
 * Colour scheme: (what pallette you used, why and include screenshot/links if relevant)
 * Fonts: (which used, why and screenshot/links if releveant)
 * Icons: (links to ones used and how/why)
-* Continuity across the pages: (IF YOU HAVE MULTIPLE PAGES)
+* Continuity throughout the game: The styling and layout of the game remains the same throughout, making it more intuative for the user and the essential interaction and message to the user all occur in the cnetral area and in alerts.
 * Homepage background image: (IF YOU HAVE ONE)
+
+### Content 
+* The central area of the game contains clear instructions for the game and the other two area (for settings and game progress) so that the user can understand the purpose of the site and how to use it as soon as the land on hte page.
+* I used the 'select' element for the 'Number of questions' and 'Number of Answers' settings to limit the user's options to the most reasonable ones so that the user doesn't have to type in their own value and can't choose a value which would cause an error.  
 
 ### Interactivity
 * Logo/heading (if they have any interactivity)
