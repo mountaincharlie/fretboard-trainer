@@ -53,6 +53,9 @@
 
 // noteToFretboard(chosenString, fretNumber, chosenNote); // writing the note to the cell
 
+
+
+
 // start of the offical JS
 
 // Event listeners on DOM load
@@ -71,47 +74,56 @@ document.addEventListener('DOMContentLoaded', function(){
     // start button event listener
     let startButton = document.getElementById('start-btn');
     startButton.addEventListener('click', function(){
-
         // calling the function that runs the game if no settings are applied
         fretboardTrainer()
-
     });
-
 });
 
-
-//  the function that runs the game (calls questionGenerator())
+/**
+ * @name fretboardTrainer
+ * @description Controls the generation and display of the multi-choice answers.
+ * Generates array of answers by calling answerGenerator().
+ * Writes the answers to the DOM by calling displayAnswers().
+ * Contains the event listener for the check button which is created 
+ * and calls checkAnswer() when clicked.
+ */
 function fretboardTrainer(){
-
     // removing any previously highlighted cell styling
     for (element of document.getElementsByTagName('td')){
         element.classList.remove('highlight-note');
     }
-
-    // calling the answerGenerator function once and getting the array returned
-    let answerGeneratorReturn = answerGenerator();
-    let multiChoiceAnswers = answerGeneratorReturn[0];
-    // let correctNote = answerGeneratorReturn[1];
-
-    // calling function for writing the answers to the DOM
+    // calling the answerGenerator function once and storing the returned array 
+    let multiChoiceAnswers = answerGenerator();
+    // calling the displayAnswers() function to write the answers to the DOM
     displayAnswers(multiChoiceAnswers);
-
-    // check answer button event listener (inside the main game function?)
+    // 'Check Answer' button event listener to call checkAnswer() on 'click'
     let checkButton = document.getElementById('check-btn');
     checkButton.addEventListener('click', function(){
         checkAnswer(correctNote);
-    });
-
+    })
 }
 
-// function for checking the answers (triggered by the checkButton click event listener) takes in the current while loop counter (tracking the question number)
+// function for checking the answers (triggered by the checkButton click event listener) 
+/**
+ * @name checkAnswer
+ * @description Compares the user's choice to the correct answer, displays the appropriate feedback 
+ * and if the last question has been answered it displays the score, else it displays the next question.
+ * Called by the 'Check Answer' button's click event. 
+ * Gets the user's choice from the radio button which is checked.
+ * Compares the userChoice to correctNote to define the 'message' and 'outcome' variables.
+ * Displays an alert message informing the user if they were right or not and the correct note.
+ * Updates the game progress counters by calling countersUpdate(). 
+ * Stores the first return value from countersUpdate() whic is true/false.
+ * Checks if lastQuestionReached == true and if so, it creates and writes the score message to the DOM
+ * else it calls fretboardTrainer() again.
+ * @param correctNote
+ */
 function checkAnswer(correctNote){
-
     // getting the users choice
     let userChoice = document.querySelector('input[name = "choice"]:checked').value;
     let message;
     let outcome;
-
+    // assigning the appropriate messages depending on if the userChoice matches correctNote
     if (userChoice == correctNote){
         message = `Congratulations`;
         outcome = `correct`;
@@ -119,42 +131,32 @@ function checkAnswer(correctNote){
         message = `Sorry`;
         outcome = `incorrect`;
     };
-
+    // displays alert for the user to tell them if they were correct or not and the correct answer
     alert(`${message} thats ${outcome}. \nYou chose: ${userChoice}. \nThe correct note is: ${correctNote}`);
-
-    // update counters (takes the outcome and returns 'lastQuestionReached' which has a true/false value)
+    // calling countersUpdate() to update the game progress counters 
     let countersUpdateReturn = countersUpdate(outcome);
+    // the first return value 'lastQuestionReached' will be true or false
     let lastQuestionReached = countersUpdateReturn[0];
-
-    // IF STATEMENT TO CHECK IF THE FINAL Q HAS BEEN REACHED AND THEN USE A displayResults() FUNCTION INSTEAD OF TRIGGERING fretboardTrainer
+    // checks if the last question has been answered and if so; writes the results message, else it calls fretboard Trainer() again to display the next question
     if (lastQuestionReached){
-
+        // defining the area in the DOM for the score to be written to
         let answersArea = document.getElementById('multi-choice-area');
+        // defining the number of right answers achieved (which is returned as a number)
         let right = countersUpdateReturn[1];
+        // defining the total number of questions from the game
         let totalQuestions = countersUpdateReturn[2];
-        let percentageScore;
-        console.log('right', typeof(right));
-        console.log('totalQuestions', totalQuestions);
-
-        // adding the percentage to the message
-        if(right == 0){
-            percentageScore = `<p>Percentage score: 0%</p>`;
-        } else {
-            percentageScore = `<p>Percentage score: ${Math.round((right/totalQuestions)*100)}%</p>`;
-        }
-
-        // writing the score message to the answers area div
+        // defining the template literal for the user's score as a percentage
+        let percentageScore = `<p>Percentage score: ${Math.round((right/totalQuestions)*100)}%</p>`;
+        // writing the score message template literal to the DOM
         answersArea.innerHTML = `
         <p>Well done, you completed the game!</p>
         <p>You scored: ${right}/${totalQuestions}</p>
         ${percentageScore}
         <p>Click 'Apply' to replay with the same settings or 'Reset Game' to start again</p>
         `;
-
     } else {
-        fretboardTrainer();   // else, the fretboardTrainer functino is called to generate/display the next question
+        fretboardTrainer();
     }
-    
 }
 
 
@@ -200,7 +202,7 @@ function displayAnswers(multiChoiceAnswers){
 
     // creating the first template literal html with question, checked radio button with first answer option, with the rest to be added onto in the loop
     let allMultiChoices = `
-    <p>Which note is highlighted on the fretboard?</p>
+    <h4>Which note is highlighted on the fretboard?</h4>
     <div>
         <label for = "choice${1}">${multiChoiceAnswers[0]}</label>
         <input type = "radio" name = "choice" id = "choice${1}" value = "${multiChoiceAnswers[0]}" checked>
@@ -276,7 +278,7 @@ function answerGenerator(){
 
     console.log('multiChoiceAnswers final', multiChoiceAnswers); // randomised order of all answer choices
 
-    return [multiChoiceAnswers, correctNote];
+    return multiChoiceAnswers;
 }
 
 
