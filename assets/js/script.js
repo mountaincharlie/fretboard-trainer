@@ -170,8 +170,6 @@ function checkAnswer(correctNote){
     }
 }
 
-
-// function for updating the counters area (takes the outcome and returns 'lastQuestionReached' which has a true/false value)
 /**
  * @name countersUpdate
  * @description Checks the value of 'outcome' inorder to update the right or wrong counter, checks if the last 
@@ -215,11 +213,21 @@ function countersUpdate(outcome){
     return [lastQuestionReached, Number(right.innerHTML), numberOfQuestions.innerHTML];  
 }
 
-
-// function for displaying the questions
+/**
+ * @name displayAnswers
+ * @description Creates a template literal with the question, randomised answers with radio buttons and the 'check'
+ * button which is then written to the 'multi-choice-area' in the DOM.
+ * Called by fretboardTrainer().
+ * Creates the first part of the template literal with the question and first answer option with checked radio button.
+ * Create a variable to store each note from the multiChoiceAnswers array, in the loop.
+ * Looping through the length of multiChoiceAnswers to create the template litetral for each answer and add it to the 
+ * variable continaing the template literal.
+ * Adds the 'check' button in a template literal to the end of the variable.
+ * Writes the template literal to the 'multi-choice-area' in the DOM.
+ * @param multiChoiceAnswers array of randomly generated answers containing the correct answer.
+ */
 function displayAnswers(multiChoiceAnswers){
-
-    // creating the first template literal html with question, checked radio button with first answer option, with the rest to be added onto in the loop
+    // defining the first part of the template literal with the question and first answer option with checked radio button  
     let allMultiChoices = `
     <h4>Which note is highlighted on the fretboard?</h4>
     <div>
@@ -227,17 +235,15 @@ function displayAnswers(multiChoiceAnswers){
         <input type = "radio" name = "choice" id = "choice${1}" value = "${multiChoiceAnswers[0]}" checked>
     </div>
     `;
-    // defining the note variable
+    // the note variable, for holding each note to be written into the template literal
     let note;
 
-    // creating each template literal for the length multiChoiceAnswers (minus the 0 index)
+    // creating each answer option template literal for the length of multiChoiceAnswers (minus the 0th index)
     for (let i = 1; i < multiChoiceAnswers.length; i++){
-        
-        // taking the note from the multiChoiceAnswers array in its random order
+        // taking the note from the multiChoiceAnswers array (which is in a random order)
         note = multiChoiceAnswers[i];
-        // console.log('note', note);  // for me to check
 
-        // adding to the other template literals
+        // creating a template literal for the answer and adding it to the variable containing them all
         allMultiChoices += `
         <div>
             <label for = "choice${i}">${note}</label>
@@ -245,58 +251,69 @@ function displayAnswers(multiChoiceAnswers){
         </div>
         `;
     }
+
     // adding the check button to the end of the template literal
     allMultiChoices += `<button id = "check-btn" class = "btn">Check Answer</button>`;
 
-    // writing everything to 'multi-choice-area'
+    // writing everything to 'multi-choice-area' in the DOM
     document.getElementById('multi-choice-area').innerHTML = allMultiChoices;
-
 }
 
-// function for generating the answers array and returning it and the correctNote back into the fretboardTrainer function
+/**
+ * @name answerGenerator
+ * @description 
+ * Called by fretboardTrainer().
+ * Defines an array contining all the notes, in order, from 'A'.
+ * Creates an empty array, to contain all the answers in a random order.
+ * Calls highlightRandomCell() to choose and highlight a random cell and return its innerHTML into correctNote.
+ * Removes correctNote from allNotes[] to be added in at a random place later.
+ * Gets the total number of answers required from the 'total-multi-choices' select element.
+ * Checks if totalMultiChoiceAnswers is false (NaN) when converted by the Number method, in which case it 
+ * extracts the first character '4' from '4 default'.
+ * Converts totalMultiChoiceAnswers into a number.
+ * The for loop: takes random notes from the allNotes array and adds them to the list of answers 
+ * (1 less since correctNote needs to be inserted later). Within the loop; a variable is definied to contain 
+ * a 'note' at a random index (number between 0 and totalNumberOfQuestions) in allNotes[], then this note is 
+ * added to multiChoiceAnswers[] and removed from allNotes[] to avoid duplicated answers.
+ * The final length of multiChoiceAnswers[] is used to generate a random index to insert the correctNote, 
+ * without removing anything, using the splice method.
+ * @returns multiChoiceAnswers array of randomly generated answers containing the correct answer.
+ */
 function answerGenerator(){
-
-    // define open string notes array ONLY HERE IF CANT JUST BE IN THE HIGHLIGHT FUNCTION
-    // let stringsNamesArray = ['eStr', 'aStr', 'dStr', 'gStr', 'bStr', 'eHighStr'];
-
-    // define all notes array
+    // defining an array contining all the notes, in order, from 'A'
     allNotes = ['A', 'A#/Bb', 'B', 'C', 'C#/Db', 'D', 'D#/Eb', 'E', 'F', 'F#/Gb', 'G', 'G#/Ab'];
-    // define an answers array to be added to
+    // creating an empty array, to contain all the answers in a random order
     multiChoiceAnswers = [];
+    // calling highlightRandomCell() to choose and highlight a random cell and return its innerHTML into correctNote
+    correctNote = highlightRandomCell().innerHTML;
 
-    // calling the function to choose and highlight a random cell and return its element
-    let randomNoteContainer = highlightRandomCell();
-
-    // randomNoteContainer.style.color = 'rgba(0, 0, 0, 1)';  // for revealing the note
-    correctNote = randomNoteContainer.innerHTML;
-    console.log('the note:', correctNote);
-
-    // removing the correct note from the all notes array to be added in at a random place later
+    // removing correctNote from allNotes[] to be added in at a random place later
     allNotes.splice(allNotes.indexOf(correctNote), 1);
 
-    // getting the total number of answers from the DOM, as a number
-    let totalMultiChoiceAnswers = Number(document.getElementById('total-multi-choices').value); // will convert to numbers or turn '4 (default)' into 'NaN' which is falsy
+    // getting the total number of answers required from the 'total-multi-choices' select element
+    let totalMultiChoiceAnswers = document.getElementById('total-multi-choices').value;
 
-    // console.log('totalMultiChoiceAnswers', totalMultiChoiceAnswers);
-    if (totalMultiChoiceAnswers){
-    } else {
-        totalMultiChoiceAnswers = 4;   // the default if the statement is falsy (ANY WAY TO MAKE THIS A VARIABLE??)
+    // if totalMultiChoiceAnswers is false (NaN) when converted by the Number method then the first character '4' from '4 default' is extracted
+    if (Number(totalMultiChoiceAnswers) !== true){
+        totalMultiChoiceAnswers = totalMultiChoiceAnswers.substring(0,1);
     }
+    // converting totalMultiChoiceAnswers into a number
+    totalMultiChoiceAnswers = Number(totalMultiChoiceAnswers);
 
-    // taking random notes from the allNotes array and adding them to the list of answers (1 less than totalMultiChoiceAnswers since the correct has been added already)
+    // taking random notes from the allNotes array and adding them to the list of answers (1 less since correctNote needs to be inserted later)
     for (let i = 0; i < (totalMultiChoiceAnswers - 1); i ++){
-        let note = allNotes[randomNumber(allNotes.length, 0)]; // no offset (number between 0 and totalNumberOfQuestions)
+        // defining a 'note' at a random index (number between 0 and totalNumberOfQuestions) in allNotes[]
+        let note = allNotes[randomNumber(allNotes.length, 0)]; 
 
-        // adding the note to the answers array and removing the  note from the all notes array
+        // adding note to multiChoiceAnswers[] (the answers array) and removing it from allNotes[] to avoid duplicated answers
         multiChoiceAnswers.push(note);
         allNotes.splice(allNotes.indexOf(note), 1);
     }
 
-    // using the length of the allNotes array to generate a random index to insert the correctNote without removing any elements using the splice method
+    // using the final length of multiChoiceAnswers[] to generate a random index to insert the correctNote, without removing anything, using the splice method
     multiChoiceAnswers.splice(randomNumber((multiChoiceAnswers.length + 1), 0), 0, correctNote);
 
-    console.log('multiChoiceAnswers final', multiChoiceAnswers); // randomised order of all answer choices
-
+    // returns multiChoiceAnswers[] back into fretboardTrainer()
     return multiChoiceAnswers;
 }
 
