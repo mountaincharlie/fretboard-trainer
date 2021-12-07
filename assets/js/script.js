@@ -74,9 +74,18 @@ document.addEventListener('DOMContentLoaded', function(){
     // start button event listener
     let startButton = document.getElementById('start-btn');
     startButton.addEventListener('click', function(){
+        // updating the question counter for the first question
+        document.getElementById('question-number').innerHTML = 1;
+
+        // HIDE ALL NOTES FROM FRETBOARD ()? DEFAULT IS THEM SHOWN 
+
         // calling the function that runs the game if no settings are applied
         fretboardTrainer()
     });
+
+
+    // EVENT LISTENER FOR A CHECKBOX WHICH HIDES/SHOWS THE NOTES ON THE FRETBOARD
+
 });
 
 /**
@@ -92,18 +101,19 @@ function fretboardTrainer(){
     for (element of document.getElementsByTagName('td')){
         element.classList.remove('highlight-note');
     }
+
     // calling the answerGenerator function once and storing the returned array 
     let multiChoiceAnswers = answerGenerator();
     // calling the displayAnswers() function to write the answers to the DOM
     displayAnswers(multiChoiceAnswers);
+
     // 'Check Answer' button event listener to call checkAnswer() on 'click'
     let checkButton = document.getElementById('check-btn');
     checkButton.addEventListener('click', function(){
         checkAnswer(correctNote);
     })
 }
-
-// function for checking the answers (triggered by the checkButton click event listener) 
+ 
 /**
  * @name checkAnswer
  * @description Compares the user's choice to the correct answer, displays the appropriate feedback 
@@ -116,7 +126,7 @@ function fretboardTrainer(){
  * Stores the first return value from countersUpdate() whic is true/false.
  * Checks if lastQuestionReached == true and if so, it creates and writes the score message to the DOM
  * else it calls fretboardTrainer() again.
- * @param correctNote
+ * @param correctNote The note which has been highlighted on the fretboard
  */
 function checkAnswer(correctNote){
     // getting the users choice
@@ -130,13 +140,14 @@ function checkAnswer(correctNote){
     } else {
         message = `Sorry`;
         outcome = `incorrect`;
-    };
+    }
     // displays alert for the user to tell them if they were correct or not and the correct answer
     alert(`${message} thats ${outcome}. \nYou chose: ${userChoice}. \nThe correct note is: ${correctNote}`);
     // calling countersUpdate() to update the game progress counters 
     let countersUpdateReturn = countersUpdate(outcome);
     // the first return value 'lastQuestionReached' will be true or false
     let lastQuestionReached = countersUpdateReturn[0];
+
     // checks if the last question has been answered and if so; writes the results message, else it calls fretboard Trainer() again to display the next question
     if (lastQuestionReached){
         // defining the area in the DOM for the score to be written to
@@ -149,10 +160,10 @@ function checkAnswer(correctNote){
         let percentageScore = `<p>Percentage score: ${Math.round((right/totalQuestions)*100)}%</p>`;
         // writing the score message template literal to the DOM
         answersArea.innerHTML = `
-        <p>Well done, you completed the game!</p>
+        <p>You completed the game!</p>
         <p>You scored: ${right}/${totalQuestions}</p>
         ${percentageScore}
-        <p>Click 'Apply' to replay with the same settings or 'Reset Game' to start again</p>
+        <p>Click 'Apply' to replay with the same settings or 'Reset Game' to return to the start page</p>
         `;
     } else {
         fretboardTrainer();
@@ -161,39 +172,47 @@ function checkAnswer(correctNote){
 
 
 // function for updating the counters area (takes the outcome and returns 'lastQuestionReached' which has a true/false value)
+/**
+ * @name countersUpdate
+ * @description Checks the value of 'outcome' inorder to update the right or wrong counter, checks if the last 
+ * question has been answered and if so sets lastQuestionReached as true, else updates the question counter by one.
+ * Called by checkAnswer().
+ * Gets the elements containing the right and wrong counters, from the DOM.
+ * Gets the elements containing the current questions number and the total number of questions, from the DOM.
+ * Sets the lastQuestionReached as undefined (falsy).
+ * Updates the innerHTML of the right or wrong counter, in the DOM, depending on 'outcome'.
+ * If the last question has been answered, lastQuestionReached = true, else the question number increases by one.
+ * @param outcome String containing `correct` or `incorrect` 
+ * @returns [lastQuestionReached, Number(right.innerHTML), numberOfQuestions.innerHTML] 
+ */
 function countersUpdate(outcome){
-
-    // getting the values of the current right and wrong, from the DOM
+    // getting the elements containing the right and wrong counters, from the DOM
     let right = document.getElementById('right-ans');
     let wrong = document.getElementById('wrong-ans');
-    // getting the values of the current questions number and the total number of questions to ask, from the DOM
+
+    // getting the elements containing the current questions number and the total number of questions, from the DOM
     let questionNumber = document.getElementById('question-number');
     let numberOfQuestions = document.getElementById('number-of-questions');
-    // defining a variable which is false until the last question is completed and it is give a value of 'true'
-    let lastQuestionReached = false;  // need to be defined inorder to be falsy?
+    // the lastQuestionReached variable is falsy until the last question is completed and it is give a value of 'true'
+    let lastQuestionReached;
 
-    // updating the right/wrong counters
-    if (outcome == `correct`){
+    // updating the innerHTML of the right or wrong counter in the DOM
+    if (outcome === `correct`){
         right.innerHTML ++;
     } else {
         wrong.innerHTML ++;
     }
 
-    // compare if the user has answered the last question and if so, making lastQuestionReached = true
-    console.log('questionNumber', questionNumber.innerHTML);
-    console.log('numberOfQuestions', numberOfQuestions.innerHTML);
-    if (questionNumber.innerHTML == numberOfQuestions.innerHTML){   // NEED TO USE === ??
+    // checking if the user has answered the last question and if so, letting lastQuestionReached = true
+    if (questionNumber.innerHTML === numberOfQuestions.innerHTML){
         lastQuestionReached = true;
-        console.log('final right.innerHTML', typeof(right.innerHTML));
     } else {
-
         // updating the question counter
         questionNumber.innerHTML ++;
-
     } 
 
-    return [lastQuestionReached, Number(right.innerHTML), numberOfQuestions.innerHTML];  //returns lastQuestionReached (true/false), how many right answers, total number of questions
-
+    //returning lastQuestionReached (true/false), how many right answers, total number of questions
+    return [lastQuestionReached, Number(right.innerHTML), numberOfQuestions.innerHTML];  
 }
 
 
