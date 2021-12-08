@@ -7,21 +7,28 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <!-- include 'description' 'keyword' and 'author' -->
 
-        <!-- site title ADD logo with favicon -->
-        <title>Fretboard Trainer</title>
+        <!-- favicon link to ensure its found by all browsers -->
+        <link href = "favicon.ico" rel = "shortcut icon" type = "image/x-icon">
 
         <!-- linked css file -->
         <link href = "./assets/css/style.css" rel = "stylesheet">
+
+        <!-- site title -->
+        <title>Fretboard Trainer</title>
 
     </head>
 
     <!-- body section -->
     <body>
-        <!-- header -->
-        <h1>Fretboard Trainer</h1>
-
+        <!-- icon credit: <a href="https://icons8.com/icon/110433/guitar">Guitar icon by Icons8</a> -->
+        <header>
+            <img src="https://img.icons8.com/pastel-glyph/40/000000/guitar--v1.png"/>
+            <h1>Fretboard Trainer</h1>
+        </header>
+        
         <!-- container for fretboard diagram (html table) -->
         <div class = "fretboard-area">
 
@@ -193,10 +200,6 @@
 
                 <!-- re-setting to default settings (reloads page) -->
                 <button id = "reset-btn" class = "btn">Reset Game</button>
-    
-                <!-- div container for the divs containing each settings option -->
-                <!--<div id = "settings">
-                </div>-->
             </div>
 
             <!-- container for multi choice answers (center) -->
