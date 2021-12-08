@@ -26,6 +26,10 @@ body{
     font-family: 'dosis', sans-serif;
 }
 
+p{
+    text-align: center;
+}
+
 /* --- FONTS --- */
 
 /* fonts for all headings */
@@ -95,7 +99,7 @@ header{
     width:25%;
 }
 
-/* headings ofr each of the areas */
+/* headings for each of the areas */
 h2{
     margin:0;
     padding:1%;
@@ -192,8 +196,10 @@ table .zeroth-fret{
 
 /* class added to notes being being highlighted */
 .highlight-note{
+    /* background-color: #7C4873; */
     background-color: lightblue;
     border-radius: 50%;
+    visibility:visible;
 }
 
 /* using tr tag first to ensure the open string notes are not hidden */
@@ -209,7 +215,6 @@ tr .zeroth-fret{
 /* making all the td elements transparent by default */
 td{
     visibility:hidden;
-    /* color: rgba(0,0,0,0); */
 }
 
 
@@ -217,11 +222,39 @@ td{
 
 /* all buttons */
 .btn{
+    color:rgba(47, 97, 104, 1);
+    background-color: rgba(255, 255, 255, 1);
+
+    text-transform: uppercase;
+    font-family:inherit;
+    font-size:medium;
+    font-weight: 600;
+
+    padding: 10px;
+    /* padding: 2%; */
+    border-radius:4px;
+    border: 1px solid rgba(47, 97, 104, 1);
 
 }
 
-/* the datalist - number of multi-choice dropdown */
-#number-of-multi-choice{
+/* button hover effect */
+.btn:hover{
+    color:rgba(255, 255, 255, 1);
+    background-color: lightblue;
+
+}
+
+/* the select elements */
+select{
+    color:rgba(47, 97, 104, 1);
+    font-family:inherit;
+    font-weight:bold;
+    border-radius:4px;
+
+}
+
+/* the checkbox inputs */
+#hide-open-notes, #hide-fret-numbers {
 
 }
 
