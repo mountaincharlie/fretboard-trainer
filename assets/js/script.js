@@ -317,32 +317,59 @@ function answerGenerator(){
     return multiChoiceAnswers;
 }
 
-
-// function for getting the random cell and highlighting it (defines stringsNamesArray randomCell[] and returns randomNote)
+/**
+ * @name highlightRandomCell
+ * @description Selects a random table cell by selecting a random guitar string and a fret number along that string and 
+ * adds the css 'highlight-note' class inorder to highlight the cell.
+ * Called by answerGenerator().
+ * Defines an array contining HTML ids of the tr elements which represent the open string notes on the guitar.
+ * Creates an empty array, to store the data for finding the random table cell.
+ * Calls randomNumber() to pick a random string from stringsNamesArray[].
+ * Calls randomNumber() to pick a random fret number.
+ * Defines a variable to hold the HTMLCollection which represents the random guitar string chosen.
+ * Defines a variable with the container of the random note, found by using the fret number as an index for the random guitar string.
+ * Adds the 'highlight-note' class to the note's container element, to highlight the random table cell with css.
+ * @returns randomNoteContainer Is used to assign its note to the correctNote variable in answerGenerator().
+ */
 function highlightRandomCell(){
-    // define open string notes array
+    // defining an array contining HTML ids of the tr elements which represent the open string notes on the guitar
     let stringsNamesArray = ['eStr', 'aStr', 'dStr', 'gStr', 'bStr', 'eHighStr'];
-    // define random cell array for storing the data for finding the random cell
+    // creating an empty array, to store the data for finding the random table cell
     let randomCell = [];
 
-    // picking a random guitar string
-    randomCell.push(stringsNamesArray[randomNumber(6, 0)]); // no offset because any of strings can be chosen
-    // picking a andom fret
-    randomCell.push(randomNumber(12, 1));  // offset because we dont want the 0th fret to be an option (therefore highest is 12 and not 13)
-    console.log('the cell:', randomCell);
+    // calling randomNumber() to pick a random string from stringsNamesArray[] 
+    randomCell.push(stringsNamesArray[randomNumber(6, 0)]);
+    // calling randomNumber() to pick a random fret number (from 1 to 12 incl, therefore needs an offset value of 1)
+    randomCell.push(randomNumber(12, 1));
 
-    // finding the cell to highlight and take the note from
+    // defining a variable to hold the HTMLCollection which represents the random guitar string chosen
     let randomString = document.getElementById(randomCell[0]).children;
-    let randomNoteContainer = randomString[randomCell[1]];  // the note from the random cell
-    randomNoteContainer.classList.add('highlight-note');  // applying the class to style the highlighted table cell
+    // defining a variable with the container of the random note, found by using the fret number as an index for the random guitar string
+    let randomNoteContainer = randomString[randomCell[1]];
+    // adding the 'highlight-note' class to the note's container element, to highlight the random table cell with css
+    randomNoteContainer.classList.add('highlight-note');  
 
+    // returns randomNoteContainer, inorder to extract the correct note from it in answerGenerator()
     return randomNoteContainer
 }
 
+
+
+
 // [IMPORT] function for choosing a random number between 0 and a maximum value (takes highest possible value and an offset of 0 or 1)
+/**
+ * @name randomNumber
+ * @description multiplies a random number between 0 and 1 by the highest possible value and then takes the highest integer 
+ * from this value + an offset value.
+ * Called by answerGenerator() and highlightRandomCell().
+ * @returns a random number (considering the highest value to find a random number between and the offset value)
+ */
 function randomNumber(highest, offset){
-    return Math.floor(Math.random() * highest) + offset; // multiplies a random number between 0 and 1 by the highest possible value and then takes the highest integer from this value + 1
+    // multiplies a random number between 0 and 1 by the highest possible value and then takes the highest integer from this value + an offset value
+    return Math.floor(Math.random() * highest) + offset; 
 }
+
+
 
 
 
