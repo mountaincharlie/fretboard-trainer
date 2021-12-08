@@ -294,7 +294,9 @@ function answerGenerator(){
     let totalMultiChoiceAnswers = document.getElementById('total-multi-choices').value;
 
     // if totalMultiChoiceAnswers is false (NaN) when converted by the Number method then the first character '4' from '4 default' is extracted
-    if (Number(totalMultiChoiceAnswers) !== true){
+    console.log(Number(totalMultiChoiceAnswers));
+    if (Number(totalMultiChoiceAnswers)){
+    } else {
         totalMultiChoiceAnswers = totalMultiChoiceAnswers.substring(0,1);
     }
     // converting totalMultiChoiceAnswers into a number
@@ -373,95 +375,94 @@ function randomNumber(highest, offset){
 
 
 
-// apply settings function? finds all settings and sets the appropriate things (called by 'applyButton' event listener)
+/**
+ * @name applySettings
+ * @description Resets the counter values, applies the settings (user's or default) and calls the first question.
+ * Called by the Event Listener on the applyButton.
+ * Resets the counter values for; question number, right answers and wrong answers.
+ * For the necessary settings, it extracts the value and uses it to write to or affect elemnts in the DOM before 
+ * calling fretboardTrainer() to display the first question.
+ */
 function applySettings(){
-
-    // NEED: a rest settings to default option (event listener which resets each setting?)
-    // WHAT: to return??
-
-    // resetting the counter values for question number, right answers and wrong answers
+    // resetting the counter values for; question number, right answers and wrong answers
     document.getElementById('question-number').innerHTML = 1;
     document.getElementById('right-ans').innerHTML = 0;
     document.getElementById('wrong-ans').innerHTML = 0;
 
-    // (1) total number of questions setting
-    let totalQuestionsSelection = document.getElementById('total-questions').value;  // getting the value from the select element
-    let numberOfQuestions = document.getElementById('number-of-questions');  // getting the container for the number of questions 
-    let defaultNumberOfQuestions = 10;  // setting the default value to use later
-
-    // calling the selectElementOptions function to reassign the value of totalQuestionsSelection
-    totalQuestionsSelection = selectElementOptions(totalQuestionsSelection, numberOfQuestions, defaultNumberOfQuestions); 
-    // writing the new number of questions to the document using the value from 
+    // --- total number of questions setting ---
+    // defining a variable with the value from the 'total-questions' select element (user's choice or the default)
+    let totalQuestionsSelection = document.getElementById('total-questions').value; 
+    // defining a variable with the container for the number of questions 
+    let numberOfQuestions = document.getElementById('number-of-questions');
+    // calling selectElementOptions() to ensure that totalQuestionsSelection is a number
+    totalQuestionsSelection = selectElementOptions(totalQuestionsSelection); 
+    // writing the number of questions to the DOM 
     numberOfQuestions.innerHTML = totalQuestionsSelection;
 
-
-    // (2) total number of answers setting
-    let totalMultiChoiceSelection = document.getElementById('total-multi-choices').value;  // getting the value from the select element
-    let numberOfMultiChoices = document.getElementById('multi-choice-area');  // getting the container for the multi-choice answers (NEEDED HERE NOW?)
-    let defaultnumberOfMultiChoices = 4;  // setting the default value to use later
-
-    // calling the selectElementOptions function to reassign the value of totalMultiChoiceSelection
-    totalMultiChoiceSelection = selectElementOptions(totalMultiChoiceSelection, numberOfMultiChoices, defaultnumberOfMultiChoices); 
-
-    // writing the new number of questions to the document using the value from totalMultiChoiceSelection
-    numberOfMultiChoices.innerHTML = totalMultiChoiceSelection;
-
-   
-    // (3) hide open string notes setting (use similar for the hide fret numbers)
-    let hideOpenNotes = document.getElementById('hide-open-notes').checked;  // finding if the 'hide-open-notes' is checked (true) or not (false)
-    let openNoteCells = document.getElementsByClassName('zeroth-fret');      // getting an object of all of the elements containing zeroth fret notes
-    
-    // calling the function to hide/unhide with 'openNoteCells' and the opacity value
+    // --- hide open string notes setting ---
+    // defining a variable with a value depending on whether 'hide-open-notes' is checked (true) or not (false)
+    let hideOpenNotes = document.getElementById('hide-open-notes').checked;
+    // defining a variable with a HTMLCollection of all of the elements containing zeroth fret notes
+    let openNoteCells = document.getElementsByClassName('zeroth-fret');
+        
+    // calling hideOrUnhide() to hide/unhide the open guitar string notes by changing their opacity
     hideOrUnhide(hideOpenNotes, openNoteCells)
 
-    // (4) hide fret numbers setting
-    let hideFretNumbers = document.getElementById('hide-fret-numbers').checked;  // finding if the 'hide-fret-numbers' is checked (true) or not (false)
-    let fretNumberCells = document.getElementsByTagName('th');      // getting an object of all of the elements containing fret numbers
+    // --- hide fret numbers setting ---
+    // defining a variable with a value depending on whether 'hide-fret-numbers' is checked (true) or not (false)
+    let hideFretNumbers = document.getElementById('hide-fret-numbers').checked;
+    // defining a variable with aHTMLCollection of all of the elements containing fret numbers
+    let fretNumberCells = document.getElementsByTagName('th');
     
-    // calling the function to hide/unhide with 'openNoteCells' and the opacity value
+    // calling hideOrUnhide() to hide/unhide the fret numbers by changing their opacity
     hideOrUnhide(hideFretNumbers, fretNumberCells)
 
-    // calls the fretboardTrainer function once the settings have been applied 
+    // calling fretboardTrainer() to display the first question 
     fretboardTrainer()
-
 }
 
+/**
+ * @name selectElementOptions
+ * @description Cuts the '(default)' string from the chekbox option which is the default.
+ * Called by applySettings().
+ * @param total
+ * @returns total Converted into a number
+ */
+function selectElementOptions(total){
 
-// function for dealing with the value from the select. takes parameters; total, container, default. returns total
-function selectElementOptions(total, container, defaultValue){
-
-    // if the value of the total questions/multi-choice answers is true (so not if the value is; NaN, null, 0, undefined, empty string) 
-    if (total){
-
-        // cutting out the '(default)' string
-        if (total.length > 2){
-            total = total.substring(0, 2);
-        }
-        // console.log('totals value: ', total);  // just for me to saee if it is working correctly
-
-        total = Number(total)  // converting the total into a number
-
-    } else {
-        container.innerHTML = defaultValue;  // ensuring that the number of questions is set to the default if somehow the if statement is untrue
+    // cutting out the '(default)' string from the default value
+    if (total.length > 2){
+        total = total.substring(0, 2);
     }
 
-    return total;  // returning the new total value to be displayed to the document or used to generate a number of questions
+    // returning the total value as a number
+    return Number(total);  
 }
 
-
-// function for the hide/unhide which takes parameters; openNoteCells HTMLCollection and opacity value
+/**
+ * @name hideOrUnhide
+ * @description Cuts the '(default)' string from the chekbox option which is the default.
+ * Called by applySettings().
+ * Defines an opacity variable to be assigned to.
+ * Sets opacity a value of '0' or '1' depending on if the checkbox is ticked (true) or not (false).
+ * Loops through the HTMLCollection to apply the opacity value to the opacity style for each element.
+ * @param hide true/false value used to determine the opacity value
+ * @param cells HTMLCollection whose items have their opacity style changed
+ */
 function hideOrUnhide(hide, cells){
-    let opacity; // defining an opacity variable to be assigned to
 
-    // setting the opacity value depending on if the check box is ticked or not
+    // defining an opacity variable to be assigned to
+    let opacity; 
+
+    // setting opacity a value of '0' or '1' depending on if the checkbox is ticked (true) or not (false)
     if (hide){
         opacity = "0";
     } else {
         opacity = "1";
     }
 
+    // looping through the HTMLCollection to apply the opacity value to the opacity style for each element
     for (let cell of cells){
         cell.style.opacity = opacity;
-        // console.log('cell = ', cell.innerHTML);  // just for me to check the values being hidden
     }
 }
