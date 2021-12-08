@@ -196,8 +196,7 @@ table .zeroth-fret{
 
 /* class added to notes being being highlighted */
 .highlight-note{
-    /* background-color: #7C4873; */
-    background-color: lightblue;
+    background-color: #FF8C3F;
     border-radius: 50%;
     visibility:visible;
 }
@@ -239,8 +238,10 @@ td{
 
 /* button hover effect */
 .btn:hover{
+
+    transition-duration: 0.2s;
     color:rgba(255, 255, 255, 1);
-    background-color: lightblue;
+    background-color: #FF8C3F;
 
 }
 
@@ -256,5 +257,19 @@ select{
 /* the checkbox inputs */
 #hide-open-notes, #hide-fret-numbers {
 
+}
+
+.right-highlight{
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+    background-color: green;
+    color:white;
+}
+
+.wrong-highlight{
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+    background-color: red;
+    color:white;
 }
 
