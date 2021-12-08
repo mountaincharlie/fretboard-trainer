@@ -91,15 +91,24 @@ document.addEventListener('DOMContentLoaded', function(){
 /**
  * @name fretboardTrainer
  * @description Controls the generation and display of the multi-choice answers.
+ * Searches through the td elements and when it finds the cell with the "highlight-note" class,
+ * it removes the class and writes back in the value of the correct note.
  * Generates array of answers by calling answerGenerator().
  * Writes the answers to the DOM by calling displayAnswers().
  * Contains the event listener for the check button which is created 
  * and calls checkAnswer() when clicked.
  */
 function fretboardTrainer(){
-    // removing any previously highlighted cell styling
+
+    // looping through the td elements 
     for (element of document.getElementsByTagName('td')){
-        element.classList.remove('highlight-note');
+        // finding the highlighted cell by its class = "highlight-note"
+        if (element.classList.contains("highlight-note")){
+            // removing the "highlight-note" class 
+            element.classList.remove("highlight-note");
+            // writing the note back into the table cell (now that the cell is hidden again) 
+            element.innerHTML = correctNote;
+        }
     }
 
     // calling the answerGenerator function once and storing the returned array 
@@ -124,7 +133,9 @@ function fretboardTrainer(){
  * Displays an alert message informing the user if they were right or not and the correct note.
  * Updates the game progress counters by calling countersUpdate(). 
  * Stores the first return value from countersUpdate() whic is true/false.
- * Checks if lastQuestionReached == true and if so, it creates and writes the score message to the DOM
+ * Checks if lastQuestionReached == true and if so, it creates and writes the score message to the DOM and
+ * then searches through the td elements and when it finds the cell with the "highlight-note" class,
+ * it removes the class and writes back in the value of the correct note.
  * else it calls fretboardTrainer() again.
  * @param correctNote The note which has been highlighted on the fretboard
  */
@@ -165,6 +176,18 @@ function checkAnswer(correctNote){
         ${percentageScore}
         <p>Click 'Apply' to replay with the same settings or 'Reset Game' to return to the start page</p>
         `;
+
+        // looping through the td elements 
+        for (element of document.getElementsByTagName('td')){
+            // finding the highlighted cell by its class = "highlight-note"
+            if (element.classList.contains("highlight-note")){
+                // removing the "highlight-note" class 
+                element.classList.remove("highlight-note");
+                // writing the note back into the table cell (now that the cell is hidden again) 
+                element.innerHTML = correctNote;
+            }
+        }
+
     } else {
         fretboardTrainer();
     }
@@ -265,7 +288,8 @@ function displayAnswers(multiChoiceAnswers){
  * Called by fretboardTrainer().
  * Defines an array contining all the notes, in order, from 'A'.
  * Creates an empty array, to contain all the answers in a random order.
- * Calls highlightRandomCell() to choose and highlight a random cell and return its innerHTML into correctNote.
+ * Calls highlightRandomCell() to choose and highlight a random cell and return its innerHTML which is 
+ * the note the user is trying to guess.
  * Removes correctNote from allNotes[] to be added in at a random place later.
  * Gets the total number of answers required from the 'total-multi-choices' select element.
  * Checks if totalMultiChoiceAnswers is false (NaN) when converted by the Number method, in which case it 
@@ -284,8 +308,8 @@ function answerGenerator(){
     allNotes = ['A', 'A#/Bb', 'B', 'C', 'C#/Db', 'D', 'D#/Eb', 'E', 'F', 'F#/Gb', 'G', 'G#/Ab'];
     // creating an empty array, to contain all the answers in a random order
     multiChoiceAnswers = [];
-    // calling highlightRandomCell() to choose and highlight a random cell and return its innerHTML into correctNote
-    correctNote = highlightRandomCell().innerHTML;
+    // calling highlightRandomCell() to choose and highlight a random cell and return its innerHTML which is the note the user is trying to guess
+    correctNote = highlightRandomCell();
 
     // removing correctNote from allNotes[] to be added in at a random place later
     allNotes.splice(allNotes.indexOf(correctNote), 1);
@@ -294,7 +318,6 @@ function answerGenerator(){
     let totalMultiChoiceAnswers = document.getElementById('total-multi-choices').value;
 
     // if totalMultiChoiceAnswers is false (NaN) when converted by the Number method then the first character '4' from '4 default' is extracted
-    console.log(Number(totalMultiChoiceAnswers));
     if (Number(totalMultiChoiceAnswers)){
     } else {
         totalMultiChoiceAnswers = totalMultiChoiceAnswers.substring(0,1);
@@ -331,7 +354,10 @@ function answerGenerator(){
  * Defines a variable to hold the HTMLCollection which represents the random guitar string chosen.
  * Defines a variable with the container of the random note, found by using the fret number as an index for the random guitar string.
  * Adds the 'highlight-note' class to the note's container element, to highlight the random table cell with css.
- * @returns randomNoteContainer Is used to assign its note to the correctNote variable in answerGenerator().
+ * Store the correct note to return into answerGenerator().
+ * Replaces the correct note with an empty string now that the cell is visible 
+ * (the note is written back in when the highlight is removed).
+ * @returns correctNote Which is the note the user is trying to guess and is being highlighted on teh fretboard
  */
 function highlightRandomCell(){
     // defining an array contining HTML ids of the tr elements which represent the open string notes on the guitar
@@ -349,10 +375,14 @@ function highlightRandomCell(){
     // defining a variable with the container of the random note, found by using the fret number as an index for the random guitar string
     let randomNoteContainer = randomString[randomCell[1]];
     // adding the 'highlight-note' class to the note's container element, to highlight the random table cell with css
-    randomNoteContainer.classList.add('highlight-note');  
-
-    // returns randomNoteContainer, inorder to extract the correct note from it in answerGenerator()
-    return randomNoteContainer
+    randomNoteContainer.classList.add('highlight-note'); 
+    // storing the correct note to return into answerGenerator()
+    correctNote = randomNoteContainer.innerHTML;
+    // replacing the note with an empty string now that the cell is visible (the note is written back in when the highlight is removed)
+    randomNoteContainer.innerHTML = '';
+    
+    // returns correctNote to answerGenerator()
+    return correctNote
 }
 
 
