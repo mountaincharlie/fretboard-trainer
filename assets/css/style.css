@@ -1,7 +1,7 @@
 /* --- IMPORTS --- */
 
 /* google fonts */
-@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&family=Titillium+Web:wght@200;300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&family=Titillium+Web:wght@200;300;400;600;700;900&display=swap');
 
 
 /* MAKE EVERYTHING BORDER-BOX BY DEFAULT */
@@ -11,25 +11,43 @@
 /* border-box box sizing for the whole document - CREDIT: https://css-tricks.com/box-sizing/ 'Universal Box Sizing with Inheritance' */
 html {
     box-sizing: border-box;
-  }
+}
 
 *, *:before, *:after {
     box-sizing: inherit;
+
+    padding: 0;
+    margin:0;
 }
+
 
 /* body */
 body{
-    font-family: 'dosis', sans-serif ;
-}
-
-p{
-    margin:0;
-    padding:1%;
+    font-family: 'dosis', sans-serif;
 }
 
 /* --- FONTS --- */
 
-/* heading fonts */
+/* fonts for all headings */
+h1, h2, h4{
+    font-family: 'Titillium Web', sans-serif;
+    font-weight:700;
+}
+
+/* --- HEADER --- */
+header{
+
+    background-color:rgba(47, 97, 104, 1);
+    color:rgba(255, 255, 255, 1);
+    /* border-radius: 4px; */
+
+    height: 8vh;
+    margin-bottom: 1vh;
+
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
 
 
 /* --- DIV AREAS STYLING --- */
@@ -37,31 +55,33 @@ p{
 /* container for fretboard diagram (html table) */
 .fretboard-area{
     width:100%;
-    height:30vh;
+    height:20vh;
 
     padding:1%;
-
 }
 
 /* centralising and evenly spacing the thre-divs */
-.divs-holder{
+.sections-holder{
+
+    height:70vh;
+
     display:flex;
     justify-content: space-evenly;
 }
 
 /* the user-options, multi-choice and counter divs */
-.three-divs{
+.three-sections{ 
 
-    /* text-align: center; */
+    background-color:rgba(47, 97, 104, 1);
 
-    border: 2px solid black;
+    /* background-color: rgba(112, 136, 148, 1); */
+    color: rgba(255, 255, 255, 1);
+
+    /* border: 2px solid rgba(0, 0, 0, 0); */
     border-radius:4px;
 
-    padding: 2%;
-    margin:2%;
-
-    /* width: 30%; */
-    /* height: 40vh; */
+    padding: 1% 2% 2% 2%;
+    margin:1vh 1vw;
 
     display:flex;
     flex-direction: column;
@@ -86,9 +106,6 @@ h2{
     line-height:1.7em;
     padding-top:3%;
 
-    display:flex;
-    flex-direction: column;
-    text-align: center;
 }
 
 /* user-options settings dropdown boxes */
@@ -111,12 +128,9 @@ h2{
     padding-left: 20px;
 }
 
-/* container for question and right/wrong counters (float right) */
+/* container for question and right/wrong counters */
 #counter-area{
     width:25%;
-
-    padding-top:5%;
-    padding-bottom:5%;
 }
 
 
@@ -124,15 +138,21 @@ h2{
 
 /* fretboard diagram table */
 .fretboard-area table{
-    width:100%;
 
+    color:rgba(47, 97, 104, 1);
+    border-radius: 4px;
+
+    width:100%;
+    
     /* removing space between table cells */
     border-collapse:collapse;
 }
 
 .fretboard-area td{
-    border-right: 2px solid grey; 
-    border-bottom: 1px solid grey;
+    /* border-right: 2px solid grey;  */
+    /* border-bottom: 1px solid grey; */
+    border-right: 2px solid rgba(47, 97, 104, 1); 
+    border-bottom: 1px solid rgba(47, 97, 104, 0.8);
 
     /* could try creating 'invisible' content and striking it thru */
 
@@ -156,11 +176,19 @@ table .zeroth-fret{
 
 /* paragraphs for the numbers tracking the Q no. and right/wrong answers */
 .counters{
+
+    background-color: rgba(255, 255, 255, 1);
+    color:rgba(47, 97, 104, 1);
+    font-weight:600;
+
+    margin: 20% 10%;
+    padding: 5%;
+    border-radius:4px;
     
 }
 
 
-/* --- ANSWER AREA STYLING --- */
+/* --- STYLING USED BY ANSWER AREA JS --- */
 
 /* class added to notes being being highlighted */
 .highlight-note{
@@ -170,14 +198,18 @@ table .zeroth-fret{
 
 /* using tr tag first to ensure the open string notes are not hidden */
 tr .zeroth-fret{
-    color: black;
+    
+    color:rgba(47, 97, 104, 1);
+    visibility:visible;
+
     font-weight:bold;
     font-size: large;
 }
 
 /* making all the td elements transparent by default */
 td{
-    color: rgba(0,0,0,0);
+    visibility:hidden;
+    /* color: rgba(0,0,0,0); */
 }
 
 
