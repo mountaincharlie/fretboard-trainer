@@ -26,6 +26,7 @@ body{
     font-family: 'dosis', sans-serif;
 }
 
+/* all paragraphs to be centralised */
 p{
     text-align: center;
 }
@@ -36,14 +37,17 @@ p{
 h1, h2, h4{
     font-family: 'Titillium Web', sans-serif;
     font-weight:700;
+
+    letter-spacing: 2px;
 }
 
 /* --- HEADER --- */
 header{
 
+    font-size: larger;
+
     background-color:rgba(47, 97, 104, 1);
     color:rgba(255, 255, 255, 1);
-    /* border-radius: 4px; */
 
     height: 8vh;
     margin-bottom: 1vh;
@@ -97,6 +101,7 @@ header{
 /* container for user options section (float left) */
 #user-options-area{
     width:25%;
+    font-size: normal;
 }
 
 /* headings for each of the areas */
@@ -109,6 +114,7 @@ h2{
 #user-options-area #settings{
     line-height:1.7em;
     padding-top:3%;
+    
 
 }
 
@@ -129,7 +135,15 @@ h2{
 
 #multi-choice-area ol{
     margin: 0;
+    margin-bottom: 5%;
     padding-left: 20px;
+    line-height: 200%;
+}
+
+#multi-choice-area p{
+    line-height: 200%;
+    margin-bottom: 5%;
+
 }
 
 /* container for question and right/wrong counters */
@@ -273,3 +287,5 @@ select{
     color:white;
 }
 
+
+/* --- MEDIA QUERIES --- */

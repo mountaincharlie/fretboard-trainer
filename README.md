@@ -22,6 +22,11 @@
 * JavaScript
 * google charts ??
 
+## Game Instructions  
+---
+
+1. The game is started by clicking either the 'START GAME' or
+
 ## Pages and Features Breakdown
 ---
 
