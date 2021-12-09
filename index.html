@@ -156,41 +156,44 @@
     
                 <p>Applying settings changes will restart the game</p>
 
-                <!-- Total number of questions in the game -->
-                <div>
-                    <label for = "total-questions">Number of questions:</label>
-                    <select id = "total-questions">
-                        <option value = "5">5</option>
-                        <option value = "10 (default)" selected>10 (default)</option>
-                        <option value = "15">15</option>
-                        <option value = "20">20</option>
-                        <option value = "25">25</option>
-                        <option value = "30">30</option>
-                    </select>
-                </div>
+                <div class = "section-content">
+                    <!-- Total number of questions in the game -->
+                    <span>
+                        <label for = "total-questions">Number of questions:</label>
+                        <select id = "total-questions">
+                            <option value = "5">5</option>
+                            <option value = "10 (default)" selected>10 (default)</option>
+                            <option value = "15">15</option>
+                            <option value = "20">20</option>
+                            <option value = "25">25</option>
+                            <option value = "30">30</option>
+                        </select>
+                    </span>
                     
-                <!-- Total number of multi-choice answers to display -->
-                <div>
-                    <label for = "total-multi-choices">Number of answers:</label>
-                    <select id = "total-multi-choices">
-                        <option value = "4 (default)" selected>4 (default)</option>
-                        <option value = "6">6</option>
-                        <option value = "8">8</option>
-                        <option value = "10">10</option>
-                        <option value = "12">12</option> <!-- max number of different notes -->
-                    </select>
-                </div>
+                    <!-- Total number of multi-choice answers to display -->
+                    <span>
+                        <label for = "total-multi-choices">Number of answers:</label>
+                        <select id = "total-multi-choices">
+                            <option value = "4 (default)" selected>4 (default)</option>
+                            <option value = "6">6</option>
+                            <option value = "8">8</option>
+                            <option value = "10">10</option>
+                            <option value = "12">12</option> <!-- max number of different notes -->
+                        </select>
+                    </span>
                     
-                    <!-- checkbox to hide the open string notes in the fretboard table -->
-                <div>
-                    <label for = "hide-open-notes">Hide open string notes</label>
-                    <input type = "checkbox" name = "hide-open-notes" id = "hide-open-notes">
-                </div>
+                        <!-- checkbox to hide the open string notes in the fretboard table -->
+                    <span>
+                        <label for = "hide-open-notes">Hide open string notes</label>
+                        <input type = "checkbox" name = "hide-open-notes" id = "hide-open-notes">
+                    </span>
 
-                <!-- checkbox to hide the fret numbers in the fretboard table -->
-                <div>
-                    <label for = "hide-fret-numbers">Hide fret numbers</label>
-                    <input type = "checkbox" name = "hide-fret-numbers" id = "hide-fret-numbers">
+                    <!-- checkbox to hide the fret numbers in the fretboard table -->
+                    <span>
+                        <label for = "hide-fret-numbers">Hide fret numbers</label>
+                        <input type = "checkbox" name = "hide-fret-numbers" id = "hide-fret-numbers">
+                    </span>
+
                 </div>
 
                 <p>(Clicking the below options will cause any game progress to be lost)</p>
@@ -200,6 +203,7 @@
 
                 <!-- re-setting to default settings (reloads page) -->
                 <button id = "reset-btn" class = "btn">Reset Game</button>
+                
             </section>
 
             <!-- container for multi choice answers (center) -->
@@ -235,11 +239,15 @@
 
                 <h2>Game Progress</h2>
 
-                <p class = "counters">Question: <span id = "question-number">0</span>/<span id = "number-of-questions">10</span></p>
+                <div class = "section-content">
+                    <p class = "counters">Question: <span id = "question-number">0</span>/<span id = "number-of-questions">10</span></p>
     
-                <p class = "counters">Right: <span id = "right-ans">0</span></p>
+                    <p class = "counters">Right: <span id = "right-ans">0</span></p>
     
-                <p class = "counters">Wrong: <span id = "wrong-ans">0</span></p>
+                    <p class = "counters">Wrong: <span id = "wrong-ans">0</span></p>
+                </div>
+
+                
     
             </section>
         </div>
