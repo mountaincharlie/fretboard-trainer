@@ -405,33 +405,36 @@ select{
         height: auto;
     }
 
-
-    #user-options-area{
+    #multi-choice-area{
         margin: 1% 1% 0 1%;
         width:auto;
+        min-height: 30vh;
+        order:1;
+    }
+
+    #counter-area{
+        margin: 1% 1% 0 1%;
+        /* width:100%; */
+        width:auto;
         height: auto;
+        order:2;
+    }
+
+    #user-options-area{
+        margin: 1%;
+        width:auto;
+        height: auto;
+        order:3;
         /* font-size: normal; */
 
         /* flex-direction: column; */
     }
 
-    #multi-choice-area{
-        margin: 1% 1% 0 1%;
-        width:auto;
-        min-height: 30vh;
-    }
-
-    #counter-area{
-        margin: 1% 1% 1% 1%;
-        /* width:100%; */
-        width:auto;
-        height: auto;
-    }
-
-    .section-content{
+    #counter-area .section-content{
         /* width: 100%; */
         /* display:flex; */
         flex-direction: row;
+        /* flex-wrap:wrap; */
         /* justify-content:space-evenly; */
         /* align-items: center; */
 
