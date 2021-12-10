@@ -23,7 +23,7 @@ This site provides a quick and easy way for guitarists, with different levels of
 * CSS
 * JavaScript
 
-## Game Instructions  
+## Game Instructions  (finish)
 ---
 
 1. The game is started by clicking either the 'START GAME' or
@@ -80,32 +80,38 @@ This site provides a quick and easy way for guitarists, with different levels of
     * Are updated when the Answer Check Screen is displayed 
 
 
-## User Experience Design 
+## User Experience Design (finish)
 ---
 
-### To do:
-
 ### Styling 
-* Colour scheme: (what pallette you used, why and include screenshot/links if relevant)
-* Fonts: (which used, why and screenshot/links if releveant)
-* Icons: (links to ones used and how/why)
-* Continuity throughout the game: The styling and layout of the game remains the same throughout, making it more intuative for the user and the essential interaction and message to the user all occur in the cnetral area and in alerts.
-* Homepage background image: (IF YOU HAVE ONE)
+The styling and layout of the game remains consistent throughout the sections, making it more intuative for the user to interact with and understand the purpose of each section.
+* Colour scheme: I chose a dark teal (#2f6168) for the main colour of the game, an orange (#ff8c3f) accent colour throughout the different sections and kept a white background behind the sections and fretboard diagram and white text for the instructional messages, for good contrast.
+* Fonts: 
+    * Google Font's 'Titillium Web' for all the headings (h1, h2 and h4 elements).
+    * Google Font's 'Dosis' for all of the other text on the screen (Instructions, scores, settings, questions and counters).
+* Icons:
+    * Icon8's 'Guitar icon in Pastel Glyph Style' as an icon with the Fretboard Trainer logo next in the game heading.
+    * Favicon made from the same 'Guitar icon in Pastel Glyph Style', for continuity.
+* Continuity throughout the game: 
+    * The styling and layout of the game remains consistent throughout the sections.
+    * Game feedback and instructions are always presented in the central Game Play section making it more intuative for the user.
 
-### Content 
-* The central area of the game contains clear instructions for the game and the other two area (for settings and game progress) so that the user can understand the purpose of the site and how to use it as soon as the land on hte page.
-* I used the 'select' element for the 'Number of questions' and 'Number of Answers' settings to limit the user's options to the most reasonable ones so that the user doesn't have to type in their own value and can't choose a value which would cause an error.  
+### Content and Interactivity
+* The fretboard diagram:
+    * remains at the top of the screen throughout the game so that the user is always aware of where to find it if they are viewing it on a mobile device and have to scroll.
+* Layout on smaller screens:
+    * when viewed on screen with a width of 830px or less, CSS Media Queries have been used to organise the three game sections ontop of one another. 
+    * in order to reduce the user needing to scroll while playing the game, the Game Play section is positioned immediately below the fretboard diagram, with the Game Progress directly below this and the Game Settings at the bottom since they are not required while the game is being played.    
+* The central Game Play section:
+    * contains clear instructions for the game and the other two sections (Game Settings and Game Progress) to ensure the user understands the purpose of the site and the functions of each section as soon as they land on the page. 
+    * this section displays the Instructions screen, Check Answer screen and Score screen each with clear feedback for the user and buttons labelled specific to their function (e.g. the 'CHECK ANSWER' button to check if the right answer was selected or the 'NEXT QUESTION' button to generate and display the next question).
+* The Game Settings section:
+    * remains unchanged during the game, but can be accessed by the user at any point. 
+    * dropdown boxes and checkboxes have been used instead of free typing inputs for the user. This is to both make it simpler and quicker for the user to adjust settings and also prevents the user inputting values which would break the game.
+* The Game Progress section:
+    * the counters are updated as neccessary during the game, as part of the feedback to the user and are reset/adjusted any time the game is refreshed or new settings are applied. 
+    * they are also styled to fit with the rest of the site, but differently enough from the buttons so that the user doesn't confuse them as something that can be clicked.
 
-### Interactivity
-* Logo/heading (if they have any interactivity)
-* The fretboard (If hover effects or anything interactive on the fretboard itself)
-* Settings section (from a user experience POV)
-* Multi-choice answers section (from a user experience POV)
-* Counter section (from a user experience POV - e.g. how its coloured/laid out)
-* any hover pseudo classes ??
-* any google charts ??
-* social media ??
-* any embedded video/sound ??
 
 ## Interactivity
 ---
@@ -162,6 +168,8 @@ This site provides a quick and easy way for guitarists, with different levels of
 ### Bugs and Fixes
 * [date] any bugs
     * their fixes (links/images where relevant)
+* I used the 'select' element for the 'Number of questions' and 'Number of Answers' settings to limit the user's options to the most reasonable ones so that the user doesn't have to type in their own value and can't choose a value which would cause an error.
+* 
 
 ### Unfixed bugs
 * SHOULD BE: No unfixed bugs
