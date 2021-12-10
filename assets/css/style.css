@@ -382,11 +382,11 @@ select{
     /* header */
     header{
         font-size: large;
+        height:auto;
     }
 
-    /* fixing the table cells width */
-    .fretboard-area table{
-        /* table-layout: fixed; */
+    .fretboard-area {
+        height:auto;
     }
 
     /* arraning the scetions to be stacked */
@@ -480,13 +480,5 @@ select{
     header{
         font-size: small;
     }
-
-    /* fretboard area */
-    .fretboard-area{
-        height: auto;
-
-    }
-
-
-
+    
 }
