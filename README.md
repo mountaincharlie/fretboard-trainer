@@ -1,15 +1,17 @@
-# Fretboard Trainer
+# Fretboard Trainer (finish)
 
-### To do:
-* Intro paragraph about the project 
-    * Fretboard Trainer is an interactive website to ...
-    * This site provides ...
-* ![Viewing my website on the Am I Responsive site](#images-location "Fretboard Trainer website on the Am I Responsive site")
+Fretboard Trainer is an interactive website which uses an adjustable multi-choice style quiz, to help those who want to improve their ability to recognise the notes on a 6-stringed guitar in standard tuning. The rules and design are simple and intuative and since the Trainer is based on the layout of a real guitar fretboard, it has a real life application.
+
+This site provides a quick and easy way for guitarists, with different levels of experience, to test and train their knowledge of the guitar fretboard. The Trainer can be used on any platform from a laptop to a phone and for as long or short a time as the user wishes. 
+
+![Viewing my website on the Am I Responsive site](./assets/images/am-i-responsive-screenshot.jpg "Fretboard Trainer website on the Am I Responsive site")
+
+[Image made using <a href = "http://ami.responsivedesign.is/">Am I Responsive Website</a>]
 
 ## Contents
 ---
 
-* [Technologies Used](full github url from deployed site)
+* [Technologies Used](https://github.com/mountaincharlie/project-two-fretboard-trainer#technologies-used)
 * ['section name'](full github url from deployed site)
 * 
 * 
@@ -20,19 +22,63 @@
 * HTML
 * CSS
 * JavaScript
-* google charts ??
 
 ## Game Instructions  
 ---
 
 1. The game is started by clicking either the 'START GAME' or
 
-## Pages and Features Breakdown
+## Features (finish)
 ---
 
-### To do:
-* bulletpoint explain each feature (header/logo, fretboard, settings, multi-choice answers, counters ...)
-* include screen shots
+### Header
+* [image]
+* Heading and guitar icon
+
+### Favicon
+* [image]
+* same as the guitar icon in the header 
+
+### The fretboard
+* [image]
+* open string notes
+* fret numbers 
+* [image shows highlight]
+* strings where the random note is highlighted 
+
+### Game Settings section
+* [image whole]
+* Instructions/warnings [image]
+    * None of the settings have to be used as there are set defaults so the user can start playing right away.
+* Adjustable settings [image example of what they affect]
+    * 'Number of questions' dropdown list
+    * 'Number of answers' dropdown list
+    * 'Hide open string notes' checkbox
+    * 'Hide fret numbers' checkbox
+* APPLY & START button [image]
+* RESET GAME button [image]
+
+### Game Play section
+* Instructions screen [image]
+* Questions Screen [image]
+* Answer Check Screen [image] 
+    * message
+    * red/green highlights
+* Score Screen [image]
+    * fraction and percentage scores
+    * highlight red/green for 50% or over
+    * instructional message for continuing
+
+### Game Progress section
+* [image]
+* Question counter 
+    * Out of 10 by default
+    * Can be adjusted by Game Settings
+    * Is used to trigger the score screen
+* Right/wrong counters
+    * Set to 0 initially 
+    * Are updated when the Answer Check Screen is displayed 
+
 
 ## User Experience Design 
 ---
