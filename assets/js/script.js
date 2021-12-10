@@ -143,13 +143,21 @@ function nextQuestion(countersUpdateReturn){
         let right = countersUpdateReturn[1];
         // defining the total number of questions from the game
         let totalQuestions = countersUpdateReturn[2];
-        // defining the template literal for the user's score as a percentage
-        let percentageScore = `<p>Percentage score: ${Math.round((right/totalQuestions)*100)}%</p>`;
+        
+        // calculating the user's percentage score and setting the class name to style it 
+        let percentageScore = Math.round((right/totalQuestions)*100);
+        let resultsClass = "right-highlight";
+
+        // changing resultsClass if the user scores less than 50%
+        if (percentageScore < 50){
+            resultsClass = "wrong-highlight";
+        }
+
         // writing the score message template literal to the DOM
         answersArea.innerHTML = `
         <h4>You completed the game!</h4>
-        <p>You scored: ${right}/${totalQuestions}</p>
-        ${percentageScore}
+        <p class = ${resultsClass}>You scored: ${right}/${totalQuestions}</p>
+        <p class = ${resultsClass}>Percentage score: ${percentageScore}%</p>
         <p>Click 'Apply' to replay with the same settings or 'Reset Game' to return to the start page</p>
         `;
 
