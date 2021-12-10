@@ -277,17 +277,15 @@ select{
 }
 
 .right-highlight{
-    transition-duration: 0.5s;
-    transition-timing-function: ease-in-out;
-    background-color: green;
-    color:white;
+    color:lightgreen;
+    font-weight: 900;
+    border-radius: 4px;
 }
 
 .wrong-highlight{
-    transition-duration: 0.5s;
-    transition-timing-function: ease-in-out;
-    background-color: red;
-    color:white;
+    color:rgb(238, 87, 87);
+    font-weight: 900;
+    border-radius: 4px;
 }
 
 
