@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function(){
     // getting the reset button and putting an event listener on it
     let resetButton = document.getElementById('reset-btn');
     resetButton.addEventListener('click', function(){
-        window.location.reload()
+        window.location.reload();
     });
 
     // getting the apply button and putting an event listener on it 
@@ -116,7 +116,11 @@ function checkAnswer(correctNote){
     let nextBtn = document.createElement('button');
     nextBtn.id = "next-btn";
     nextBtn.className = "btn";
-    nextBtn.innerHTML = 'Next Question';
+    if (countersUpdateReturn[0]){
+        nextBtn.innerHTML = 'Check Score';
+    } else {
+        nextBtn.innerHTML = 'Next Question';
+    }
     document.getElementById('multi-choice-area').lastChild.replaceWith(nextBtn);
 
     // NEXT btn event listener with param: lastQuestionReached
@@ -158,7 +162,7 @@ function nextQuestion(countersUpdateReturn){
         <h4>You completed the game!</h4>
         <p class = ${resultsClass}>You scored: ${right}/${totalQuestions}</p>
         <p class = ${resultsClass}>Percentage score: ${percentageScore}%</p>
-        <p>Click 'Apply' to replay with the same settings or 'Reset Game' to return to the start page</p>
+        <p>In the settings section click 'RESET GAME' to return to the start screen or 'APPLY & START' to replay with the same settings</p>
         `;
 
         // looping through the td elements 
