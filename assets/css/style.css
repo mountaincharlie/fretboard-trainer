@@ -417,13 +417,12 @@ select{
 
     #multi-choice-area{
         margin: 1% 1% 0 1%;
-        /* width:100%; */
         width:auto;
-        height: auto;
+        min-height: 30vh;
     }
 
     #counter-area{
-        margin: 1% 1% 0 1%;
+        margin: 1% 1% 1% 1%;
         /* width:100%; */
         width:auto;
         height: auto;
