@@ -315,6 +315,10 @@ select{
 
 @media (max-width: 1300px){
 
+    .fretboard-area {
+        height:auto;
+    }
+
     /* the user-options, multi-choice and counter sections */
     .three-sections{ 
         margin:0.5vh 0.5vw;
@@ -382,10 +386,6 @@ select{
     /* header */
     header{
         font-size: large;
-        height:auto;
-    }
-
-    .fretboard-area {
         height:auto;
     }
 
