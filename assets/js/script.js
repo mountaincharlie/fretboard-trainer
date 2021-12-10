@@ -1,62 +1,3 @@
-// bits of code that do things:
- 
-// (1) To add a zero infront of fret numbers which have 1 digit and convert the number to a string
-// let fretNumberString = String(fretNumber);
-// if (fretNumberString.length < 2){
-    // fretNumberString = `0${fretNumberString}`;
-// } 
-// console.log(fretNumberString);
-
-// (2) creating the string ID and getting the cell value (note) OR CAN WRITE NOTE TO IT
-// let openString = 'eHigh'; // one of the 6 string values (eHigh, b, g, d, a, e) 
-// let fret = '01';          // fret number as a string or number
-// let stringId = openString + 'Str'; //creating the string ID (only need if you dont incl 'Str' in openString)
-// let fretNumber = Number(fret)  //converting the fret number into a number (if not already)
-// let cell = document.getElementById('eHighStr').children[fretNumber];   //retrieving the cell innerHTML (the note)
-// console.log('the note is:', cell.innerHTML);
-// cell.innerHTML = 'f';   // OR writing to the cell
-// console.log('the note is:', cell.innerHTML);
-
-
-
-// CODE FOR USING ARRAYS (FOR OPEN STRING NOTES AND ALL POSSIBLE NOTES IN ORDER) TO WRITE TO THE FRETBOARD
-
-// array of the string names
-// var stringsNamesArray = ['eStr', 'aStr', 'dStr', 'gStr', 'bStr', 'eHighStr']; 
-
-// array of the notes in a full scale starting at 'a'
-// var notesArray = ['a', 'a#/bb', 'b', 'c', 'c#/db', 'd', 'd#/eb', 'e', 'f', 'f#/gb', 'g', 'g#/ab'];
-
-// finding the note for 6th string 4th fret
-// let stringNumber = 3; // only in range 1-6
-// let fretNumber = 0; // only in range 1-12
-
-// let chosenString = stringsArray[(stringNumber-1)];  // getting the string from the stringsArray
-// let openStringNote = chosenString.substring(0, 1); // just the note of the open string (e.g. 'e' instead of 'eHigh')
-// console.log('open string:', chosenString);
-// let openStringNoteIndex = notesArray.indexOf(openStringNote); // getting the index of the open note in the notesArray
-// let chosenNoteIndex = openStringNoteIndex + fretNumber;
-// if (chosenNoteIndex > notesArray.length){
-    // chosenNoteIndex = chosenNoteIndex - notesArray.length;
-// }
-// let chosenNote = notesArray[chosenNoteIndex];
-
-// console.log('chosen note:', chosenNote);
-
-// function for writing the found note to the fretboard 
-// function noteToFretboard(chosenString, fretNumber, chosenNote){
-    // let cell = document.getElementById(chosenString).children[fretNumber];
-    // cell.innerHTML = chosenNote;
-    // cell.style.color = 'red';  //just to highlist the note for now
-    // console.log('string:', chosenString, 'fret number: ', fretNumber, 'cell value', cell.innerHTML);
-// }
-
-// noteToFretboard(chosenString, fretNumber, chosenNote); // writing the note to the cell
-
-
-
-
-// start of the offical JS
 
 // Event listeners on DOM load
 document.addEventListener('DOMContentLoaded', function(){
@@ -74,8 +15,6 @@ document.addEventListener('DOMContentLoaded', function(){
     // start button event listener
     let startButton = document.getElementById('start-btn');
     startButton.addEventListener('click', function(){
-        // updating the question counter for the first question
-        document.getElementById('question-number').innerHTML = 1;
 
         // HIDE ALL NOTES FROM FRETBOARD ()? DEFAULT IS THEM SHOWN 
 
@@ -110,6 +49,10 @@ function fretboardTrainer(){
             element.innerHTML = correctNote;
         }
     }
+
+    // updating question number
+    let questionNumber = document.getElementById('question-number');
+    questionNumber.innerHTML ++;
 
     // calling the answerGenerator function once and storing the returned array 
     let multiChoiceAnswers = answerGenerator();
@@ -152,10 +95,43 @@ function checkAnswer(correctNote){
         message = `Sorry`;
         outcome = `incorrect`;
     }
-    // displays alert for the user to tell them if they were correct or not and the correct answer
-    alert(`${message} thats ${outcome}. \nYou chose: ${userChoice}. \nThe correct note is: ${correctNote}`);
+
     // calling countersUpdate() to update the game progress counters 
     let countersUpdateReturn = countersUpdate(outcome);
+
+    // writing the user's results message to the answer area <h4>
+    document.getElementById('question-and-result').innerHTML = `${message} thats ${outcome}. \nYou chose: ${userChoice}. \nThe correct note is: ${correctNote}`;
+
+    // highlighting the multichoices red unless they match the value of correctNote
+    for (let note of document.getElementById('multi-choice-area').getElementsByTagName('label')){
+
+        if (note.innerHTML === correctNote){
+            note.classList.add("right-highlight");
+        } else {
+            note.classList.add("wrong-highlight");
+        }
+    }
+
+    // creating the 'next' button and replacing the check button with it
+    let nextBtn = document.createElement('button');
+    nextBtn.id = "next-btn";
+    nextBtn.className = "btn";
+    nextBtn.innerHTML = 'Next Question';
+    document.getElementById('multi-choice-area').lastChild.replaceWith(nextBtn);
+
+    // NEXT btn event listener with param: lastQuestionReached
+    let nextButton = document.getElementById('next-btn');
+    nextButton.addEventListener('click', function(){
+        nextQuestion(countersUpdateReturn);
+    })
+    
+}
+
+
+// function which is triggered by the 'NEXT' button event listener
+function nextQuestion(countersUpdateReturn){
+
+    
     // the first return value 'lastQuestionReached' will be true or false
     let lastQuestionReached = countersUpdateReturn[0];
 
@@ -171,7 +147,7 @@ function checkAnswer(correctNote){
         let percentageScore = `<p>Percentage score: ${Math.round((right/totalQuestions)*100)}%</p>`;
         // writing the score message template literal to the DOM
         answersArea.innerHTML = `
-        <p>You completed the game!</p>
+        <h4>You completed the game!</h4>
         <p>You scored: ${right}/${totalQuestions}</p>
         ${percentageScore}
         <p>Click 'Apply' to replay with the same settings or 'Reset Game' to return to the start page</p>
@@ -227,10 +203,7 @@ function countersUpdate(outcome){
     // checking if the user has answered the last question and if so, letting lastQuestionReached = true
     if (questionNumber.innerHTML === numberOfQuestions.innerHTML){
         lastQuestionReached = true;
-    } else {
-        // updating the question counter
-        questionNumber.innerHTML ++;
-    } 
+    }
 
     //returning lastQuestionReached (true/false), how many right answers, total number of questions
     return [lastQuestionReached, Number(right.innerHTML), numberOfQuestions.innerHTML];  
@@ -252,7 +225,7 @@ function countersUpdate(outcome){
 function displayAnswers(multiChoiceAnswers){
     // defining the first part of the template literal with the question and first answer option with checked radio button  
     let allMultiChoices = `
-    <h4>Which note is highlighted on the fretboard?</h4>
+    <h4 id = "question-and-result">Which note is highlighted on the fretboard?</h4>
     <div>
         <label for = "choice${1}">${multiChoiceAnswers[0]}</label>
         <input type = "radio" name = "choice" id = "choice${1}" value = "${multiChoiceAnswers[0]}" checked>
@@ -415,7 +388,7 @@ function randomNumber(highest, offset){
  */
 function applySettings(){
     // resetting the counter values for; question number, right answers and wrong answers
-    document.getElementById('question-number').innerHTML = 1;
+    document.getElementById('question-number').innerHTML = 0;
     document.getElementById('right-ans').innerHTML = 0;
     document.getElementById('wrong-ans').innerHTML = 0;
 
