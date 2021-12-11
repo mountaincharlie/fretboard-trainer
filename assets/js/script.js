@@ -1,3 +1,7 @@
+// jshint esversion: 6
+
+// defining the correctNote variable as a global variable
+let correctNote;
 
 // Event listeners on DOM load
 document.addEventListener('DOMContentLoaded', function(){
@@ -15,37 +19,25 @@ document.addEventListener('DOMContentLoaded', function(){
     // start button event listener
     let startButton = document.getElementById('start-btn');
     startButton.addEventListener('click', function(){
-
-        // HIDE ALL NOTES FROM FRETBOARD ()? DEFAULT IS THEM SHOWN 
-
-        // calling the function that runs the game if no settings are applied
-        fretboardTrainer()
+        // calling the game function with default settings
+        fretboardTrainer();
     });
-
-
-    // EVENT LISTENER FOR A CHECKBOX WHICH HIDES/SHOWS THE NOTES ON THE FRETBOARD
-
 });
 
 /**
  * @name fretboardTrainer
- * @description Controls the generation and display of the multi-choice answers.
- * Searches through the td elements and when it finds the cell with the "highlight-note" class,
- * it removes the class and writes back in the value of the correct note.
- * Generates array of answers by calling answerGenerator().
- * Writes the answers to the DOM by calling displayAnswers().
- * Contains the event listener for the check button which is created 
- * and calls checkAnswer() when clicked.
+ * @description Removes the "highlight-note" class from the previous highlighted note and writes
+ * the correctNote back into the table.
+ * Generates array of answers with answerGenerator() and writes them to the DOM with
+ * displayAnswers().
+ * Contains the event listener for the check button which calls checkAnswer() on click.
  */
 function fretboardTrainer(){
 
-    // looping through the td elements 
-    for (element of document.getElementsByTagName('td')){
-        // finding the highlighted cell by its class = "highlight-note"
+    // looping through the td elements to remove "highlight-note" class and write the correctNote back to the table
+    for (let element of document.getElementsByTagName('td')){
         if (element.classList.contains("highlight-note")){
-            // removing the "highlight-note" class 
             element.classList.remove("highlight-note");
-            // writing the note back into the table cell (now that the cell is hidden again) 
             element.innerHTML = correctNote;
         }
     }
@@ -54,32 +46,25 @@ function fretboardTrainer(){
     let questionNumber = document.getElementById('question-number');
     questionNumber.innerHTML ++;
 
-    // calling the answerGenerator function once and storing the returned array 
+    // generating and displaying the multi-choice answers 
     let multiChoiceAnswers = answerGenerator();
-    // calling the displayAnswers() function to write the answers to the DOM
     displayAnswers(multiChoiceAnswers);
 
     // 'Check Answer' button event listener to call checkAnswer() on 'click'
     let checkButton = document.getElementById('check-btn');
     checkButton.addEventListener('click', function(){
         checkAnswer(correctNote);
-    })
+    });
 }
  
 /**
  * @name checkAnswer
- * @description Compares the user's choice to the correct answer, displays the appropriate feedback 
- * and if the last question has been answered it displays the score, else it displays the next question.
- * Called by the 'Check Answer' button's click event. 
- * Gets the user's choice from the radio button which is checked.
- * Compares the userChoice to correctNote to define the 'message' and 'outcome' variables.
- * Displays an alert message informing the user if they were right or not and the correct note.
- * Updates the game progress counters by calling countersUpdate(). 
- * Stores the first return value from countersUpdate() whic is true/false.
- * Checks if lastQuestionReached == true and if so, it creates and writes the score message to the DOM and
- * then searches through the td elements and when it finds the cell with the "highlight-note" class,
- * it removes the class and writes back in the value of the correct note.
- * else it calls fretboardTrainer() again.
+ * @description Called by the 'Check Answer' button's click event. 
+ * Compares user's chosen answer to correctNote.
+ * Updates the game progress counters with countersUpdate(). 
+ * Displays the result message and highlights multi-choices red/green.
+ * Creates 'NEXT' button to replace 'CHECK ANSWER' and the event listener for the next button which 
+ * calls nextQuestion() on click.
  * @param correctNote The note which has been highlighted on the fretboard
  */
 function checkAnswer(correctNote){
@@ -88,8 +73,9 @@ function checkAnswer(correctNote){
     let messageStart;
     let outcome;
     let messageEnd;
-    // assigning the appropriate messages depending on if the userChoice matches correctNote
-    if (userChoice == correctNote){
+
+    // assigning the appropriate messages depending on the userChoice
+    if (userChoice === correctNote){
         messageStart = `Congratulations`;
         outcome = `correct`;
         messageEnd = ``;
@@ -99,15 +85,14 @@ function checkAnswer(correctNote){
         messageEnd = ` You chose: ${userChoice}. The correct note is: ${correctNote}`;
     }
 
-    // calling countersUpdate() to update the game progress counters 
+    // updating the game progress counters 
     let countersUpdateReturn = countersUpdate(outcome);
 
-    // writing the user's results message to the answer area <h3>
+    // writing the user's result message to the game play section
     document.getElementById('question-and-result').innerHTML = `${messageStart} thats ${outcome}.${messageEnd}`;
 
-    // highlighting the multichoices red unless they match the value of correctNote
+    // highlighting the multi-choices red except the one that matches the value of correctNote
     for (let note of document.getElementById('game-play').getElementsByTagName('label')){
-
         if (note.innerHTML === correctNote){
             note.classList.add("right-highlight");
         } else {
@@ -126,30 +111,34 @@ function checkAnswer(correctNote){
     }
     document.getElementById('game-play').lastChild.replaceWith(nextBtn);
 
-    // NEXT btn event listener with param: lastQuestionReached
+    // NEXT btn event listener to call nextQuestion() on 'click'
     let nextButton = document.getElementById('next-btn');
     nextButton.addEventListener('click', function(){
         nextQuestion(countersUpdateReturn);
-    })
-    
+    });
 }
 
-
-// function which is triggered by the 'NEXT' button event listener
+/**
+ * @name nextQuestion
+ * @description Called by the 'Next Question' button's click event.
+ * If the last question has been answered, the scoreScreen template literal is 
+ * created and displayed and the highlighted cell is cleared.
+ * Else fretboardTrainer() is called for the next question.
+ * @param countersUpdateReturn containing; lastQuestionReached (true/false), 
+ * Number(right.innerHTML) (how many answers were right) and numberOfQuestions.innerHTML 
+ * (the total number of questions)
+ */
 function nextQuestion(countersUpdateReturn){
-
     
-    // the first return value 'lastQuestionReached' will be true or false
+    // true if last question has been checked
     let lastQuestionReached = countersUpdateReturn[0];
 
-    // checks if the last question has been answered and if so; writes the results message, else it calls fretboard Trainer() again to display the next question
+    // writes the score message if last question reached, else it calls fretboardTrainer() again for next question
     if (lastQuestionReached){
-        // defining the area in the DOM for the score to be written to
-        let answersArea = document.getElementById('game-play');
-        // defining the number of right answers achieved (which is returned as a number)
+        // number of right answers achieved
         let right = countersUpdateReturn[1];
-        // defining the total number of questions from the game
         let totalQuestions = countersUpdateReturn[2];
+        let scoreScreen = document.getElementById('game-play');
         
         // calculating the user's percentage score and setting the class name to style it 
         let percentageScore = Math.round((right/totalQuestions)*100);
@@ -160,25 +149,21 @@ function nextQuestion(countersUpdateReturn){
             resultsClass = "wrong-highlight";
         }
 
-        // writing the score message template literal to the DOM
-        answersArea.innerHTML = `
+        // writing the score message to the DOM
+        scoreScreen.innerHTML = `
         <h3>You completed the game!</h3>
         <p class = ${resultsClass}>You scored: ${right}/${totalQuestions}</p>
         <p class = ${resultsClass}>Percentage score: ${percentageScore}%</p>
         <p>In the settings section click 'RESET GAME' to return to the start screen or 'APPLY & START' to replay with the same settings</p>
         `;
 
-        // looping through the td elements 
-        for (element of document.getElementsByTagName('td')){
-            // finding the highlighted cell by its class = "highlight-note"
+        // removing the "highlight-note" class and writing correctNote back into the highlighted cell
+        for (let element of document.getElementsByTagName('td')){
             if (element.classList.contains("highlight-note")){
-                // removing the "highlight-note" class 
                 element.classList.remove("highlight-note");
-                // writing the note back into the table cell (now that the cell is hidden again) 
                 element.innerHTML = correctNote;
             }
         }
-
     } else {
         fretboardTrainer();
     }
@@ -293,9 +278,9 @@ function displayAnswers(multiChoiceAnswers){
  */
 function answerGenerator(){
     // defining an array contining all the notes, in order, from 'A'
-    allNotes = ['A', 'A#/Bb', 'B', 'C', 'C#/Db', 'D', 'D#/Eb', 'E', 'F', 'F#/Gb', 'G', 'G#/Ab'];
+    let allNotes = ['A', 'A#/Bb', 'B', 'C', 'C#/Db', 'D', 'D#/Eb', 'E', 'F', 'F#/Gb', 'G', 'G#/Ab'];
     // creating an empty array, to contain all the answers in a random order
-    multiChoiceAnswers = [];
+    let multiChoiceAnswers = [];
     // calling highlightRandomCell() to choose and highlight a random cell and return its innerHTML which is the note the user is trying to guess
     correctNote = highlightRandomCell();
 
@@ -370,7 +355,7 @@ function highlightRandomCell(){
     randomNoteContainer.innerHTML = '';
     
     // returns correctNote to answerGenerator()
-    return correctNote
+    return correctNote;
 }
 
 
@@ -424,7 +409,7 @@ function applySettings(){
     let openNoteCells = document.getElementsByClassName('zeroth-fret');
         
     // calling hideOrUnhide() to hide/unhide the open guitar string notes by changing their opacity
-    hideOrUnhide(hideOpenNotes, openNoteCells)
+    hideOrUnhide(hideOpenNotes, openNoteCells);
 
     // --- hide fret numbers setting ---
     // defining a variable with a value depending on whether 'hide-fret-numbers' is checked (true) or not (false)
@@ -433,10 +418,10 @@ function applySettings(){
     let fretNumberCells = document.getElementsByTagName('th');
     
     // calling hideOrUnhide() to hide/unhide the fret numbers by changing their opacity
-    hideOrUnhide(hideFretNumbers, fretNumberCells)
+    hideOrUnhide(hideFretNumbers, fretNumberCells);
 
     // calling fretboardTrainer() to display the first question 
-    fretboardTrainer()
+    fretboardTrainer();
 }
 
 /**
