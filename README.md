@@ -94,7 +94,7 @@ This site provides a quick and easy way for guitarists, with different levels of
 
 ### Styling 
 The styling and layout of the game remains consistent throughout the sections, making it more intuative for the user to interact with and understand the purpose of each section.
-* Colour scheme: I chose a dark teal (#2f6168) for the main colour of the game, an orange (#ff8c3f) accent colour throughout the different sections and kept a white background behind the sections and fretboard diagram and white text for the instructional messages, for good contrast.
+* Colour scheme: I chose a dark teal (#2f6168) for the main colour of the game, an pale blue (#a9dce4) accent colour throughout the different sections and kept a white background behind the sections and fretboard diagram and white text for the instructional messages, for good contrast.
 * Fonts: 
     * Google Font's 'Titillium Web' for all the headings (h1, h2 and h3 elements).
     * Google Font's 'Dosis' for all of the other text on the screen (Instructions, scores, settings, questions and counters).
@@ -175,16 +175,17 @@ The styling and layout of the game remains consistent throughout the sections, m
 
 ### Lighthouse Accessability score
 
-![Screenshot of Google Dev Tool's Lighthouse Score for my website](#image-location "Google Dev Tool's Lighthouse Score for my website") 
+![Screenshot of Google Dev Tool's Lighthouse Score for my website](./assets/images/lighthouse-score.jpg "Google Dev Tool's Lighthouse Score for my website") 
 
 ### Bugs and Fixes
-* I used the 'select' element for the 'Number of questions' and 'Number of Answers' settings to limit the user's options to the most reasonable ones so that the user doesn't have to type in their own value and can't choose a value which would cause an error.
-    * its fix ...
-* Lighthouse in Google's Dev Tools, highlighted a contrast issue with the orange that was being used as an accent colour
-    * its fix ...
+* The datalist element that I was using in the Game Settings section allowed the user to enter their own values, which could have caused values to be entered which would break the game.
+    * So I used the 'select' element for the 'Number of questions' and 'Number of Answers' settings to limit the user's options to the most reasonable ones so that the user doesn't have to type in their own value and can't choose a value which would cause an error.
+* Lighthouse in Google's Dev Tools, highlighted a contrast issue with the orange that was being used as an accent colour and the background of the section.
+    * So I changed this orange colour for a pale blue (#a9dce4) which had a much better contrast ratio with the dark teal and increased my Lighthouse accessability score.
 
 ### Unfixed bugs
-* SHOULD BE: No unfixed bugs
+* No unfixed bugs
+
 
 ## Deployment
 ---
