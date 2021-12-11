@@ -37,56 +37,72 @@ This site provides a quick and easy way for guitarists, with different levels of
 * How to adjust the game:
     * The controls in the Game Settings section can be adjusted to affect the difficult of the game.
 
-## Features (add screenshots)
+## Features
 ---
 
-### Header
-* [image]
-* Heading and guitar icon
-
 ### Favicon
-* [image]
-* same as the guitar icon in the header 
+![Fretboard Trainer site favicon](./assets/images/favicon.jpg "Fretboard Trainer site favicon screenshot")
+* Using the same icon as the guitar in the site header.
+
+### Header
+![Fretboard Trainer site header](./assets/images/site-header.jpg "Fretboard Trainer site header screenshot")
+* Containing the site name and guitar icon.
 
 ### The fretboard
-* [image]
-* open string notes
-* fret numbers 
-* [image shows highlight]
-* strings where the random note is highlighted 
+![Fretboard Trainer site fretboard](./assets/images/fretboard.jpg "Fretboard Trainer site fretboard screenshot")
+* The fret numbers are displayed along the fretboard.
+* The open string notes are displayed in the 0th fret.
+
+![Fretboard Trainer site fretboard with highlighted note](./assets/images/highlighted-note.jpg "Fretboard Trainer site fretboard with highlighted note screenshot")
+* For each question, a random note will be highlighted along one of the strings as shown above.
 
 ### Game Settings section
-* [image whole]
-* Instructions/warnings [image]
-    * None of the settings have to be used as there are set defaults so the user can start playing right away.
-* Adjustable settings [image example of what they affect]
-    * 'Number of questions' dropdown list
-    * 'Number of answers' dropdown list
-    * 'Hide open string notes' checkbox
-    * 'Hide fret numbers' checkbox
-* APPLY & START button [image]
-* RESET GAME button [image]
+![Fretboard Trainer game settings section](./assets/images/game-settings.jpg "Fretboard Trainer game settings section screenshot")
+* Contain warning about applying the settings causing current game progress to be lost.
+* None of the settings have to be used as there are set defaults so the user can start playing right away.
+
+![Fretboard Trainer number of questions setting](./assets/images/questions-setting.jpg "Fretboard Trainer number of questions setting screenshot")
+![Fretboard Trainer number of questions counter](./assets/images/question-counter-change.jpg "Fretboard Trainer number of questions counter screenshot")
+* 'Number of questions' dropdown list, which affects the question counter in the Game Progress section.
+
+![Fretboard Trainer number of answers setting](./assets/images/answers-setting.jpg "Fretboard Trainer number of answers setting screenshot")
+![Fretboard Trainer number of answers displayed](./assets/images/answer-number-change.jpg "Fretboard Trainer number of answers displayed screenshot")
+* 'Number of answers' dropdown list, which affects the number of multiple choice answers to choose from in the Game Play section.
+
+![Fretboard Trainer checkbox settings](./assets/images/checkbox-settings.jpg "Fretboard Trainer checkbox settings screenshot")
+![Fretboard Trainer hide open notes and fret numbers](./assets/images/checkboxes-change.jpg "Fretboard Trainer hide open notes and fret numbers screenshot")
+* 'Hide open string notes' and 'Hide fret numbers' checkboxes, which hide the hide open notes and fret numbers respectively.
+
+![Fretboard Trainer settings buttons](./assets/images/settings-buttons.jpg "Fretboard Trainer settings buttons screenshot")
+* APPLY & START and RESET GAME buttons which apply settings and start the game, and reset the game to default settings and return to the instructions screen, respectively.
+* On hover, the buttons highlight pale blue as shown.
 
 ### Game Play section
-* Instructions screen [image]
-* Questions Screen [image]
-* Answer Check Screen [image] 
-    * message
-    * red/green highlights
-* Score Screen [image]
-    * fraction and percentage scores
-    * highlight red/green for 50% or over
-    * instructional message for continuing
+![Fretboard Trainer game play instructions screen](./assets/images/game-play.jpg "Fretboard Trainer game play instructions screen screenshot")
+* Instructions screen, explaining how to play the game and adjust the settings.
+
+![Fretboard Trainer game play question screen](./assets/images/question-screen.jpg "Fretboard Trainer game play question screen screenshot")
+* Questions screen, asking the question, displaying the multi-choice answers and automatically checking the first radio input so that one radio input must be selected.
+
+![Fretboard Trainer game play check wrong screen](./assets/images/wrong-answer.jpg "Fretboard Trainer game play check wrong screen screenshot")
+![Fretboard Trainer game play check right screen](./assets/images/right-answer.jpg "Fretboard Trainer game play check screen right screenshot")
+* Answer Check screen, informing the user if their selection was correct or not and highlighting the correct note in green, while the rest are highlighted red.
+
+![Fretboard Trainer game play score screen green](./assets/images/score-screen-green.jpg "Fretboard Trainer game play score screen green screenshot")
+![Fretboard Trainer game play score screen red](./assets/images/score-screen-red.jpg "Fretboard Trainer game play score screen red screenshot")
+* Score Screen, displaying the user's score as a fraction and a percentage and highlighting it in green if they score 50% or more and red otherwise.
+* Also includes instructions for how to pla the game again.
 
 ### Game Progress section
-* [image]
-* Question counter 
-    * Out of 10 by default
-    * Can be adjusted by Game Settings
-    * Is used to trigger the score screen
-* Right/wrong counters
-    * Set to 0 initially 
-    * Are updated when the Answer Check Screen is displayed 
+![Fretboard Trainer game progress section](./assets/images/game-progress.jpg "Fretboard Trainer game progress section screenshot")
+* Question counter: 
+    * is out of 10 by default
+    * can be adjusted by Game Settings
+    * updates everytime a new question is displayed
+    * is used to trigger the Score screen
+* Right/wrong counters:
+    * initially set to 0 
+    * update when the Answer Check Screen is displayed 
 
 
 ## User Experience Design (change colours for contrast??)
