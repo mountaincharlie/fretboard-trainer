@@ -85,22 +85,25 @@ function fretboardTrainer(){
 function checkAnswer(correctNote){
     // getting the users choice
     let userChoice = document.querySelector('input[name = "choice"]:checked').value;
-    let message;
+    let messageStart;
     let outcome;
+    let messageEnd;
     // assigning the appropriate messages depending on if the userChoice matches correctNote
     if (userChoice == correctNote){
-        message = `Congratulations`;
+        messageStart = `Congratulations`;
         outcome = `correct`;
+        messageEnd = ``;
     } else {
-        message = `Sorry`;
+        messageStart = `Sorry`;
         outcome = `incorrect`;
+        messageEnd = ` You chose: ${userChoice}. The correct note is: ${correctNote}`;
     }
 
     // calling countersUpdate() to update the game progress counters 
     let countersUpdateReturn = countersUpdate(outcome);
 
-    // writing the user's results message to the answer area <h4>
-    document.getElementById('question-and-result').innerHTML = `${message} thats ${outcome}. \nYou chose: ${userChoice}. \nThe correct note is: ${correctNote}`;
+    // writing the user's results message to the answer area <h3>
+    document.getElementById('question-and-result').innerHTML = `${messageStart} thats ${outcome}.${messageEnd}`;
 
     // highlighting the multichoices red unless they match the value of correctNote
     for (let note of document.getElementById('multi-choice-area').getElementsByTagName('label')){
@@ -159,7 +162,7 @@ function nextQuestion(countersUpdateReturn){
 
         // writing the score message template literal to the DOM
         answersArea.innerHTML = `
-        <h4>You completed the game!</h4>
+        <h3>You completed the game!</h3>
         <p class = ${resultsClass}>You scored: ${right}/${totalQuestions}</p>
         <p class = ${resultsClass}>Percentage score: ${percentageScore}%</p>
         <p>In the settings section click 'RESET GAME' to return to the start screen or 'APPLY & START' to replay with the same settings</p>
@@ -237,7 +240,7 @@ function countersUpdate(outcome){
 function displayAnswers(multiChoiceAnswers){
     // defining the first part of the template literal with the question and first answer option with checked radio button  
     let allMultiChoices = `
-    <h4 id = "question-and-result">Which note is highlighted on the fretboard?</h4>
+    <h3 id = "question-and-result">Which note is highlighted on the fretboard?</h3>
     <div>
         <label for = "choice${1}">${multiChoiceAnswers[0]}</label>
         <input type = "radio" name = "choice" id = "choice${1}" value = "${multiChoiceAnswers[0]}" checked>
