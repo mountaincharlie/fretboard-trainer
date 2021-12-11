@@ -96,7 +96,7 @@ This site provides a quick and easy way for guitarists, with different levels of
 The styling and layout of the game remains consistent throughout the sections, making it more intuative for the user to interact with and understand the purpose of each section.
 * Colour scheme: I chose a dark teal (#2f6168) for the main colour of the game, an orange (#ff8c3f) accent colour throughout the different sections and kept a white background behind the sections and fretboard diagram and white text for the instructional messages, for good contrast.
 * Fonts: 
-    * Google Font's 'Titillium Web' for all the headings (h1, h2 and h4 elements).
+    * Google Font's 'Titillium Web' for all the headings (h1, h2 and h3 elements).
     * Google Font's 'Dosis' for all of the other text on the screen (Instructions, scores, settings, questions and counters).
 * Icons:
     * Icon8's 'Guitar icon in Pastel Glyph Style' as an icon with the Fretboard Trainer logo next in the game heading.
@@ -198,38 +198,22 @@ The styling and layout of the game remains consistent throughout the sections, m
 ### Live website link
 * <a href = "https://mountaincharlie.github.io/project-two-fretboard-trainer/">Fretboard Trainer</a>
 
-### To do:
-
-### Deployment Process on GitHub
-* How you diployed it with GitHub Pages 
-* ...
-
-### Live website link
-* link to live website
 
 ## Credits
 ---
 
-### To do:
-
-### External Code:
-* anything used from external sources ??
-
-### Research on ...
-* anything you did research on for the site ??
-
 ### Page styling
-* Google fonts links ??
-* Colour pallette links ??
-
+* To apply Border-box box sizing to the whole document: 
+    * <a href="https://css-tricks.com/box-sizing/#universal-box-sizing">'Universal Box Sizing with Inheritance'</a> 
+* Google fonts:
+    * <a href="https://fonts.google.com/specimen/Titillium+Web?query=Titillium+Web">Titillium Web</a> for all the headings (h1, h2 and h3 elements).
+    * <a href="https://fonts.google.com/specimen/Dosis?query=dosis">Dosis</a> for all other text on the site.
+    * Pairing reccommended by Lou Levit in <a href="https://www.reliablepsd.com/ultimate-google-font-pairings/">The Ultimate Collection of Google Font Pairings</a> (number 31).
+    
 ### Icons
-* any icons used ??
+* <a href="https://icons8.com/icon/110433/guitar">'Guitar icon in Pastel Glyph Style' by Icons8</a> used as an icon in the header and made into a Favicon.
+* <a href="https://favicon.io/favicon-converter/">Favicon Converter</a> used to create the favicon from the Icons8 guitar icon.
 
-### Images
-* any images used ??
-
-### Page content
-* anything you used particularly for page content ??
 
 ##  Site Expansion Ideas
 ---
