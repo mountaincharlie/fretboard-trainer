@@ -63,7 +63,7 @@ This site provides a quick and easy way for guitarists, with different levels of
 
 ### Game Settings section
 ![Fretboard Trainer game settings section](./assets/images/game-settings.jpg "Fretboard Trainer game settings section screenshot")
-* Contain warning about applying the settings causing current game progress to be lost.
+* Contains a warning about applying the settings causing current game progress to be lost.
 * None of the settings have to be used as there are set defaults so the user can start playing right away.
 
 ![Fretboard Trainer number of questions setting](./assets/images/questions-setting.jpg "Fretboard Trainer number of questions setting screenshot")
@@ -76,7 +76,7 @@ This site provides a quick and easy way for guitarists, with different levels of
 
 ![Fretboard Trainer checkbox settings](./assets/images/checkbox-settings.jpg "Fretboard Trainer checkbox settings screenshot")
 ![Fretboard Trainer hide open notes and fret numbers](./assets/images/checkboxes-change.jpg "Fretboard Trainer hide open notes and fret numbers screenshot")
-* 'Hide open string notes' and 'Hide fret numbers' checkboxes, which hide the hide open notes and fret numbers respectively.
+* 'Hide open string notes' and 'Hide fret numbers' checkboxes, which hide the open notes and fret numbers respectively.
 
 ![Fretboard Trainer settings buttons](./assets/images/settings-buttons.jpg "Fretboard Trainer settings buttons screenshot")
 * APPLY & START and RESET GAME buttons which apply settings and start the game, and reset the game to default settings and return to the instructions screen, respectively.
