@@ -326,33 +326,23 @@ function highlightRandomCell(){
     return correctNote;
 }
 
-
-
-
-// [IMPORT] function for choosing a random number between 0 and a maximum value (takes highest possible value and an offset of 0 or 1)
 /**
  * @name randomNumber
  * @description multiplies a random number between 0 and 1 by the highest possible value and then takes the highest integer 
- * from this value + an offset value.
+ * from this value + an offset value if required.
  * Called by answerGenerator() and highlightRandomCell().
  * @returns a random number (considering the highest value to find a random number between and the offset value)
  */
 function randomNumber(highest, offset){
-    // multiplies a random number between 0 and 1 by the highest possible value and then takes the highest integer from this value + an offset value
     return Math.floor(Math.random() * highest) + offset; 
 }
 
-
-
-
-
 /**
  * @name applySettings
- * @description Resets the counter values, applies the settings (user's or default) and calls the first question.
- * Called by the Event Listener on the applyButton.
- * Resets the counter values for; question number, right answers and wrong answers.
- * For the necessary settings, it extracts the value and uses it to write to or affect elemnts in the DOM before 
- * calling fretboardTrainer() to display the first question.
+ * @description Called by the Event Listener on the applyButton. 
+ * Resets the counter values, applies the settings (user's or default) and calls the first question.
+ * For the necessary settings, it extracts the value and uses it to write to or affect elements in 
+ * the DOM before calling fretboardTrainer() to display the first question.
  */
 function applySettings(){
     // resetting the counter values for; question number, right answers and wrong answers
@@ -361,31 +351,27 @@ function applySettings(){
     document.getElementById('wrong-ans').innerHTML = 0;
 
     // --- total number of questions setting ---
-    // defining a variable with the value from the 'total-questions' select element (user's choice or the default)
     let totalQuestionsSelection = document.getElementById('total-questions').value; 
-    // defining a variable with the container for the number of questions 
     let numberOfQuestions = document.getElementById('number-of-questions');
-    // calling selectElementOptions() to ensure that totalQuestionsSelection is a number
+    // ensuring totalQuestionsSelection is a number and writing the number of questions to the DOM
     totalQuestionsSelection = selectElementOptions(totalQuestionsSelection); 
-    // writing the number of questions to the DOM 
     numberOfQuestions.innerHTML = totalQuestionsSelection;
 
     // --- hide open string notes setting ---
-    // defining a variable with a value depending on whether 'hide-open-notes' is checked (true) or not (false)
+    // if checkbox is checked (true) if not (false)
     let hideOpenNotes = document.getElementById('hide-open-notes').checked;
-    // defining a variable with a HTMLCollection of all of the elements containing zeroth fret notes
     let openNoteCells = document.getElementsByClassName('zeroth-fret');
         
-    // calling hideOrUnhide() to hide/unhide the open guitar string notes by changing their opacity
+    // hide/unhide the open guitar string notes by changing their opacity with hideOrUnhide() 
     hideOrUnhide(hideOpenNotes, openNoteCells);
 
     // --- hide fret numbers setting ---
-    // defining a variable with a value depending on whether 'hide-fret-numbers' is checked (true) or not (false)
+    // if checkbox is checked (true) if not (false)
     let hideFretNumbers = document.getElementById('hide-fret-numbers').checked;
-    // defining a variable with aHTMLCollection of all of the elements containing fret numbers
+    // all of the elements containing fret numbers
     let fretNumberCells = document.getElementsByTagName('th');
     
-    // calling hideOrUnhide() to hide/unhide the fret numbers by changing their opacity
+    // hide/unhide fret numbers by changing their opacity with hideOrUnhide()
     hideOrUnhide(hideFretNumbers, fretNumberCells);
 
     // calling fretboardTrainer() to display the first question 
@@ -401,20 +387,16 @@ function applySettings(){
  */
 function selectElementOptions(total){
 
-    // cutting out the '(default)' string from the default value
     if (total.length > 2){
         total = total.substring(0, 2);
     }
 
-    // returning the total value as a number
     return Number(total);  
 }
 
 /**
  * @name hideOrUnhide
- * @description Cuts the '(default)' string from the chekbox option which is the default.
- * Called by applySettings().
- * Defines an opacity variable to be assigned to.
+ * @description Called by applySettings().
  * Sets opacity a value of '0' or '1' depending on if the checkbox is ticked (true) or not (false).
  * Loops through the HTMLCollection to apply the opacity value to the opacity style for each element.
  * @param hide true/false value used to determine the opacity value
