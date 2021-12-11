@@ -25,13 +25,12 @@
     <body>
         <!-- icon credit: <a href="https://icons8.com/icon/110433/guitar">Guitar icon by Icons8</a> -->
         <header>
-            <img src="https://img.icons8.com/pastel-glyph/40/ff8c3f/guitar--v1.png" alt = "Guitar logo"> 
+            <img src="https://img.icons8.com/pastel-glyph/40/ff8c3f/guitar--v1.png" alt = "guitar logo"> 
             <h1>Fretboard Trainer</h1>
         </header>
         
         <!-- container for fretboard diagram (html table) -->
-        <div class = "fretboard-area">
-
+        <div class = "fretboard-area" aria-label = "guitar fretboard">
             <table>
                 <!-- fret numbers -->
                 <tr>
@@ -150,7 +149,7 @@
 
         <main class = "sections-holder">
             <!-- container for user options section (float left) -->
-            <section id = "user-options-area" class = "three-sections">
+            <section id = "user-options-area" class = "three-sections" aria-label = "Game Settings section">
 
                 <h2>Game Settings</h2>
     
@@ -207,7 +206,7 @@
             </section>
 
             <!-- container for multi choice answers (center) -->
-            <section id = "multi-choice-area" class = "three-sections">
+            <section id = "multi-choice-area" class = "three-sections" aria-label = "Game Play section">
 
                 <h2>Welcome to the Fretboard Trainer!</h2>
 
@@ -235,7 +234,7 @@
 
             <!-- container for question and right/wrong counters (float right) -->
             <!-- counter class for styling and ids for writing the js to -->
-            <section id = "counter-area" class = "three-sections">
+            <section id = "counter-area" class = "three-sections" aria-label = "Game Progress section">
 
                 <h2>Game Progress</h2>
 
