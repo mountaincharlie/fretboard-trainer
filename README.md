@@ -170,25 +170,26 @@ The styling and layout of the game remains consistent throughout the sections, m
 * Added the alt attribute to the logo image incase the image failed to loads and to increase screen reader accessability.
 
 
-## Testing (to do)
+## Testing
 ---
 
-### ??? HTML & CSS validator warnings and fixes
-* any warnings that come up and how you fixed them
-
 ### HTML Validation in Offical W3C Validator
-* SHOULD BE: No errors or warnings
-* LINK TO THE 'by url'
+
+* No errors or warnings
+* <a href = "https://validator.w3.org/nu/?doc=https%3A%2F%2Fmountaincharlie.github.io%2Fproject-two-fretboard-trainer%2F">Link to validator results</a>
 
 ### CSS Validation in Offical Jigsaw Validator
-* SHOULD BE: No errors or warnings
-* LINK TO THE 'by url'
+
+* No errors or warnings
+* <a href = "https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fmountaincharlie.github.io%2Fproject-two-fretboard-trainer%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en">Link to validator results</a>
 
 ### JS Check in JSHint
-* SHOULD BE: No errors or warnings
+* No errors or warnings
 * Metrics avaliable:
-    * 
-* LINK IF ONE AVALIABLE
+    * There are 16 functions in this file
+    * Function with the largest signature take 2 arguments, while the median is 0
+    * Largest function has 26 statements in it, while the median is 6.5
+    * The most complex function has a cyclomatic complexity value of 5 while the median is 1.5
 
 ### Lighthouse Accessability score
 
