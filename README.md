@@ -105,6 +105,7 @@ The styling and layout of the game remains consistent throughout the sections, m
 * The central Game Play section:
     * contains clear instructions for the game and the other two sections (Game Settings and Game Progress) to ensure the user understands the purpose of the site and the functions of each section as soon as they land on the page. 
     * this section displays the Instructions screen, Check Answer screen and Score screen each with clear feedback for the user and buttons labelled specific to their function (e.g. the 'CHECK ANSWER' button to check if the right answer was selected or the 'NEXT QUESTION' button to generate and display the next question).
+    * default values are applied so that the user doesn't have to adjust any settings and can get started with the game straight away.
 * The Game Settings section:
     * remains unchanged during the game, but can be accessed by the user at any point. 
     * dropdown boxes and checkboxes have been used instead of free typing inputs for the user. This is to both make it simpler and quicker for the user to adjust settings and also prevents the user inputting values which would break the game.
@@ -113,40 +114,36 @@ The styling and layout of the game remains consistent throughout the sections, m
     * they are also styled to fit with the rest of the site, but differently enough from the buttons so that the user doesn't confuse them as something that can be clicked.
 
 
-## Interactivity
+## Accessability (finish)
 ---
-
-### To do:
-* breakdown all the interactivity and how the JS makes it possible (INCLUDE SCREENSHOTS)
-    * Default settings
-    * User settings (how they override the defaults - Number of questions, number of answers, hide open notes and hide fret numbers)
-    * Fret check button (which shows the notes - IF YOU INCLUDE IT - and why it disables the game etc)
-    * Answers section 
-    * Counter section (how it updates and is affect by default/user settings and IF YOU INCLUDE THE PLOT PROGRESS button)
-
-## Accessability
----
-
-### To do:
 
 ### Semantic elements
-* which elements u used to define the strcuture of the page
+* Header:
+    * containing site logo; the guitar icon and site name.
+* Headings:
+    * applied in the appropriate order (h1, h2 ...).
+* Main element:
+    * wrapped around the three games sections, which make up the main content of the page. 
+* Section elements:
+    * for the three game sections, which each have their own h2 headings at the start of their content.
+* Button elements:
+    * for the buttons used across the sections, which also have descriptive text content.
+* Checkbox and Select elements:
+    * for the settings instead of creating any custom controls which may have unclear meaning.
 
 ### Aria-labels
-* IS IT POSSIBLE FOR THE SCREEN READER TO READ OUT THE LOCATION OF THE HIGHLIGHTED NOTE?    
-* to internal/external links ??
-* to inputs which display text which may not be interactive ??
+* Added to the three game sections and the fretboard's div container, to make their purpose clearer.
 
 ### Attributes
-* alts added to image elements
-* any role attributes used (on divs, spans, or anything none semantic)
+* Added the alt attribute to the logo image incase the image failed to loads and to increase screen reader accessability.
+
 
 ## Testing
 ---
 
 ### To do:
 
-### HTML & CSS validator warnings and fixes
+### ??? HTML & CSS validator warnings and fixes
 * any warnings that come up and how you fixed them
 
 ### HTML Validation in Offical W3C Validator
@@ -159,6 +156,8 @@ The styling and layout of the game remains consistent throughout the sections, m
 
 ### JS Check in JSHint
 * SHOULD BE: No errors or warnings
+* Metrics avaliable:
+    * 
 * LINK IF ONE AVALIABLE
 
 ### Lighthouse Accessability score
