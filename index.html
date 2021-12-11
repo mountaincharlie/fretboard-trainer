@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 
 <html lang="en">
-    <!-- head section -->
     <head>
         <!-- metadata elements -->
         <meta charset = "UTF-8"> 
@@ -21,9 +20,8 @@
         <title>Fretboard Trainer</title>
     </head>
 
-    <!-- body section -->
     <body>
-        <!-- icon credit: <a href="https://icons8.com/icon/110433/guitar">Guitar icon by Icons8</a> -->
+        <!-- site logo with the heading and guitar icon -->
         <header>
             <img src="https://img.icons8.com/pastel-glyph/40/a9dce4/guitar--v1.png" alt = "guitar logo"> 
             <h1>Fretboard Trainer</h1>
@@ -51,7 +49,7 @@
                 <!-- high e string -->
                 <tr id = "eHighStr" class = "no-border-right">
                     <td class = "zeroth-fret">e</td>
-                    <td >F</td> <!-- could name: id = "eHighStr01" -->
+                    <td>F</td>
                     <td>F#/Gb</td>
                     <td>G</td>
                     <td>G#/Ab</td>
@@ -147,16 +145,19 @@
             </table>
         </div>
 
+        <!-- container for the three game sections -->
         <main class = "sections-holder">
-            <!-- container for user options section (float left) -->
-            <section id = "user-options-area" class = "three-sections" aria-label = "Game Settings section">
+
+            <!-- container for Game Settings section -->
+            <section id = "game-settings" class = "three-sections" aria-label = "Game Settings section">
 
                 <h2>Game Settings</h2>
-    
                 <p>Applying settings changes will restart the game</p>
 
+                <!-- container for the adjustable settings -->
                 <div class = "section-content">
-                    <!-- Total number of questions in the game -->
+
+                    <!-- total number of questions in the game dropdown -->
                     <span>
                         <label for = "total-questions">Number of questions:</label>
                         <select id = "total-questions">
@@ -169,7 +170,7 @@
                         </select>
                     </span>
                     
-                    <!-- Total number of multi-choice answers to display -->
+                    <!-- total number of multi-choice answers to display dropdown -->
                     <span>
                         <label for = "total-multi-choices">Number of answers:</label>
                         <select id = "total-multi-choices">
@@ -177,11 +178,11 @@
                             <option value = "6">6</option>
                             <option value = "8">8</option>
                             <option value = "10">10</option>
-                            <option value = "12">12</option> <!-- max number of different notes -->
+                            <option value = "12">12</option>
                         </select>
                     </span>
                     
-                        <!-- checkbox to hide the open string notes in the fretboard table -->
+                    <!-- checkbox to hide the open string notes in the fretboard table -->
                     <span>
                         <label for = "hide-open-notes">Hide open string notes</label>
                         <input type = "checkbox" name = "hide-open-notes" id = "hide-open-notes">
@@ -192,21 +193,18 @@
                         <label for = "hide-fret-numbers">Hide fret numbers</label>
                         <input type = "checkbox" name = "hide-fret-numbers" id = "hide-fret-numbers">
                     </span>
-
                 </div>
 
                 <p>(Clicking the below options will cause any game progress to be lost)</p>
 
-                <!-- apply options button -->
+                <!-- apply & start button -->
                 <button id = "apply-btn" class = "btn" aria-label = "Apply settings and start game">Apply & Start</button>
-
                 <!-- re-setting to default settings (reloads page) -->
                 <button id = "reset-btn" class = "btn" aria-label = "Reset game to default settings">Reset Game</button>
-                
             </section>
 
-            <!-- container for multi choice answers (center) -->
-            <section id = "multi-choice-area" class = "three-sections" aria-label = "Game Play section">
+            <!-- container for Game Play section -->
+            <section id = "game-play" class = "three-sections" aria-label = "Game Play section">
 
                 <h2>Welcome to the Fretboard Trainer!</h2>
 
@@ -228,13 +226,12 @@
                     (Note: Applying any new settings will reset the game and your current progress will be lost)
                 </p>
                 
+                <!-- start game button -->
                 <button id = "start-btn" class = "btn">Start Game</button>
-                
             </section>
 
-            <!-- container for question and right/wrong counters (float right) -->
-            <!-- counter class for styling and ids for writing the js to -->
-            <section id = "counter-area" class = "three-sections" aria-label = "Game Progress section">
+            <!-- container for Game Progress section -->
+            <section id = "game-progress" class = "three-sections" aria-label = "Game Progress section">
 
                 <h2>Game Progress</h2>
 
@@ -245,14 +242,10 @@
     
                     <p class = "counters">Wrong: <span id = "wrong-ans">0</span></p>
                 </div>
-
-                
-    
             </section>
         </main>
 
         <!-- linked js file -->
         <script src = "./assets/js/script.js"></script>
     </body>
-
 </html>

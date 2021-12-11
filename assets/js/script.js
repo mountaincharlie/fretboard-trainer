@@ -106,7 +106,7 @@ function checkAnswer(correctNote){
     document.getElementById('question-and-result').innerHTML = `${messageStart} thats ${outcome}.${messageEnd}`;
 
     // highlighting the multichoices red unless they match the value of correctNote
-    for (let note of document.getElementById('multi-choice-area').getElementsByTagName('label')){
+    for (let note of document.getElementById('game-play').getElementsByTagName('label')){
 
         if (note.innerHTML === correctNote){
             note.classList.add("right-highlight");
@@ -124,7 +124,7 @@ function checkAnswer(correctNote){
     } else {
         nextBtn.innerHTML = 'Next Question';
     }
-    document.getElementById('multi-choice-area').lastChild.replaceWith(nextBtn);
+    document.getElementById('game-play').lastChild.replaceWith(nextBtn);
 
     // NEXT btn event listener with param: lastQuestionReached
     let nextButton = document.getElementById('next-btn');
@@ -145,7 +145,7 @@ function nextQuestion(countersUpdateReturn){
     // checks if the last question has been answered and if so; writes the results message, else it calls fretboard Trainer() again to display the next question
     if (lastQuestionReached){
         // defining the area in the DOM for the score to be written to
-        let answersArea = document.getElementById('multi-choice-area');
+        let answersArea = document.getElementById('game-play');
         // defining the number of right answers achieved (which is returned as a number)
         let right = countersUpdateReturn[1];
         // defining the total number of questions from the game
@@ -227,14 +227,14 @@ function countersUpdate(outcome){
 /**
  * @name displayAnswers
  * @description Creates a template literal with the question, randomised answers with radio buttons and the 'check'
- * button which is then written to the 'multi-choice-area' in the DOM.
+ * button which is then written to the 'game-play' in the DOM.
  * Called by fretboardTrainer().
  * Creates the first part of the template literal with the question and first answer option with checked radio button.
  * Create a variable to store each note from the multiChoiceAnswers array, in the loop.
  * Looping through the length of multiChoiceAnswers to create the template litetral for each answer and add it to the 
  * variable continaing the template literal.
  * Adds the 'check' button in a template literal to the end of the variable.
- * Writes the template literal to the 'multi-choice-area' in the DOM.
+ * Writes the template literal to the 'game-play' in the DOM.
  * @param multiChoiceAnswers array of randomly generated answers containing the correct answer.
  */
 function displayAnswers(multiChoiceAnswers){
@@ -266,8 +266,8 @@ function displayAnswers(multiChoiceAnswers){
     // adding the check button to the end of the template literal
     allMultiChoices += `<button id = "check-btn" class = "btn">Check Answer</button>`;
 
-    // writing everything to 'multi-choice-area' in the DOM
-    document.getElementById('multi-choice-area').innerHTML = allMultiChoices;
+    // writing everything to 'game-play' in the DOM
+    document.getElementById('game-play').innerHTML = allMultiChoices;
 }
 
 /**

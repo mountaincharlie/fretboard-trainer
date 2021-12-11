@@ -105,7 +105,7 @@ header{
 }
 
 /* container for user options section */
-#user-options-area{
+#game-settings{
     width:25%;
 }
 
@@ -116,7 +116,7 @@ h2{
 }
 
 /* user options area input div - centralise the content (use flexbox?) */
-#user-options-area #settings{
+#game-settings #settings{
     line-height:1.7em;
     padding-top:3%;
 }
@@ -127,31 +127,31 @@ h2{
 }
 
 /* container for multi choice answers (center) */
-#multi-choice-area{
+#game-play{
     width:50%;
 }
 
-#multi-choice-area h3{
+#game-play h3{
     color:#A9DCE4;
     margin: 10px 0 5px 0;
     padding: 0;
 }
 
-#multi-choice-area ol{
+#game-play ol{
     margin: 0;
     margin-bottom: 5%;
     padding-left: 20px;
     line-height: 200%;
 }
 
-#multi-choice-area p{
+#game-play p{
     line-height: 200%;
     margin-bottom: 5%;
 
 }
 
 /* container for question and right/wrong counters */
-#counter-area{
+#game-progress{
     width:25%;
 }
 
@@ -312,7 +312,7 @@ select{
     }
 
     /* container for user options section */
-    #user-options-area{
+    #game-settings{
         width:25%;
         /* font-size: normal; */
     }
@@ -344,13 +344,13 @@ select{
     }
 
     /* ol and p in multi-choice area */
-    #multi-choice-area ol{
+    #game-play ol{
         margin-bottom: 2%;
         /* padding-left: 20px; */
         line-height: 150%;
     }
     
-    #multi-choice-area p{
+    #game-play p{
         line-height: 150%;
         margin-bottom: 2%;
     
@@ -382,14 +382,14 @@ select{
         height: auto;
     }
 
-    #multi-choice-area{
+    #game-play{
         margin: 1% 1% 0 1%;
         width:auto;
         min-height: 30vh;
         order:1;
     }
 
-    #counter-area{
+    #game-progress{
         margin: 1% 1% 0 1%;
         /* width:100%; */
         width:auto;
@@ -397,7 +397,7 @@ select{
         order:2;
     }
 
-    #user-options-area{
+    #game-settings{
         margin: 1%;
         width:auto;
         height: auto;
@@ -407,7 +407,7 @@ select{
         /* flex-direction: column; */
     }
 
-    #counter-area .section-content{
+    #game-progress .section-content{
         /* width: 100%; */
         /* display:flex; */
         flex-direction: row;
