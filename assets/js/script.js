@@ -171,29 +171,25 @@ function nextQuestion(countersUpdateReturn){
 
 /**
  * @name countersUpdate
- * @description Checks the value of 'outcome' inorder to update the right or wrong counter, checks if the last 
- * question has been answered and if so sets lastQuestionReached as true, else updates the question counter by one.
- * Called by checkAnswer().
- * Gets the elements containing the right and wrong counters, from the DOM.
- * Gets the elements containing the current questions number and the total number of questions, from the DOM.
- * Sets the lastQuestionReached as undefined (falsy).
- * Updates the innerHTML of the right or wrong counter, in the DOM, depending on 'outcome'.
- * If the last question has been answered, lastQuestionReached = true, else the question number increases by one.
+ * @description Called by checkAnswer().
+ * Checks the value of 'outcome' to update the right or wrong counter.
+ * Sets lastQuestionReached as true if the last question has been reached.
+ * Else adds 1 to the question counter.
  * @param outcome String containing `correct` or `incorrect` 
  * @returns [lastQuestionReached, Number(right.innerHTML), numberOfQuestions.innerHTML] 
  */
 function countersUpdate(outcome){
-    // getting the elements containing the right and wrong counters, from the DOM
+    // getting the elements containing the right and wrong counters
     let right = document.getElementById('right-ans');
     let wrong = document.getElementById('wrong-ans');
 
-    // getting the elements containing the current questions number and the total number of questions, from the DOM
+    // getting the elements containing the current questions number and the total number of questions
     let questionNumber = document.getElementById('question-number');
     let numberOfQuestions = document.getElementById('number-of-questions');
-    // the lastQuestionReached variable is falsy until the last question is completed and it is give a value of 'true'
+    // lastQuestionReached is falsy until the last question is completed and it is give a value of 'true'
     let lastQuestionReached;
 
-    // updating the innerHTML of the right or wrong counter in the DOM
+    // updating right or wrong counter in the Game Progress section
     if (outcome === `correct`){
         right.innerHTML ++;
     } else {
@@ -211,19 +207,13 @@ function countersUpdate(outcome){
 
 /**
  * @name displayAnswers
- * @description Creates a template literal with the question, randomised answers with radio buttons and the 'check'
- * button which is then written to the 'game-play' in the DOM.
- * Called by fretboardTrainer().
- * Creates the first part of the template literal with the question and first answer option with checked radio button.
- * Create a variable to store each note from the multiChoiceAnswers array, in the loop.
- * Looping through the length of multiChoiceAnswers to create the template litetral for each answer and add it to the 
- * variable continaing the template literal.
- * Adds the 'check' button in a template literal to the end of the variable.
- * Writes the template literal to the 'game-play' in the DOM.
+ * @description Called by fretboardTrainer().
+ * Creates a template literal with the question, randomised answers with radio buttons and 
+ * the 'check' button which is then written to the 'game-play' in the DOM.
  * @param multiChoiceAnswers array of randomly generated answers containing the correct answer.
  */
 function displayAnswers(multiChoiceAnswers){
-    // defining the first part of the template literal with the question and first answer option with checked radio button  
+    // the question and first answer option with checked radio button  
     let allMultiChoices = `
     <h3 id = "question-and-result">Which note is highlighted on the fretboard?</h3>
     <div>
@@ -231,15 +221,15 @@ function displayAnswers(multiChoiceAnswers){
         <input type = "radio" name = "choice" id = "choice${1}" value = "${multiChoiceAnswers[0]}" checked>
     </div>
     `;
-    // the note variable, for holding each note to be written into the template literal
+    // holds each note to be written into the template literal
     let note;
 
     // creating each answer option template literal for the length of multiChoiceAnswers (minus the 0th index)
     for (let i = 1; i < multiChoiceAnswers.length; i++){
-        // taking the note from the multiChoiceAnswers array (which is in a random order)
+        
         note = multiChoiceAnswers[i];
 
-        // creating a template literal for the answer and adding it to the variable containing them all
+        // template literal for the answer and adding it to the variable containing them all
         allMultiChoices += `
         <div>
             <label for = "choice${i}">${note}</label>
@@ -257,58 +247,44 @@ function displayAnswers(multiChoiceAnswers){
 
 /**
  * @name answerGenerator
- * @description 
- * Called by fretboardTrainer().
+ * @description Called by fretboardTrainer().
  * Defines an array contining all the notes, in order, from 'A'.
- * Creates an empty array, to contain all the answers in a random order.
- * Calls highlightRandomCell() to choose and highlight a random cell and return its innerHTML which is 
- * the note the user is trying to guess.
- * Removes correctNote from allNotes[] to be added in at a random place later.
- * Gets the total number of answers required from the 'total-multi-choices' select element.
- * Checks if totalMultiChoiceAnswers is false (NaN) when converted by the Number method, in which case it 
- * extracts the first character '4' from '4 default'.
- * Converts totalMultiChoiceAnswers into a number.
- * The for loop: takes random notes from the allNotes array and adds them to the list of answers 
- * (1 less since correctNote needs to be inserted later). Within the loop; a variable is definied to contain 
- * a 'note' at a random index (number between 0 and totalNumberOfQuestions) in allNotes[], then this note is 
- * added to multiChoiceAnswers[] and removed from allNotes[] to avoid duplicated answers.
- * The final length of multiChoiceAnswers[] is used to generate a random index to insert the correctNote, 
- * without removing anything, using the splice method.
+ * Picks a random cell to highlight and removes it's note from allNotes[] to avoid duplication.
+ * Finds how many answers are required and generates an array of that many random notes, minus 
+ * one space for the correctNote, which is inserted ata random index.
  * @returns multiChoiceAnswers array of randomly generated answers containing the correct answer.
  */
 function answerGenerator(){
-    // defining an array contining all the notes, in order, from 'A'
+    // array contining all the notes, in order, from 'A'
     let allNotes = ['A', 'A#/Bb', 'B', 'C', 'C#/Db', 'D', 'D#/Eb', 'E', 'F', 'F#/Gb', 'G', 'G#/Ab'];
-    // creating an empty array, to contain all the answers in a random order
     let multiChoiceAnswers = [];
-    // calling highlightRandomCell() to choose and highlight a random cell and return its innerHTML which is the note the user is trying to guess
+
+    // choosing and highlighting a random cell and return its innerHTML (the correct note)
     correctNote = highlightRandomCell();
 
-    // removing correctNote from allNotes[] to be added in at a random place later
+    // removing correctNote from allNotes[] to prevent duplication
     allNotes.splice(allNotes.indexOf(correctNote), 1);
 
-    // getting the total number of answers required from the 'total-multi-choices' select element
+    // finding total number of answers required from 'total-multi-choices'
     let totalMultiChoiceAnswers = document.getElementById('total-multi-choices').value;
 
-    // if totalMultiChoiceAnswers is false (NaN) when converted by the Number method then the first character '4' from '4 default' is extracted
+    // if Number(totalMultiChoiceAnswers) is false (NaN), the first character '4' from '4 default' is extracted
     if (Number(totalMultiChoiceAnswers)){
     } else {
         totalMultiChoiceAnswers = totalMultiChoiceAnswers.substring(0,1);
     }
-    // converting totalMultiChoiceAnswers into a number
     totalMultiChoiceAnswers = Number(totalMultiChoiceAnswers);
 
-    // taking random notes from the allNotes array and adding them to the list of answers (1 less since correctNote needs to be inserted later)
+    // removing random notes from allNotes[] to add them into an answers array (1 less since correctNote needs to be inserted later)
     for (let i = 0; i < (totalMultiChoiceAnswers - 1); i ++){
-        // defining a 'note' at a random index (number between 0 and totalNumberOfQuestions) in allNotes[]
+
         let note = allNotes[randomNumber(allNotes.length, 0)]; 
 
-        // adding note to multiChoiceAnswers[] (the answers array) and removing it from allNotes[] to avoid duplicated answers
         multiChoiceAnswers.push(note);
         allNotes.splice(allNotes.indexOf(note), 1);
     }
 
-    // using the final length of multiChoiceAnswers[] to generate a random index to insert the correctNote, without removing anything, using the splice method
+    // generating a random index to insert the correctNote, without removing anything
     multiChoiceAnswers.splice(randomNumber((multiChoiceAnswers.length + 1), 0), 0, correctNote);
 
     // returns multiChoiceAnswers[] back into fretboardTrainer()
@@ -317,39 +293,31 @@ function answerGenerator(){
 
 /**
  * @name highlightRandomCell
- * @description Selects a random table cell by selecting a random guitar string and a fret number along that string and 
- * adds the css 'highlight-note' class inorder to highlight the cell.
- * Called by answerGenerator().
+ * @description Called by answerGenerator().
  * Defines an array contining HTML ids of the tr elements which represent the open string notes on the guitar.
- * Creates an empty array, to store the data for finding the random table cell.
- * Calls randomNumber() to pick a random string from stringsNamesArray[].
- * Calls randomNumber() to pick a random fret number.
- * Defines a variable to hold the HTMLCollection which represents the random guitar string chosen.
- * Defines a variable with the container of the random note, found by using the fret number as an index for the random guitar string.
- * Adds the 'highlight-note' class to the note's container element, to highlight the random table cell with css.
- * Store the correct note to return into answerGenerator().
- * Replaces the correct note with an empty string now that the cell is visible 
+ * Uses randomNumber() to get a random string and fret number and adds the 'highlight-note' class to highlight
+ * the random cell.
+ * Stores the cell's note value in correctNote and replaces it with an empty string since the cell is now visible
  * (the note is written back in when the highlight is removed).
  * @returns correctNote Which is the note the user is trying to guess and is being highlighted on teh fretboard
  */
 function highlightRandomCell(){
-    // defining an array contining HTML ids of the tr elements which represent the open string notes on the guitar
+    // array contining HTML ids of the tr elements which represent the open string notes on the guitar
     let stringsNamesArray = ['eStr', 'aStr', 'dStr', 'gStr', 'bStr', 'eHighStr'];
-    // creating an empty array, to store the data for finding the random table cell
     let randomCell = [];
 
-    // calling randomNumber() to pick a random string from stringsNamesArray[] 
+    // picking a random string from stringsNamesArray[] with randomNumber()
     randomCell.push(stringsNamesArray[randomNumber(6, 0)]);
-    // calling randomNumber() to pick a random fret number (from 1 to 12 incl, therefore needs an offset value of 1)
+    // picking a random fret number (from 1 to 12 incl, therefore needs an offset value of 1)
     randomCell.push(randomNumber(12, 1));
 
-    // defining a variable to hold the HTMLCollection which represents the random guitar string chosen
+    // random guitar string chosen
     let randomString = document.getElementById(randomCell[0]).children;
-    // defining a variable with the container of the random note, found by using the fret number as an index for the random guitar string
+    // container of the random note
     let randomNoteContainer = randomString[randomCell[1]];
-    // adding the 'highlight-note' class to the note's container element, to highlight the random table cell with css
+    // adding the 'highlight-note' class to the note's container element
     randomNoteContainer.classList.add('highlight-note'); 
-    // storing the correct note to return into answerGenerator()
+    
     correctNote = randomNoteContainer.innerHTML;
     // replacing the note with an empty string now that the cell is visible (the note is written back in when the highlight is removed)
     randomNoteContainer.innerHTML = '';
