@@ -34,7 +34,7 @@ p{
 /* --- FONTS --- */
 
 /* fonts for all headings */
-h1, h2, h4{
+h1, h2, h3{
     font-family: 'Titillium Web', sans-serif;
     font-weight:700;
 
@@ -95,7 +95,7 @@ header{
     border-radius:4px;
 
     padding: 1% 2% 2% 2%;
-    margin:1vh 1vw;
+    margin:2vh 1vw;
 
     display:flex;
     flex-direction: column;
@@ -119,8 +119,6 @@ h2{
 #user-options-area #settings{
     line-height:1.7em;
     padding-top:3%;
-    
-
 }
 
 /* user-options settings dropdown boxes */
@@ -133,9 +131,8 @@ h2{
     width:50%;
 }
 
-#multi-choice-area h4{
-    /* color:rgba(255, 140, 63, 1);  */
-    color:#FF8C3F;
+#multi-choice-area h3{
+    color:#A9DCE4;
     margin: 10px 0 5px 0;
     padding: 0;
 }
@@ -201,15 +198,15 @@ h2{
 /* paragraphs for the numbers tracking the Q no. and right/wrong answers */
 .counters{
 
-    background-color: rgba(255, 255, 255, 1);
-    /* color:rgba(47, 97, 104, 1); */
-    /* color:rgba(255, 140, 63, 1);  */
-    color:#FF8C3F;
+    background-color: #A9DCE4;
+    color:rgba(47, 97, 104, 1);
     font-weight:600;
 
-    margin: 20% 10%;
-    padding: 5%;
+    border: 2px solid white;
     border-radius:4px;
+
+    margin: 20% 10% 10% 10%;
+    padding: 5%;
     
 }
 
@@ -218,8 +215,7 @@ h2{
 
 /* class added to notes being being highlighted */
 .highlight-note{
-    /* background-color: #FF8C3F;  */
-    background-color: #FF8C3F;
+    background-color: #A9DCE4;
     border-radius: 50%;
     visibility:visible;
 }
@@ -244,8 +240,7 @@ td{
 
 /* all buttons */
 .btn{
-    /* color: rgba(255, 140, 63, 1); */ 
-    color: #FF8C3F;
+    color: rgba(47, 97, 104, 1);
     background-color: rgba(255, 255, 255, 1);
 
     text-transform: uppercase;
@@ -262,24 +257,16 @@ td{
 /* button hover effect */
 .btn:hover{
     transition-duration: 0.2s;
-    color:rgba(255, 255, 255, 1);
-    /* background-color: rgba(255, 140, 63, 1); */
-    background-color: #FF8C3F;
+    border: 1px solid rgba(255, 255, 255, 1);
+    background-color: #A9DCE4;
 }
 
 /* the select elements */
 select{
-    /* color:rgba(47, 97, 104, 1); */
-    /* color:rgba(255, 140, 63, 1); */
-    color:#FF8C3F;
+    color:rgba(47, 97, 104, 1);
     font-family:inherit;
     font-weight:bold;
     border-radius:4px;
-
-}
-
-/* the checkbox inputs */
-#hide-open-notes, #hide-fret-numbers {
 
 }
 
@@ -297,8 +284,8 @@ select{
 
 
 .section-content{
-    /* color:rgba(255, 140, 63, 1);  */
-    color:#FF8C3F; 
+    color: #A9DCE4; 
+    font-weight:500;
 
     width: 100%;
     display:flex;
@@ -368,16 +355,6 @@ select{
         margin-bottom: 2%;
     
     }
-
-    /* paragraphs for the numbers tracking the Q no. and right/wrong answers */
-    .counters{
-        /* font-weight:600; */
-    
-        /* margin: 10% 5% 0 5%; */
-        /* padding: 5%; */
-        
-    }
-
 
 }
 
@@ -471,6 +448,10 @@ select{
     .fretboard-area table{
         table-layout: fixed;
     }
+
+    h3{
+        font-size: medium;
+    }
     
 }
 
@@ -479,6 +460,11 @@ select{
     /* header */
     header{
         font-size: small;
+    }
+
+    .fretboard-area {
+        height:auto;
+        margin-bottom: 1vh;
     }
     
 }
