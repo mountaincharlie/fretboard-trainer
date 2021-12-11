@@ -178,16 +178,25 @@ The styling and layout of the game remains consistent throughout the sections, m
 ![Screenshot of Google Dev Tool's Lighthouse Score for my website](#image-location "Google Dev Tool's Lighthouse Score for my website") 
 
 ### Bugs and Fixes
-* [date] any bugs
-    * their fixes (links/images where relevant)
 * I used the 'select' element for the 'Number of questions' and 'Number of Answers' settings to limit the user's options to the most reasonable ones so that the user doesn't have to type in their own value and can't choose a value which would cause an error.
-* 
+    * its fix ...
+* Lighthouse in Google's Dev Tools, highlighted a contrast issue with the orange that was being used as an accent colour
+    * its fix ...
 
 ### Unfixed bugs
 * SHOULD BE: No unfixed bugs
 
 ## Deployment
 ---
+
+### Deployment Process on GitHub
+* I selected the Settings tab from within the project-two-fretboard-trainer repository 
+* Then selected the Pages tab within Settings
+* Then chose Main from the Branch dropdown menu
+* Finally, the page then provided the live link to my website and after a few minutes it was ready to be viewed
+
+### Live website link
+* <a href = "https://mountaincharlie.github.io/project-two-fretboard-trainer/">Fretboard Trainer</a>
 
 ### To do:
 
