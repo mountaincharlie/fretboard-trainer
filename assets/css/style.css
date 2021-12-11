@@ -3,16 +3,12 @@
 /* google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&family=Titillium+Web:wght@200;300;400;600;700;900&display=swap');
 
-
-/* MAKE EVERYTHING BORDER-BOX BY DEFAULT */
-
 /* --- WHOLE DOC --- */
 
 /* border-box box sizing for the whole document - CREDIT: https://css-tricks.com/box-sizing/ 'Universal Box Sizing with Inheritance' */
 html {
     box-sizing: border-box;
 }
-
 *, *:before, *:after {
     box-sizing: inherit;
 
@@ -20,8 +16,7 @@ html {
     margin:0;
 }
 
-
-/* body */
+/* setting the font for the body */
 body{
     font-family: 'dosis', sans-serif;
 }
@@ -37,19 +32,15 @@ p{
 h1, h2, h3{
     font-family: 'Titillium Web', sans-serif;
     font-weight:700;
-
     text-align:center;
-
     letter-spacing: 2px;
 }
 
-/* --- HEADER --- */
+/* --- HEADER AND FRETBOARD --- */
 header{
-
-    font-size: larger;
-
     background-color:rgba(47, 97, 104, 1);
     color:rgba(255, 255, 255, 1);
+    font-size: larger;
 
     height: 8vh;
     margin-bottom: 1vh;
@@ -58,9 +49,6 @@ header{
     justify-content: center;
     align-items: center;
 }
-
-
-/* --- DIV AREAS STYLING --- */
 
 /* container for fretboard diagram (html table) */
 .fretboard-area{
@@ -74,104 +62,16 @@ header{
     justify-content: center;
 }
 
-/* centralising and evenly spacing the three-sections */
-.sections-holder{
-
-    height:70vh;
-
-    display:flex;
-    justify-content: space-evenly;
-}
-
-/* the user-options, multi-choice and counter sections */
-.three-sections{ 
-
-    background-color:rgba(47, 97, 104, 1);
-
-    /* background-color: rgba(112, 136, 148, 1); */
-    color: rgba(255, 255, 255, 1);
-
-    /* border: 2px solid rgba(0, 0, 0, 0); */
-    border-radius:4px;
-
-    padding: 1% 2% 2% 2%;
-    margin:2vh 1vw;
-
-    display:flex;
-    flex-direction: column;
-    
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* container for user options section */
-#game-settings{
-    width:25%;
-}
-
-/* headings for each of the areas */
-h2{
-    margin:0;
-    padding:1%;
-}
-
-/* user options area input div - centralise the content (use flexbox?) */
-#game-settings #settings{
-    line-height:1.7em;
-    padding-top:3%;
-}
-
-/* user-options settings dropdown boxes */
-#total-questions, #total-multi-choices{
-    width:30%;
-}
-
-/* container for multi choice answers (center) */
-#game-play{
-    width:50%;
-}
-
-#game-play h3{
-    color:#A9DCE4;
-    margin: 10px 0 5px 0;
-    padding: 0;
-}
-
-#game-play ol{
-    margin: 0;
-    margin-bottom: 5%;
-    padding-left: 20px;
-    line-height: 200%;
-}
-
-#game-play p{
-    line-height: 200%;
-    margin-bottom: 5%;
-
-}
-
-/* container for question and right/wrong counters */
-#game-progress{
-    width:25%;
-}
-
-
-/* --- FRETBOARD STYLING --- */
-
 /* fretboard diagram table */
 .fretboard-area table{
-
-    /* table-layout: fixed; */
-
     color:rgba(47, 97, 104, 1);
     border-radius: 4px;
-
-    width:100%;
-    
     /* removing space between table cells */
     border-collapse:collapse;
+    width:100%;
 }
 
+/* fretboard table data elements */
 .fretboard-area td{
     border-right: 2px solid rgba(47, 97, 104, 1); 
     border-bottom: 1px solid rgba(47, 97, 104, 0.8);
@@ -180,12 +80,10 @@ h2{
     top:0.5rem;
 
     text-align: center;
-    /* DO YOU NEED???? */
     width:8%; 
 }
 
-/* DOES IT WORK???? fixing the zeroth fret size */
-/* only needs to adjust if font changes */
+/* fixing smaler width for zeroth fret */
 .fretboard-area .zeroth-fret{
     width: 1%;
 }
@@ -195,11 +93,96 @@ h2{
     border-right:none;
 }
 
-/* paragraphs for the numbers tracking the Q no. and right/wrong answers */
-.counters{
+/* --- MAIN SECTIONS STYLING --- */
 
-    background-color: #A9DCE4;
+/* centralising and evenly spacing the three-sections */
+.sections-holder{
+    height:70vh;
+    display:flex;
+    justify-content: space-evenly;
+}
+
+/* styles applied to the three game sections */
+.three-sections{ 
+    background-color:rgba(47, 97, 104, 1);
+    color: rgba(255, 255, 255, 1);
+    border-radius:4px;
+
+    padding: 1% 2% 2% 2%;
+    margin:2vh 1vw;
+
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* headings for each of the game sections */
+h2{
+    margin:0;
+    padding:1%;
+}
+
+/* setting game settings width */
+#game-settings{
+    width:25%;
+}
+
+/* breathing space for the game settings content */
+#game-settings {
+    line-height:1.7em;
+    padding-top:3%;
+}
+
+/* the select elements */
+select{
     color:rgba(47, 97, 104, 1);
+    font-family:inherit;
+    font-weight:bold;
+    border-radius:4px;
+}
+
+/* game settings dropdowns width */
+#total-questions, #total-multi-choices{
+    width:30%;
+}
+
+/* setting game play width */
+#game-play{
+    width:50%;
+}
+
+/* game play headings */
+#game-play h3{
+    color:#A9DCE4;
+    margin: 10px 0 5px 0;
+    padding: 0;
+}
+
+/* game play list */
+#game-play ol{
+    margin: 0;
+    margin-bottom: 5%;
+    padding-left: 20px;
+    line-height: 200%;
+}
+
+/* game play paragraphs */
+#game-play p{
+    line-height: 200%;
+    margin-bottom: 5%;
+}
+
+/* setting game progress width */
+#game-progress{
+    width:25%;
+}
+
+/* paragraphs for the counters in the game progress section */
+.counters{
+    color:rgba(47, 97, 104, 1);
+    background-color: #A9DCE4;
+
     font-weight:600;
 
     border: 2px solid white;
@@ -207,11 +190,21 @@ h2{
 
     margin: 20% 10% 10% 10%;
     padding: 5%;
-    
 }
 
+/* game settings and game progress section content */
+.section-content{
+    color: #A9DCE4; 
+    font-weight:500;
 
-/* --- STYLING USED BY ANSWER AREA JS --- */
+    width: 100%;
+    padding: 2%;
+
+    display:flex;
+    flex-direction: column;
+    justify-content:space-evenly;
+    align-items: center;
+}
 
 /* class added to notes being being highlighted */
 .highlight-note{
@@ -222,12 +215,10 @@ h2{
 
 /* using tr tag first to ensure the open string notes are not hidden */
 tr .zeroth-fret{
-    
     color:rgba(47, 97, 104, 1);
-    visibility:visible;
-
     font-weight:bold;
     font-size: large;
+    visibility:visible;
 }
 
 /* making all the td elements transparent by default */
@@ -235,8 +226,7 @@ td{
     visibility:hidden;
 }
 
-
-/* ---  --- */
+/* --- BUTTONS --- */
 
 /* all buttons */
 .btn{
@@ -251,7 +241,6 @@ td{
     padding: 10px;
     border-radius:4px;
     border: 1px solid rgba(47, 97, 104, 1);
-
 }
 
 /* button hover effect */
@@ -261,42 +250,21 @@ td{
     background-color: #A9DCE4;
 }
 
-/* the select elements */
-select{
-    color:rgba(47, 97, 104, 1);
-    font-family:inherit;
-    font-weight:bold;
-    border-radius:4px;
+/* --- RIGHT AND WRONG HIGHLIGHTS --- */
 
-}
-
+/* right note highlight */
 .right-highlight{
     color:lightgreen;
     font-weight: 900;
     border-radius: 4px;
 }
 
+/* wrong note highlight */
 .wrong-highlight{
     color:rgb(238, 87, 87);
     font-weight: 900;
     border-radius: 4px;
 }
-
-
-.section-content{
-    color: #A9DCE4; 
-    font-weight:500;
-
-    width: 100%;
-    display:flex;
-    flex-direction: column;
-    justify-content:space-evenly;
-    align-items: center;
-
-    padding: 2%;
-}
-
-
 
 /* --- MEDIA QUERIES --- */
 
