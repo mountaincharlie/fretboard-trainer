@@ -218,9 +218,34 @@ The styling and layout of the game remains consistent throughout the sections, m
 ##  Site Expansion Ideas
 ---
 
-Features that could be added to expand and improve the website in the future.
+Features that could be added to expand and improve the game in the future.
 
-### To do:
+### Alternate Tuning
+* Having set options for the guitar's tuning, different to the standard, or allow the user to select which note each string should be tuned to.
+* A JavaScript function could then be used to write the notes to the rest of the fretboard using the allNotes array, which contains all the notes in order.  
 
-### Improvement idea
-* How it would work/why it would be good
+### Different Guitars
+* The option to apply the game to a bass guitar or ukulele fretboard.
+* The html table could be created by template literals in JavaScript and the cells populated by inserting the notes from the allNotes array.
+
+### Show Relative Notes option
+* To make the game a bit easier there could be an option to show a note relative to the main highlighted note on the fretboard.
+* The user could choose the relationship (e.g. the 3rd, 5th or octave of the highlighted note) and these notes would be highlighted in a different colour or with a label relevant to their relationship.
+
+### Highlight Triad Chords
+* Instead of highlighting a note on the fretboard a triad chord could be highlighted and the multi-choice answers would be chords rather than notes.
+* A JavaScript object could be used to contain the traid chords, where the 'key' is the chord name (e.g. A) and the 'value' is the three table cells containing the notes for the chord.
+
+### Plotting Progress
+* Allowing the user to create some kind of a profile and to save their results from games (based also on the difficulty settings they had applied), then using Google Charts, or similar, for the user to plot their progress over a number of attempts.
+
+### Share on Social Media
+* Giving the user the option to share their score on social media to increase interactivity with the game and encouraging users to challenge one another with the game.
+
+### Question Timer
+* Either with a time limit for each question or the full game (set by the user).
+* Or to time how fast the user answers each question or the full game.
+* Could be used with the Plotting Progress adn Social Media Sharing features.
+
+### Feedback Form
+* For users to give feedback on any improvements or new features they would like to see added.
