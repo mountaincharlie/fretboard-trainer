@@ -1,8 +1,8 @@
-# Fretboard Trainer (finish)
+# Fretboard Trainer
 
-Fretboard Trainer is an interactive website which uses an adjustable multi-choice style quiz, to help those who want to improve their ability to recognise the notes on a 6-stringed guitar in standard tuning. The rules and design are simple and intuative and since the Trainer is based on the layout of a real guitar fretboard, it has a real life application.
+Fretboard Trainer is an interactive website which uses an adjustable multi-choice style quiz, to help those who want to improve their ability to recognise the notes on a 6-stringed guitar, in standard tuning. The rules and design are simple and intuative and since the Trainer is based on the layout of a real guitar fretboard, it has a real life application.
 
-This site provides a quick and easy way for guitarists, with different levels of experience, to test and train their knowledge of the guitar fretboard. The Trainer can be used on any platform from a laptop to a phone and for as long or short a time as the user wishes. 
+This site provides a quick and easy way for guitarists, with different levels of experience, to test and train their knowledge of the guitar fretboard. The Trainer can be used on mulitple screen sizes from a laptop to a phone and for as long or short a time as the user wishes. 
 
 ![Viewing my website on the Am I Responsive site](./assets/images/am-i-responsive-screenshot.jpg "Fretboard Trainer website on the Am I Responsive site")
 
@@ -12,9 +12,14 @@ This site provides a quick and easy way for guitarists, with different levels of
 ---
 
 * [Technologies Used](https://github.com/mountaincharlie/project-two-fretboard-trainer#technologies-used)
-* ['section name'](full github url from deployed site)
-* 
-* 
+* [Game Instructions](https://github.com/mountaincharlie/project-two-fretboard-trainer#game-instructions)
+* [Features](https://github.com/mountaincharlie/project-two-fretboard-trainer#features)
+* [User Experience Design](https://github.com/mountaincharlie/project-two-fretboard-trainer#user-experience-design)
+* [Accessability](https://github.com/mountaincharlie/project-two-fretboard-trainer#accessability)
+* [Testing](https://github.com/mountaincharlie/project-two-fretboard-trainer#testing)
+* [Deployment](https://github.com/mountaincharlie/project-two-fretboard-trainer#deployment)
+* [Credits](https://github.com/mountaincharlie/project-two-fretboard-trainer#credits)
+* [Site Expansion Ideas](https://github.com/mountaincharlie/project-two-fretboard-trainer#site-expansion-ideas)
  
 ## Technologies Used 
 ---
@@ -23,7 +28,7 @@ This site provides a quick and easy way for guitarists, with different levels of
 * CSS
 * JavaScript
 
-## Game Instructions  (finished?)
+## Game Instructions
 ---
 
 * How to play:
@@ -105,7 +110,7 @@ This site provides a quick and easy way for guitarists, with different levels of
     * update when the Answer Check Screen is displayed 
 
 
-## User Experience Design (change colours for contrast??)
+## User Experience Design
 ---
 
 ### Styling 
@@ -139,7 +144,7 @@ The styling and layout of the game remains consistent throughout the sections, m
     * they are also styled to fit with the rest of the site, but differently enough from the buttons so that the user doesn't confuse them as something that can be clicked.
 
 
-## Accessability (finished?)
+## Accessability
 ---
 
 ### Semantic elements
@@ -159,18 +164,14 @@ The styling and layout of the game remains consistent throughout the sections, m
 ### Aria-labels
 * To make their purpose clearer and for better accessability, these were addded to:
     * the three game sections
-    * the fretboard's div container
-    * the settings
     * the settings buttons
 
 ### Attributes
 * Added the alt attribute to the logo image incase the image failed to loads and to increase screen reader accessability.
 
 
-## Testing
+## Testing (to do)
 ---
-
-### To do:
 
 ### ??? HTML & CSS validator warnings and fixes
 * any warnings that come up and how you fixed them
@@ -232,7 +233,7 @@ The styling and layout of the game remains consistent throughout the sections, m
 * <a href="https://favicon.io/favicon-converter/">Favicon Converter</a> used to create the favicon from the Icons8 guitar icon.
 
 
-##  Site Expansion Ideas
+## Site Expansion Ideas
 ---
 
 Features that could be added to expand and improve the game in the future.
