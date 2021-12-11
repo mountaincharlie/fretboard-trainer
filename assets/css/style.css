@@ -302,162 +302,114 @@ select{
 
 @media (max-width: 1300px){
 
-    .fretboard-area {
-        height:auto;
+    /* setting the fretboard height to prevent game sections over-lapping */
+    .fretboard-area{
+        height:25vh;
     }
 
-    /* the user-options, multi-choice and counter sections */
+    /* reducing the margins of the game sections */
     .three-sections{ 
         margin:0.5vh 0.5vw;
     }
 
-    /* container for user options section */
-    #game-settings{
-        width:25%;
-        /* font-size: normal; */
-    }
-
-    /* centralising and evenly spacing the three-sections */
+    /* reducing the three-sections font-size and height*/
     .sections-holder{
-
         height:65vh;
         font-size: 0.9rem;
-    
-        /* display:flex; */
-        /* justify-content: space-evenly; */
     }
 
-    /* container for fretboard diagram (html table) */
-    .fretboard-area{
-        /* width:100%; */
-        height:25vh;
-    
-        /* padding:1%; */
-    }
-
-    /* all buttons */
+    /* reducing padding to all buttons */
     .btn{
-        /* font-size:medium; */
-        /* font-weight: 600; */
-    
         padding: 5px;
     }
 
-    /* ol and p in multi-choice area */
-    #game-play ol{
+    /* reducing line-height and increasing bottom margin for ol and p in the game play section */
+    #game-play ol, #game-play p{
         margin-bottom: 2%;
-        /* padding-left: 20px; */
         line-height: 150%;
     }
-    
-    #game-play p{
-        line-height: 150%;
-        margin-bottom: 2%;
-    
-    }
-
 }
 
 @media (max-width: 830px){
 
-    /* header */
+    /* decreasing font-size and allowing height to be auto */
     header{
         font-size: large;
         height:auto;
     }
 
-    /* arraning the scetions to be stacked */
+    /* arranging the sections to be stacked */
     .sections-holder{
-
-        /* height:70vh; */
         height:auto;
     
         display:flex;
         flex-direction: column;
-        /* justify-content: center; */
     }
 
-    /* adjusting the area's widths */
+    /* adjusting the sections's height */
     .three-sections{ 
         height: auto;
     }
 
+    /* adjusting the section's margin, height, width and setting their order */
     #game-play{
         margin: 1% 1% 0 1%;
         width:auto;
         min-height: 30vh;
         order:1;
     }
-
     #game-progress{
         margin: 1% 1% 0 1%;
-        /* width:100%; */
         width:auto;
         height: auto;
         order:2;
     }
-
     #game-settings{
         margin: 1%;
         width:auto;
         height: auto;
         order:3;
-        /* font-size: normal; */
-
-        /* flex-direction: column; */
     }
 
+    /* aligning the game progress counters horizontally */
     #game-progress .section-content{
-        /* width: 100%; */
-        /* display:flex; */
         flex-direction: row;
-        /* flex-wrap:wrap; */
-        /* justify-content:space-evenly; */
-        /* align-items: center; */
-
-        /* padding: 2%; */
     }
 
+    /* adjusting the counters to only have top margin */
     .counters{
         margin: 2% 0 0 0;
     }
 
+    /* setting the display and size of the dropdown settings */
     #total-questions, #total-multi-choices{
         display:inline-block;
         width:40px;;
     }
 
+    /* further reducing the button padding and font-size */
     .btn {
         font-size:small;
-
         padding:2px;
-
     }
-
-    /* making apply and reset btns next to eachother */
-    #apply-btn, #reset-btn{
-        display:inline;
-        width:auto;
-    }
-
 }
 
 @media (max-width: 500px){
 
-    /* fixing the table cells width */
+    /* fixing the table cells width once they get to a certain size */
     .fretboard-area table{
         table-layout: fixed;
     }
 
+    /* reducing the h3 heading font-size */
     h3{
         font-size: medium;
     }
-    
 }
 
 @media (max-width: 400px){
 
-    /* header */
+    /* reducing header font-size*/
     header{
         font-size: small;
     }
@@ -466,5 +418,4 @@ select{
         height:auto;
         margin-bottom: 1vh;
     }
-    
 }
