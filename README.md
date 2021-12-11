@@ -23,12 +23,21 @@ This site provides a quick and easy way for guitarists, with different levels of
 * CSS
 * JavaScript
 
-## Game Instructions  (finish)
+## Game Instructions  (finished?)
 ---
 
-1. The game is started by clicking either the 'START GAME' or
+* How to play:
+    1. The game is started by clicking either the 'START GAME' button or 'APPLY & START' button.
+    2. A note will be highlighted on the fretboard diagram and a list of muliple choice answers will be displayed in the Game Play section.
+    3. Choose from the list which note you think is highlighted and click the 'CHECK ANSWER' button.
+    4. A message will display if the correct note was chosen or not and the Right/Wrong counters in the Game Progress section will be updated.
+    5. Once the final question has been answered, click the 'CHECK SCORE' button to find out your final result.
+    6. From the Score screen you can replay with the same settings by clicking the 'APPLY & START' button or reset back to default settings and the Instructions screen by clicking the 'RESET GAME' button.
 
-## Features (finish)
+* How to adjust the game:
+    * The controls in the Game Settings section can be adjusted to affect the difficult of the game.
+
+## Features (add screenshots)
 ---
 
 ### Header
@@ -80,7 +89,7 @@ This site provides a quick and easy way for guitarists, with different levels of
     * Are updated when the Answer Check Screen is displayed 
 
 
-## User Experience Design (finish)
+## User Experience Design (change colours for contrast??)
 ---
 
 ### Styling 
@@ -114,7 +123,7 @@ The styling and layout of the game remains consistent throughout the sections, m
     * they are also styled to fit with the rest of the site, but differently enough from the buttons so that the user doesn't confuse them as something that can be clicked.
 
 
-## Accessability (finish)
+## Accessability (finished?)
 ---
 
 ### Semantic elements
@@ -132,7 +141,11 @@ The styling and layout of the game remains consistent throughout the sections, m
     * for the settings instead of creating any custom controls which may have unclear meaning.
 
 ### Aria-labels
-* Added to the three game sections and the fretboard's div container, to make their purpose clearer.
+* To make their purpose clearer and for better accessability, these were addded to:
+    * the three game sections
+    * the fretboard's div container
+    * the settings
+    * the settings buttons
 
 ### Attributes
 * Added the alt attribute to the logo image incase the image failed to loads and to increase screen reader accessability.
