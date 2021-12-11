@@ -157,7 +157,7 @@
 
                 <div class = "section-content">
                     <!-- Total number of questions in the game -->
-                    <span>
+                    <span aria-label = "Total number of questions setting">
                         <label for = "total-questions">Number of questions:</label>
                         <select id = "total-questions">
                             <option value = "5">5</option>
@@ -170,7 +170,7 @@
                     </span>
                     
                     <!-- Total number of multi-choice answers to display -->
-                    <span>
+                    <span aria-label = "Number of multiple choice answers setting">
                         <label for = "total-multi-choices">Number of answers:</label>
                         <select id = "total-multi-choices">
                             <option value = "4 (default)" selected>4 (default)</option>
@@ -182,13 +182,13 @@
                     </span>
                     
                         <!-- checkbox to hide the open string notes in the fretboard table -->
-                    <span>
+                    <span aria-label = "Hide open string notes checkbox">
                         <label for = "hide-open-notes">Hide open string notes</label>
                         <input type = "checkbox" name = "hide-open-notes" id = "hide-open-notes">
                     </span>
 
                     <!-- checkbox to hide the fret numbers in the fretboard table -->
-                    <span>
+                    <span aria-label = "Hide fret numbers checkbox">
                         <label for = "hide-fret-numbers">Hide fret numbers</label>
                         <input type = "checkbox" name = "hide-fret-numbers" id = "hide-fret-numbers">
                     </span>
@@ -198,10 +198,10 @@
                 <p>(Clicking the below options will cause any game progress to be lost)</p>
 
                 <!-- apply options button -->
-                <button id = "apply-btn" class = "btn">Apply & Start</button>
+                <button id = "apply-btn" class = "btn" aria-label = "Apply settings and start game">Apply & Start</button>
 
                 <!-- re-setting to default settings (reloads page) -->
-                <button id = "reset-btn" class = "btn">Reset Game</button>
+                <button id = "reset-btn" class = "btn" aria-label = "Reset game to default settings">Reset Game</button>
                 
             </section>
 
