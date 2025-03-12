@@ -4,8 +4,8 @@ Fretboard Trainer is an interactive website which uses an adjustable multi-choic
 
 This site provides a quick and easy way for guitarists, with different levels of experience, to test and train their knowledge of the guitar fretboard. The Trainer can be used on mulitple screen sizes from a laptop to a phone and for as long or short a time as the user wishes. 
 
-### Deployed Site link
-* [Fretboard Trainer](https://mountaincharlie.github.io/project-two-fretboard-trainer/)
+### Site Preview
+* Fretboarrd Trainer is not currently live.
 
 ![Viewing my website on the Am I Responsive site](./assets/images/am-i-responsive-screenshot.jpg "Fretboard Trainer website on the Am I Responsive site")
 
